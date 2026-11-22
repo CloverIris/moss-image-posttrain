@@ -1,0 +1,32 @@
+{
+  "mode": "artifact_only",
+  "repo": "$DATA_DISK/sdg-eval/SDG",
+  "model_path": "$DATA_DISK/models/sdg-detector-grpo",
+  "device": "cuda:1",
+  "batch_size": 4,
+  "threads": 4,
+  "metric": "artifact_penalty",
+  "resolution": 512,
+  "resize_policy": "aspect",
+  "max_model_len": 8192,
+  "max_tokens": 4096,
+  "gpu_memory_utilization": 0.8,
+  "alpha_artifact": 0.5,
+  "alpha_misalignment": 0.0,
+  "latent_size": 64,
+  "penalty_weight": 1.0,
+  "replica_devices": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ]
+  ]
+}

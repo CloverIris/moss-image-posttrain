@@ -1,0 +1,1943 @@
+{
+ "runs": [
+  {
+   "run": "full40k_256_b4_r12_20261022_210034",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "full40k_P24_K8_T4_384_20261022_210307",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "full40k_P24_K8_T4_384_mesh_20261023_092705",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "full40k_P24_K8_T4_384_mesh_mem_20261023_094606",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "full40k_P24_K8_T4_mixed_20261022_210231",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261031_213725",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [
+    "step_00000000"
+   ],
+   "complete": false,
+   "n_png": 208,
+   "run_metadata": {
+    "status": "stopped_by_user",
+    "created_at": "2026-10-31T21:37:25.890715+08:00",
+    "user_request": "Restart training with Kawai + DeepGHS aesthetic reward only.",
+    "source_repo": "$CODE_ROOT/moss-art-jax-warmup4",
+    "reward_version": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_20261031",
+    "restart_from": "Base, fresh LoRA seed42/fresh optimizer; no parent adapter",
+    "enabled_models": [
+     "kawai",
+     "deepghs"
+    ],
+    "fusion_weights_planned": {
+     "kawai": 0.5,
+     "deepghs": 0.5
+    },
+    "weight_choice": "Default equal weight, as stated to user; no override received",
+    "rollout_mode": "mxfp8_calibrated",
+    "training_rows": 1975,
+    "fixed_eval_rows": 4,
+    "extra_random_holdout_rows": 16,
+    "max_updates_planned": 200,
+    "disk_budget_status": "full run capacity under audit; preserve 10GiB free floor and all raw data",
+    "training_start_condition": "passed",
+    "conditioning_cache_status": "complete",
+    "reward_code_status": "Kawai+DeepGHS-only version CPU tests passed; no HPS loaded",
+    "disk_cleanup_audit": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261031_213725/reports/cleanup_20261031_221847",
+    "free_disk_gib_after_cleanup": 163.69956588745117,
+    "source_config_sha256": "55af1efd46dda890c1e104a33031f78a054de1b6c6e3c5225476e944c18019f9",
+    "fusion_weights": {
+     "kawai": 0.5,
+     "deepghs": 0.5
+    },
+    "max_updates": 200,
+    "eval_pid": 2653126,
+    "tensorboard_pid": 2653128,
+    "curator_pid": 2653781,
+    "controller_pid": 2653862,
+    "controller_birth_ticks": "104150773",
+    "started_at": "2026-10-31T22:29:12.234930+08:00",
+    "trial_limit": null,
+    "stopped_at": "2026-10-31T23:10:08.387589+08:00",
+    "stop_report": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261031_213725/reports/user_stop_report.json",
+    "optimizer_updates_completed": 0,
+    "automatic_restart_allowed": false,
+    "next_start_from": "Base / step0 / fresh optimizer / new run",
+    "controller_status_before_stop": "failed_during_first_reward_evaluation"
+   }
+  },
+  {
+   "run": "rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 22,
+   "reward_mean_first": 0.5,
+   "reward_mean_last": 0.5,
+   "loss_first": 0.6657500624035796,
+   "loss_last": 0.6668752437011184,
+   "grad_norm_last": 0.023100418969988823,
+   "lr_last": 0.0001,
+   "optimizer_updates": 22,
+   "sum_grad_seconds": 19230.910878909286,
+   "reward_curve": [
+    [
+     1,
+     0.5
+    ],
+    [
+     2,
+     0.5
+    ],
+    [
+     3,
+     0.5
+    ],
+    [
+     4,
+     0.5
+    ],
+    [
+     5,
+     0.5
+    ],
+    [
+     6,
+     0.5
+    ],
+    [
+     7,
+     0.5
+    ],
+    [
+     8,
+     0.5
+    ],
+    [
+     9,
+     0.5
+    ],
+    [
+     10,
+     0.5
+    ],
+    [
+     11,
+     0.5000000596046448
+    ],
+    [
+     12,
+     0.5000000596046448
+    ],
+    [
+     13,
+     0.5
+    ],
+    [
+     14,
+     0.5
+    ],
+    [
+     15,
+     0.5
+    ],
+    [
+     16,
+     0.5
+    ],
+    [
+     17,
+     0.5
+    ],
+    [
+     18,
+     0.5
+    ],
+    [
+     19,
+     0.5
+    ],
+    [
+     20,
+     0.5
+    ],
+    [
+     21,
+     0.5
+    ],
+    [
+     22,
+     0.5
+    ]
+   ],
+   "checkpoints": [
+    "step_00000020",
+    "step_00000022"
+   ],
+   "complete": false,
+   "n_png": 2303,
+   "run_metadata": {
+    "status": "stopped_by_user",
+    "created_at": "2026-11-01T01:57:27.957239+08:00",
+    "user_request": "继续训练吧 参数不变",
+    "authorization": "Explicit human restart notice, fresh Base/step0/new optimizer/new run per launch policy",
+    "previous_stopped_run": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261031_213725",
+    "source_repo": "$CODE_ROOT/moss-art-jax-warmup4",
+    "restart_from": "Base, fresh LoRA seed42 and optimizer, no parent adapter",
+    "max_updates": 200,
+    "enabled_models": [
+     "kawai",
+     "deepghs"
+    ],
+    "fusion_weights": {
+     "kawai": 0.5,
+     "deepghs": 0.5
+    },
+    "rollout_mode": "mxfp8_calibrated",
+    "training_rows": 1975,
+    "fixed_eval_rows": 4,
+    "extra_random_holdout_rows": 16,
+    "new_caption_reward_enabled": false,
+    "automatic_restart_allowed": false,
+    "reward_version": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101",
+    "reward_code_status": "delayed import regression fixed in new immutable version; 140 CPU tests passed",
+    "reward_manifest_sha256": "6cd464b0880c446fb92c5b378e51892d14802fa60620bb0cf91f99cd0cb5f122",
+    "support_services": [
+     {
+      "name": "fixed_eval_service",
+      "pid": 2677156,
+      "birth_ticks": "105427374",
+      "argv": [
+       "/usr/bin/python3",
+       "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101/checkpoint_eval/checkpoint_eval_service.py",
+       "--config",
+       "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/fixed_eval_5060/service.config.json"
+      ],
+      "cwd": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101/checkpoint_eval",
+      "started_at": "2026-11-01T02:01:58.239473"
+     },
+     {
+      "name": "curator",
+      "pid": 2677961,
+      "birth_ticks": "105434459",
+      "argv": [
+       "$CONDA_PREFIX/envs/jax_env/bin/python",
+       "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101/curate_tensorboard.py",
+       "--config",
+       "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/curated_tb.config.json"
+      ],
+      "cwd": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101",
+      "started_at": "2026-11-01T02:03:09.088995",
+      "prior_failed_pid": 2677157
+     },
+     {
+      "name": "tensorboard",
+      "pid": 2677158,
+      "birth_ticks": "105427374",
+      "argv": [
+       "$CONDA_PREFIX/envs/jax_env/bin/python",
+       "-m",
+       "tensorboard.main",
+       "--logdir",
+       "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/tensorboard_curated",
+       "--host",
+       "127.0.0.1",
+       "--port",
+       "6006",
+       "--reload_interval",
+       "10"
+      ],
+      "cwd": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101",
+      "started_at": "2026-11-01T02:01:58.240216"
+     }
+    ],
+    "source_config_sha256": "98e280815ff9441eead8fcfe39b3363997ef25d0d9ef457a855815f27e1484a0",
+    "controller_pid": 2678274,
+    "controller_birth_ticks": "105439597",
+    "controller_process": {
+     "name": "controller",
+     "pid": 2678274,
+     "birth_ticks": "105439597",
+     "argv": [
+      "/usr/bin/python3",
+      "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101/checkpoint_eval/training_flush_launcher.py",
+      "--config",
+      "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/config.json"
+     ],
+     "cwd": "$CODE_ROOT/moss-art-jax-warmup4",
+     "started_at": "2026-11-01T02:04:00.467745+08:00",
+     "tmpdir": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/control/tmp"
+    },
+    "started_at": "2026-11-01T02:04:00.467745+08:00",
+    "optimizer_updates_completed": 22,
+    "trial_limit": null,
+    "startup_verified_at": "2026-11-01T02:04:48.505668+08:00",
+    "launch_report": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/reports/launch_verified.json",
+    "automatic_restart_scope": "Current run only, safe complete checkpoint/handoff recovery preserving all state; never historical run or fresh experiment",
+    "night_autonomy_policy": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/control/night_autonomy.json",
+    "night_user_instruction": "我去睡了有问题自己解决",
+    "night_authorized_at": "2026-11-01T02:08:45.387190+08:00",
+    "last_observed_at": "2026-11-01T13:58:38.077273+08:00",
+    "user_stop_requested_at": "2026-11-01T13:55:52.725282+08:00",
+    "last_user_instruction": "先杀死训练",
+    "user_stop_record": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/control/user_stop.json",
+    "stopped_at": "2026-11-01T13:58:38.077273+08:00",
+    "stop_reason": "先杀死训练",
+    "latest_complete_checkpoint": "$MOSS_ROOT/runs/rank_sqrt_kawai_deepghs_w1_1_top1975v2_P24_K8_T4_1024_U200_calibrated_nol2_20261101_015727/training/checkpoints/step_00000022",
+    "current_run_autonomous_recovery_authorized": false,
+    "new_explicit_user_notice_required": true
+   }
+  },
+  {
+   "run": "rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_mxfp8_calibrated_nol2_20261031",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 16,
+   "reward_mean_first": 0.5,
+   "reward_mean_last": 0.5,
+   "loss_first": 0.6657500341922665,
+   "loss_last": 0.6625660073283749,
+   "grad_norm_last": 0.019701654091477394,
+   "lr_last": 0.0001,
+   "optimizer_updates": 16,
+   "sum_grad_seconds": 13991.585688682855,
+   "reward_curve": [
+    [
+     1,
+     0.5
+    ],
+    [
+     2,
+     0.5
+    ],
+    [
+     3,
+     0.5
+    ],
+    [
+     4,
+     0.5
+    ],
+    [
+     5,
+     0.5
+    ],
+    [
+     6,
+     0.5
+    ],
+    [
+     7,
+     0.5
+    ],
+    [
+     8,
+     0.5
+    ],
+    [
+     9,
+     0.5
+    ],
+    [
+     10,
+     0.5
+    ],
+    [
+     11,
+     0.5
+    ],
+    [
+     12,
+     0.5
+    ],
+    [
+     13,
+     0.5
+    ],
+    [
+     14,
+     0.5
+    ],
+    [
+     15,
+     0.5
+    ],
+    [
+     16,
+     0.5
+    ]
+   ],
+   "checkpoints": [
+    "step_00000014",
+    "step_00000016"
+   ],
+   "complete": true,
+   "n_png": 1686,
+   "run_metadata": {
+    "status": "trial_complete",
+    "parent": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_nol2_20261031",
+    "restart_from": "Base / fresh LoRA seed42 and fresh optimizer",
+    "resume_update": 0,
+    "beta": 0.0,
+    "ema_enabled": false,
+    "training_resolution": [
+     1024,
+     1024
+    ],
+    "fixed_eval_resolution": [
+     768,
+     768
+    ],
+    "rollout_mode": "mxfp8_calibrated",
+    "max_updates": 200,
+    "created_at": "2026-10-31T02:41:47.558862+00:00",
+    "requested_changes": [
+     "fresh Base restart",
+     "plain mxfp8 to mxfp8_calibrated"
+    ],
+    "other_numerical_settings": "P24 K8 T4,48steps,FP16VAE,BF16LoRA,rank48alpha48,AdamW1e-4warmup4,rank-sqrt-rerank D:H2:1,Spectrum/fullDiT1:1 unchanged",
+    "preserve_parent_artifacts": true,
+    "old_completed_update": 18,
+    "source_repo": "$CODE_ROOT/moss-art-jax-warmup4",
+    "source_snapshot_reference": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_nol2_20261031/reports/implementation_audit_20261031/source_snapshot.tar.gz",
+    "tensorboard_pid": 2588429,
+    "curator_pid": 2588409,
+    "eval_pid": 2586547,
+    "bootstrap_checkpoint": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_mxfp8_calibrated_nol2_20261031/training/checkpoints/step_00000000",
+    "started_at": "2026-10-31T02:43:14.642268+00:00",
+    "controller_pid": 2587091,
+    "base0_pinned_checkpoint": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_mxfp8_calibrated_nol2_20261031/fixed_eval_5060/checkpoints/step_00000000_f1224fcff49c0b6a",
+    "controller_started_at": "2026-10-31T02:43:58.498760+00:00",
+    "first_new_optimizer_update": 1,
+    "calibration_tb_metrics": "pre-correction quant_error/G, cosine, BF16 anchor prepass seconds",
+    "curated_root": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_mxfp8_calibrated_nol2_20261031/tensorboard_curated_v2",
+    "curator_repair": "new mapping uses fresh destination; previous logs retained",
+    "trial_requested_updates": 15,
+    "trial_stop_update": 16,
+    "trial_boundary_reason": "Requested 15 updates; rounded to 16 to preserve a complete A/B pair and resumable checkpoint",
+    "trial_limit_config": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_mxfp8_calibrated_nol2_20261031/control/trial_limit.config.json",
+    "trial_status": "watching",
+    "trial_guard_pid": 2590049,
+    "trial_limit_armed_at": "2026-10-31T03:03:07.665868+00:00",
+    "next_training_dataset": "$MOSS_ROOT/datasets/next_training_dataset.json",
+    "next_training_data_source": "<DATASET_STAGING>/top2000_v2_image_ratio.jsonl",
+    "trial_completed_update": 16,
+    "trial_completed_at": "2026-10-31T11:39:57.896281+00:00",
+    "trial_report": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_mxfp8_calibrated_nol2_20261031/reports/trial_limit16_report.json"
+   }
+  },
+  {
+   "run": "rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_nol2_20261031",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 18,
+   "reward_mean_first": 0.5,
+   "reward_mean_last": 0.5,
+   "loss_first": 0.6739337403366031,
+   "loss_last": 0.6694440818197714,
+   "grad_norm_last": 0.020101148635149002,
+   "lr_last": 0.0001,
+   "optimizer_updates": 18,
+   "sum_grad_seconds": 15849.847236039,
+   "reward_curve": [
+    [
+     1,
+     0.5
+    ],
+    [
+     2,
+     0.5
+    ],
+    [
+     3,
+     0.5
+    ],
+    [
+     4,
+     0.5
+    ],
+    [
+     5,
+     0.5
+    ],
+    [
+     6,
+     0.5
+    ],
+    [
+     7,
+     0.5
+    ],
+    [
+     8,
+     0.5
+    ],
+    [
+     9,
+     0.5
+    ],
+    [
+     10,
+     0.5
+    ],
+    [
+     11,
+     0.5
+    ],
+    [
+     12,
+     0.5
+    ],
+    [
+     13,
+     0.5
+    ],
+    [
+     14,
+     0.5
+    ],
+    [
+     15,
+     0.5
+    ],
+    [
+     16,
+     0.5
+    ],
+    [
+     17,
+     0.5
+    ],
+    [
+     18,
+     0.5
+    ]
+   ],
+   "checkpoints": [
+    "step_00000016",
+    "step_00000018"
+   ],
+   "complete": false,
+   "n_png": 1872,
+   "run_metadata": {
+    "status": "superseded_by_user_calibrated_restart",
+    "parent": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b1_from2",
+    "restart_from": "Base / fresh LoRA seed42",
+    "resume_update": 0,
+    "beta": 0.0,
+    "ema_enabled": false,
+    "training_resolution": [
+     1024,
+     1024
+    ],
+    "fixed_eval_resolution": [
+     768,
+     768
+    ],
+    "max_updates": 200,
+    "created": "2026-10-31T00:52:17.833717",
+    "requested_changes": [
+     "training resolution768to1024",
+     "remove reference L2",
+     "fresh optimizer andLoRA fromBase0"
+    ],
+    "other_numerical_settings": "P24 K8 T4,48steps,MXFP8rollout,FP16VAE,BF16LoRA,rank48alpha48,AdamW1e-4warmup4,rank-sqrt-rerank D:H2:1 unchanged",
+    "preserve_parent_artifacts": true,
+    "curator_pid": 2547479,
+    "tensorboard_pid": 2546730,
+    "eval_pid": 2547132,
+    "bootstrap_checkpoint": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_nol2_20261031/training/checkpoints/step_00000000",
+    "preflight_memory_peak_gib": 12.682,
+    "state_counters": {
+     "update": 0,
+     "optimizer_updates": 0,
+     "prompt_cursor": 0
+    },
+    "controller_pid": 2547480,
+    "started_at": "2026-10-31T01:15:00.019580",
+    "first_new_optimizer_update": 1,
+    "base0_pinned_checkpoint": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_nol2_20261031/fixed_eval_5060/checkpoints/step_00000000_fa8561e764adafda",
+    "preflight_report": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_nol2_20261031/reports/preflight_training_1024_ckpt6_optstate.json",
+    "next_run": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_mxfp8_calibrated_nol2_20261031",
+    "last_completed_update": 18,
+    "stopped_at": "2026-10-31T02:41:02.720574+00:00"
+   }
+  },
+  {
+   "run": "rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 2,
+   "reward_mean_first": 0.5,
+   "reward_mean_last": 0.5,
+   "loss_first": 0.6748074880306376,
+   "loss_last": 0.6740210685772278,
+   "grad_norm_last": 0.023941127583384514,
+   "lr_last": 5e-05,
+   "optimizer_updates": 2,
+   "sum_grad_seconds": 1264.7621578229591,
+   "reward_curve": [
+    [
+     1,
+     0.5
+    ],
+    [
+     2,
+     0.5
+    ]
+   ],
+   "checkpoints": [
+    "step_00000000",
+    "step_00000002"
+   ],
+   "complete": false,
+   "n_png": 210,
+   "run_metadata": {
+    "status": "stopped_for_l2_beta005",
+    "created_at": 1793325926.3287365,
+    "previous_run": "$MOSS_ROOT/runs/reward2_top1991_P24_K8_T4_768_warmup4_U200_20261030",
+    "fresh_from_base": true,
+    "resume": false,
+    "fusion_mode": "rank_power_rank",
+    "gamma": 0.5,
+    "models": [
+     "deepghs",
+     "hps"
+    ],
+    "weights": {
+     "deepghs": 0.6666666666666666,
+     "hps": 0.3333333333333333
+    },
+    "pipeline_snapshot": "$DATA_DISK/moss-reward-pipeline/versions/rank_sqrt_rerank_20261030",
+    "previous_images_scores_preserved": true,
+    "started_at": 1793326166.6481376,
+    "controller_pid": 2456827,
+    "eval_pid": 2456828,
+    "curator_pid": 2456829,
+    "tensorboard_pid": 2456831,
+    "next_run": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b005_from2",
+    "stopped_at": 1793329221.686352
+   }
+  },
+  {
+   "run": "rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b005_from2",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 2,
+   "reward_mean_first": 0.5,
+   "reward_mean_last": 0.5,
+   "loss_first": 0.6748074880306376,
+   "loss_last": 0.6740210685772278,
+   "grad_norm_last": 0.023941127583384514,
+   "lr_last": 5e-05,
+   "optimizer_updates": 2,
+   "sum_grad_seconds": 1264.7621578229591,
+   "reward_curve": [
+    [
+     1,
+     0.5
+    ],
+    [
+     2,
+     0.5
+    ]
+   ],
+   "checkpoints": [
+    "step_00000002"
+   ],
+   "complete": false,
+   "n_png": 208,
+   "run_metadata": {
+    "status": "superseded_beta1_after_inference",
+    "parent": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030",
+    "resume_update": 2,
+    "target_max_updates": 200,
+    "old_beta": 0.01,
+    "new_beta": 0.05,
+    "at": 1793329146.7400155,
+    "started_at": 1793329588.4466364,
+    "controller_pid": 2462981,
+    "eval_pid": 2462982,
+    "curator_pid": 2462983,
+    "tensorboard_pid": 2462986,
+    "first_new_optimizer_update": 3,
+    "lora_optimizer_bytes_unchanged": true,
+    "next_run": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b1_from2",
+    "stopped_at": 1793330732.5640647
+   }
+  },
+  {
+   "run": "rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b1_from2",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 46,
+   "reward_mean_first": 0.5,
+   "reward_mean_last": 0.5,
+   "loss_first": 0.6748074880306376,
+   "loss_last": 0.6836438066432796,
+   "grad_norm_last": 0.01372432615607977,
+   "lr_last": 0.0001,
+   "optimizer_updates": 46,
+   "sum_grad_seconds": 27961.72530173813,
+   "reward_curve": [
+    [
+     1,
+     0.5
+    ],
+    [
+     2,
+     0.5
+    ],
+    [
+     3,
+     0.5
+    ],
+    [
+     4,
+     0.5
+    ],
+    [
+     5,
+     0.5
+    ],
+    [
+     6,
+     0.5
+    ],
+    [
+     7,
+     0.5
+    ],
+    [
+     8,
+     0.5
+    ],
+    [
+     9,
+     0.5
+    ],
+    [
+     10,
+     0.5
+    ],
+    [
+     11,
+     0.5
+    ],
+    [
+     12,
+     0.5
+    ],
+    [
+     13,
+     0.5
+    ],
+    [
+     14,
+     0.5
+    ],
+    [
+     15,
+     0.5
+    ],
+    [
+     16,
+     0.5
+    ],
+    [
+     17,
+     0.5
+    ],
+    [
+     18,
+     0.5
+    ],
+    [
+     19,
+     0.5
+    ],
+    [
+     20,
+     0.5
+    ],
+    [
+     21,
+     0.5
+    ],
+    [
+     22,
+     0.5
+    ],
+    [
+     23,
+     0.5
+    ],
+    [
+     24,
+     0.5
+    ],
+    [
+     25,
+     0.5
+    ],
+    [
+     26,
+     0.5
+    ],
+    [
+     27,
+     0.5
+    ],
+    [
+     28,
+     0.5
+    ],
+    [
+     29,
+     0.5
+    ],
+    [
+     30,
+     0.5
+    ],
+    [
+     31,
+     0.5
+    ],
+    [
+     32,
+     0.5
+    ],
+    [
+     33,
+     0.5
+    ],
+    [
+     34,
+     0.5
+    ],
+    [
+     35,
+     0.5
+    ],
+    [
+     36,
+     0.5
+    ],
+    [
+     37,
+     0.5
+    ],
+    [
+     38,
+     0.5
+    ],
+    [
+     39,
+     0.5
+    ],
+    [
+     40,
+     0.5
+    ],
+    [
+     41,
+     0.5
+    ],
+    [
+     42,
+     0.5
+    ],
+    [
+     43,
+     0.5
+    ],
+    [
+     44,
+     0.5
+    ],
+    [
+     45,
+     0.5
+    ],
+    [
+     46,
+     0.5
+    ]
+   ],
+   "checkpoints": [
+    "step_00000044",
+    "step_00000046"
+   ],
+   "complete": false,
+   "n_png": 4663,
+   "run_metadata": {
+    "status": "superseded_by_user_restart",
+    "parent": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b005_from2",
+    "resume_update": 2,
+    "beta": 1.0,
+    "max_updates": 200,
+    "pending_reuse_inference": false,
+    "started_at": 1793330732.5667098,
+    "first_new_optimizer_update": 3,
+    "inferred_images_reused": 192,
+    "controller_pid": 2465267,
+    "eval_pid": 2466410,
+    "curator_pid": 2465269,
+    "tensorboard_pid": 2465270,
+    "inference_reuse_verified": true,
+    "next_run": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_1024_U200_nol2_20261031",
+    "stopped_at": "2026-10-31T00:56:45.360651",
+    "last_completed_update": 46,
+    "stop_report": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b1_from2/reports/stopped_for_1024_nol2_20261031.json"
+   }
+  },
+  {
+   "run": "reward2_top1991_P24_K8_T4_768_warmup4_U200_20261030",
+   "max_updates": 200,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 2,
+   "reward_mean_first": 0.4183492958545685,
+   "reward_mean_last": 0.4183492958545685,
+   "loss_first": 0.6747732607909711,
+   "loss_last": 0.6740227113720417,
+   "grad_norm_last": 0.013429947197437286,
+   "lr_last": 5e-05,
+   "optimizer_updates": 2,
+   "sum_grad_seconds": 1262.9338531800313,
+   "reward_curve": [
+    [
+     1,
+     0.4183492958545685
+    ],
+    [
+     2,
+     0.4183492958545685
+    ]
+   ],
+   "checkpoints": [
+    "step_00000000",
+    "step_00000002"
+   ],
+   "complete": false,
+   "n_png": 417,
+   "run_metadata": {
+    "status": "stopped_for_rank_restart",
+    "started_at": 1793321138.0984116,
+    "initialized_from": "fresh Base zero-LoRA",
+    "training_prompts": 1991,
+    "evaluation_prompts": 4,
+    "requested_max_updates": 200,
+    "rollout_sampling_steps": 48,
+    "enabled_reward_models": [
+     "deepghs",
+     "hps"
+    ],
+    "weights": {
+     "deepghs": 0.6666666666666666,
+     "hps": 0.3333333333333333
+    },
+    "warmup_steps": 4,
+    "source_previous_run": "$MOSS_ROOT/runs/reward3_top1991_P24_K8_T4_768_warmup4_20261029",
+    "training_images_planned": 19200,
+    "evaluation_images_planned": 1616,
+    "checkpoint_retention": {
+     "release_done_checkpoint_payload": true,
+     "done_adapters": {
+      "enabled": true,
+      "keep_best": 3,
+      "keep_latest": 2,
+      "milestone_interval_updates": 40,
+      "final_update": 200
+     }
+    },
+    "system_filesystem_reserved_blocks_changed": false,
+    "controller_pid": 2448319,
+    "training_started_at": 1793321891.1449788,
+    "status_record": "$MOSS_ROOT/runs/reward2_top1991_P24_K8_T4_768_warmup4_U200_20261030/run_metadata/launcher.latest.json",
+    "stopped_at": 1793326166.6453059,
+    "next_run": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030"
+   }
+  },
+  {
+   "run": "reward3_P24_K8_T4_768_eval4x4_20261029",
+   "max_updates": 20,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 4,
+   "reward_mean_first": 0.5187909603118896,
+   "reward_mean_last": 0.47663989663124084,
+   "loss_first": 0.6718998411476301,
+   "loss_last": 0.6712801988711968,
+   "grad_norm_last": 0.021102886646986008,
+   "lr_last": null,
+   "optimizer_updates": 20,
+   "sum_grad_seconds": 2300.162052227999,
+   "reward_curve": [
+    [
+     17,
+     0.5187909603118896
+    ],
+    [
+     18,
+     0.5187909603118896
+    ],
+    [
+     19,
+     0.47663989663124084
+    ],
+    [
+     20,
+     0.47663989663124084
+    ]
+   ],
+   "checkpoints": [
+    "step_00000018",
+    "step_00000020"
+   ],
+   "complete": true,
+   "n_png": 384,
+   "run_metadata": {
+    "status": "running",
+    "pid": 2372764,
+    "started_at": 1793259704.9611256,
+    "source_checkpoint": "old reward4 step16",
+    "sdg_enabled": false,
+    "logical_batch": {
+     "P": 24,
+     "K": 8,
+     "T": 4,
+     "trajectories": 192,
+     "points": 768,
+     "art_window_points": 384
+    },
+    "fixed_validation": {
+     "P": 4,
+     "K": 4,
+     "resolution": 768,
+     "device": 4,
+     "scoring_devices": [
+      0,
+      1,
+      2,
+      3
+     ]
+    },
+    "constant_learning_rate": 0.0001,
+    "explicit_transition": "reports/transition/migration.json"
+   }
+  },
+  {
+   "run": "reward3_top1991_P24_K8_T4_768_warmup4_20261029",
+   "max_updates": 20,
+   "P": 24,
+   "K": 8,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 20,
+   "reward_mean_first": 0.420029878616333,
+   "reward_mean_last": 0.3689902722835541,
+   "loss_first": 0.674811010719471,
+   "loss_last": 0.6702101373472639,
+   "grad_norm_last": 0.01653115451335907,
+   "lr_last": 0.0001,
+   "optimizer_updates": 20,
+   "sum_grad_seconds": 12229.801092509995,
+   "reward_curve": [
+    [
+     1,
+     0.420029878616333
+    ],
+    [
+     2,
+     0.420029878616333
+    ],
+    [
+     3,
+     0.37474608421325684
+    ],
+    [
+     4,
+     0.37474608421325684
+    ],
+    [
+     5,
+     0.4012429416179657
+    ],
+    [
+     6,
+     0.4012429416179657
+    ],
+    [
+     7,
+     0.4525112807750702
+    ],
+    [
+     8,
+     0.4525112807750702
+    ],
+    [
+     9,
+     0.45314231514930725
+    ],
+    [
+     10,
+     0.45314231514930725
+    ],
+    [
+     11,
+     0.44733646512031555
+    ],
+    [
+     12,
+     0.44733646512031555
+    ],
+    [
+     13,
+     0.4534873962402344
+    ],
+    [
+     14,
+     0.4534873962402344
+    ],
+    [
+     15,
+     0.41529521346092224
+    ],
+    [
+     16,
+     0.41529521346092224
+    ],
+    [
+     17,
+     0.3760819435119629
+    ],
+    [
+     18,
+     0.3760819435119629
+    ],
+    [
+     19,
+     0.3689902722835541
+    ],
+    [
+     20,
+     0.3689902722835541
+    ]
+   ],
+   "checkpoints": [
+    "step_00000018",
+    "step_00000020"
+   ],
+   "complete": true,
+   "n_png": 2100,
+   "run_metadata": {
+    "status": "training_started",
+    "started_at": 1793281081.5744164,
+    "base": "$MODEL_ROOT/MOSS-Image-Base",
+    "initial_adapter": "fresh rank48, Kaiming down + zero up",
+    "optimizer_start": 0,
+    "train_prompts": 1991,
+    "eval_prompts": 4,
+    "split_manifest": "$MOSS_ROOT/datasets/top1995_square_ctx1024_split_20261029/split_manifest.json",
+    "max_updates": 20,
+    "optimizer_warmup_steps": 4,
+    "expected_lr": [
+     2.5e-05,
+     5e-05,
+     7.5e-05,
+     0.0001
+    ],
+    "SDG": false,
+    "training_started_at": 1793281751.9615836,
+    "controller_pid": 2396869,
+    "eval_daemon_pid": 2396868,
+    "status_record": "$MOSS_ROOT/runs/reward3_top1991_P24_K8_T4_768_warmup4_20261029/run_metadata/launcher.latest.json",
+    "train_eval_overlap": 0
+   }
+  },
+  {
+   "run": "reward4_P24_K16_T4_mxfp8_20261029",
+   "max_updates": 20,
+   "P": 24,
+   "K": 16,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 16,
+   "reward_mean_first": 0.46779337525367737,
+   "reward_mean_last": 0.38430699706077576,
+   "loss_first": 0.6753543393133441,
+   "loss_last": 0.670160101983735,
+   "grad_norm_last": 0.01625640131533146,
+   "lr_last": null,
+   "optimizer_updates": 16,
+   "sum_grad_seconds": 19994.803474143962,
+   "reward_curve": [
+    [
+     1,
+     0.46779337525367737
+    ],
+    [
+     2,
+     0.46779337525367737
+    ],
+    [
+     3,
+     0.4043906629085541
+    ],
+    [
+     4,
+     0.4043906629085541
+    ],
+    [
+     5,
+     0.45850643515586853
+    ],
+    [
+     6,
+     0.45850643515586853
+    ],
+    [
+     7,
+     0.47730016708374023
+    ],
+    [
+     8,
+     0.47730016708374023
+    ],
+    [
+     9,
+     0.4718898832798004
+    ],
+    [
+     10,
+     0.4718898832798004
+    ],
+    [
+     11,
+     0.38280144333839417
+    ],
+    [
+     12,
+     0.38280144333839417
+    ],
+    [
+     13,
+     0.3907342851161957
+    ],
+    [
+     14,
+     0.3907342851161957
+    ],
+    [
+     15,
+     0.38430699706077576
+    ],
+    [
+     16,
+     0.38430699706077576
+    ]
+   ],
+   "checkpoints": [
+    "step_00000014",
+    "step_00000016"
+   ],
+   "complete": false,
+   "n_png": 3078,
+   "run_metadata": {
+    "name": "reward4_P24_K16_T4_mxfp8_20261029",
+    "run_dir": "$MOSS_ROOT/runs/reward4_P24_K16_T4_mxfp8_20261029",
+    "config": "$MOSS_ROOT/runs/reward4_P24_K16_T4_mxfp8_20261029/config.json",
+    "pid": 2334060,
+    "log": "$MOSS_ROOT/runs/reward4_P24_K16_T4_mxfp8_20261029/logs/controller.log",
+    "output": "$MOSS_ROOT/runs/reward4_P24_K16_T4_mxfp8_20261029/training",
+    "tensorboard_log_dir": "$MOSS_ROOT/tensorboard/reward4_P24_K16_T4_mxfp8_20261029",
+    "started_at": "2026-10-29T00:48:26.991750+08:00",
+    "fresh": true,
+    "mode": "mxfp8",
+    "vae_precision": "float16",
+    "reward_models": [
+     "kawai",
+     "deepghs",
+     "hps",
+     "sdg_artifact"
+    ],
+    "tagger_enabled": false,
+    "reference_mse_beta": 0.01,
+    "staged": true,
+    "P": 24,
+    "K": 16,
+    "T": 4,
+    "images_per_collection": 384,
+    "points_per_collection": 1536,
+    "points_per_update_window": 768,
+    "controller_restarts": [
+     {
+      "previous_pid": 2281401,
+      "pid": 2290922,
+      "resume_update": 2,
+      "reason": "logging_source_signature_rollback",
+      "time": "2026-10-29T02:17:38.393414+08:00"
+     },
+     {
+      "previous_pid": 2290922,
+      "pid": 2312577,
+      "resume_update": 6,
+      "reason": "sdg_description_quote_parse_recovery",
+      "time": "2026-10-29T06:10:14.755803+08:00"
+     },
+     {
+      "previous_pid": 2312577,
+      "pid": 2334060,
+      "resume_update": 8,
+      "reason": "sdg_length_only_single_item_retry",
+      "time": "2026-10-29T10:13:28.552182+08:00"
+     }
+    ],
+    "current_resume_update": 8,
+    "status": "stopped_for_reward3_K8_768_transition",
+    "stopped_at": "2026-10-29T15:07:33.916515+08:00",
+    "stop_reason": "User requested fixed768 K8 training and disableSDG; old images/scores/checkpoints retained"
+   }
+  },
+  {
+   "run": "reward4_P8_K16_T4_mxfp8_20261029",
+   "max_updates": 20,
+   "P": 8,
+   "K": 16,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 128,
+   "run_metadata": {
+    "name": "reward4_P8_K16_T4_mxfp8_20261029",
+    "pid": 2274946,
+    "config": "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/config.json",
+    "output": "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/training",
+    "log": "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/logs/controller.log",
+    "tensorboard": "http://127.0.0.1:6006/#scalars",
+    "logdir": "$MOSS_ROOT/tensorboard/reward4_P8_K16_T4_mxfp8_20261029",
+    "started_at": "2026-10-29T00:17:19.445463+08:00",
+    "fresh_lora": true,
+    "tagger_enabled": false,
+    "status": "stopped_for_batch_resize",
+    "replacement_parameters": {
+     "P": 24,
+     "K": 16,
+     "T": 4
+    },
+    "preserve_outputs": true
+   }
+  },
+  {
+   "run": "silva205_P8_K16_T4_AB_mxfp8_calibrated_fresh_20261023_163519",
+   "max_updates": 20,
+   "P": 8,
+   "K": 16,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn"
+   },
+   "reward": null,
+   "n_updates_logged": 2,
+   "reward_mean_first": 0.5965943932533264,
+   "reward_mean_last": 0.5965943932533264,
+   "loss_first": 0.6657500565052032,
+   "loss_last": 0.6662165550515056,
+   "grad_norm_last": 0.016084805130958557,
+   "lr_last": null,
+   "optimizer_updates": 2,
+   "sum_grad_seconds": 0,
+   "reward_curve": [
+    [
+     1,
+     0.5965943932533264
+    ],
+    [
+     2,
+     0.5965943932533264
+    ]
+   ],
+   "checkpoints": [
+    "step_00000002"
+   ],
+   "complete": false,
+   "n_png": 160,
+   "run_metadata": null
+  },
+  {
+   "run": "silva205_P8_K16_T4_AB_mxfp8_lossfix_fresh_20261023_212424",
+   "max_updates": 20,
+   "P": 8,
+   "K": 16,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 12,
+   "reward_mean_first": 0.5964878797531128,
+   "reward_mean_last": 0.8810031414031982,
+   "loss_first": 0.675228148997121,
+   "loss_last": 0.6684299895860022,
+   "grad_norm_last": 0.02823891118168831,
+   "lr_last": null,
+   "optimizer_updates": 12,
+   "sum_grad_seconds": 0,
+   "reward_curve": [
+    [
+     1,
+     0.5964878797531128
+    ],
+    [
+     2,
+     0.5964878797531128
+    ],
+    [
+     3,
+     0.6353936195373535
+    ],
+    [
+     4,
+     0.6353936195373535
+    ],
+    [
+     5,
+     0.7008374929428101
+    ],
+    [
+     6,
+     0.7008374929428101
+    ],
+    [
+     7,
+     0.6821225881576538
+    ],
+    [
+     8,
+     0.6821225881576538
+    ],
+    [
+     9,
+     0.8291035890579224
+    ],
+    [
+     10,
+     0.8291035890579224
+    ],
+    [
+     11,
+     0.8810031414031982
+    ],
+    [
+     12,
+     0.8810031414031982
+    ]
+   ],
+   "checkpoints": [
+    "step_00000010",
+    "step_00000012"
+   ],
+   "complete": false,
+   "n_png": 835,
+   "run_metadata": null
+  },
+  {
+   "run": "silva205_P8_K16_T4_AB_mxfp8_resident_20261023_170451",
+   "max_updates": 20,
+   "P": 8,
+   "K": 16,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn"
+   },
+   "reward": null,
+   "n_updates_logged": 8,
+   "reward_mean_first": 0.6382640600204468,
+   "reward_mean_last": 0.7459928393363953,
+   "loss_first": 0.6744780107401311,
+   "loss_last": 0.6746876579709351,
+   "grad_norm_last": 0.04436895623803139,
+   "lr_last": null,
+   "optimizer_updates": 10,
+   "sum_grad_seconds": 0,
+   "reward_curve": [
+    [
+     3,
+     0.6382640600204468
+    ],
+    [
+     4,
+     0.6382640600204468
+    ],
+    [
+     5,
+     0.6893295049667358
+    ],
+    [
+     6,
+     0.6893295049667358
+    ],
+    [
+     7,
+     0.6562735438346863
+    ],
+    [
+     8,
+     0.6562735438346863
+    ],
+    [
+     9,
+     0.7459928393363953
+    ],
+    [
+     10,
+     0.7459928393363953
+    ]
+   ],
+   "checkpoints": [
+    "step_00000008",
+    "step_00000010"
+   ],
+   "complete": false,
+   "n_png": 528,
+   "run_metadata": null
+  },
+  {
+   "run": "silva205_P8_K16_T4_AB_mxfp8_vae_fp16_resume6_20261024_001358",
+   "max_updates": 20,
+   "P": 8,
+   "K": 16,
+   "T": 4,
+   "base": "$MODEL_ROOT/MOSS-Image-Base",
+   "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+   },
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "single_prompt_256_b4_k16_20261022_090114",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "single_prompt_256_b4_r12_20261022_132815",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "single_prompt_256_b4_r4_20261022_093447",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "single_prompt_48step_r48_20261022_071944",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  },
+  {
+   "run": "tags40k_48step_r48_20261022",
+   "max_updates": null,
+   "P": null,
+   "K": null,
+   "T": null,
+   "base": null,
+   "lora": null,
+   "reward": null,
+   "n_updates_logged": 0,
+   "checkpoints": [],
+   "complete": false,
+   "n_png": 0,
+   "run_metadata": null
+  }
+ ],
+ "evals": [
+  {
+   "run": "step_00000016",
+   "step": 16,
+   "n_images": 16,
+   "fused_mean": 0.530272010520477,
+   "kawai_mean": 0.7114570317789912,
+   "deepghs_mean": 0.7871324337983089,
+   "hps_mean": 1.220902911387384,
+   "status": "complete"
+  },
+  {
+   "run": "step_00000018",
+   "step": 18,
+   "n_images": 16,
+   "fused_mean": 0.5304134710114448,
+   "kawai_mean": 0.7385133728384972,
+   "deepghs_mean": 0.7809565144148655,
+   "hps_mean": 1.0957359690219164,
+   "status": "complete"
+  },
+  {
+   "run": "step_00000020_9aba206eab210af5",
+   "step": 20,
+   "n_images": 16,
+   "fused_mean": 0.5169988014054632,
+   "kawai_mean": 0.7330782115459442,
+   "deepghs_mean": 0.7565756661503739,
+   "hps_mean": 0.7055011666379869,
+   "status": "complete"
+  }
+ ],
+ "distillation": [
+  {
+   "run": "ba_cnn_att_v2_1024_cfg3_20261103",
+   "n_metrics": 254,
+   "first": [
+    null,
+    null,
+    null
+   ],
+   "last": [
+    null,
+    null,
+    null
+   ],
+   "cancelled": null,
+   "latest": {
+    "step": 1016,
+    "processed_prompts": 254,
+    "total_prompts": 1971,
+    "last": {
+     "step": 1016,
+     "mse": 0.023002908332273364,
+     "zero_offset_mse": 0.02290922519750893,
+     "gradient_norm": 0.0008832610145435124,
+     "signed_intervals": [
+      -0.1289089471101761,
+      -0.006428459193557501,
+      -0.021817250177264214,
+      0.07567807286977768
+     ]
+    },
+    "checkpoint": "$MOSS_ROOT/distillation/ba_cnn_att_v2_1024_cfg3_20261103/latest.msgpack"
+   }
+  },
+  {
+   "run": "ba_smallmoss_102m_dp4_bf16_1024_20261103",
+   "n_metrics": 316,
+   "first": [
+    null,
+    null,
+    null
+   ],
+   "last": [
+    null,
+    null,
+    null
+   ],
+   "cancelled": {
+    "requested_at": 1793709848.3810196,
+    "reason": "User explicitly requested stop: 停止吧 这个方向算力黑洞",
+    "auto_resume_allowed": false,
+    "new_user_instruction_required": true
+   },
+   "latest": {
+    "step": 1264,
+    "processed_prompts": 1264,
+    "total_prompts": 1971,
+    "total_updates": 1972,
+    "last": {
+     "step": 1264,
+     "mse": 0.07207187567837536,
+     "zero_offset_mse": 0.09044399613048881,
+     "gradient_norm": 0.027611423283815384,
+     "trajectories": [
+      {
+       "index": 1260,
+       "repeat": 3,
+       "mse": 0.04103667684830725,
+       "zero_offset_mse": 0.03996040625497699,
+       "signed_intervals": [
+        0.022727085277438164,
+        -0.06252701580524445,
+        -0.04717748239636421,
+        -0.03853635489940643
+       ]
+      },
+      {
+       "index": 1261,
+       "repeat": 3,
+       "mse": 0.03853201842866838,
+       "zero_offset_mse": 0.039994350168854,
+       "signed_intervals": [
+        -0.030493421480059624,
+        -0.0529475137591362,
+        0.1284511834383011,
+        -0.011357774026691914
+       ]
+      },
+      {
+       "index": 1262,
+       "repeat": 3,
+       "mse": 0.1814255751669407,
+       "zero_offset_mse": 0.2546443147584796,
+       "signed_intervals": [
+        -0.09070229530334473,
+        0.13357770442962646,
+        -0.07835113257169724,
+        0.037743475288152695
+       ]
+      },
+      {
+       "index": 1263,
+       "repeat": 3,
+       "mse": 0.027293232269585133,
+       "zero_offset_mse": 0.02717691333964467,
+       "signed_intervals": [
+        -0.03387327864766121,
+        -0.031777508556842804,
+        0.04076112434267998,
+        0.179396390914917
+       ]
+      }
+     ]
+    },
+    "checkpoint": "$MOSS_ROOT/distillation/ba_smallmoss_102m_dp4_bf16_1024_20261103/checkpoint_0.msgpack",
+    "checkpoint_sha256": "e93108266f15e374b8aca33caea6eba2b41401770f7298999b6833dac4ab2801",
+    "time": 1793709833.0106163
+   }
+  }
+ ],
+ "source": "$MOSS_ROOT"
+}

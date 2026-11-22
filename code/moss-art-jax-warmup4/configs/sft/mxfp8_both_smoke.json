@@ -1,0 +1,36 @@
+{
+  "model": {
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "activation_storage": "gpu",
+    "checkpoint_interval": 1,
+    "base_precision": "mxfp8",
+    "mxfp8_dgrad": "mxfp8"
+  },
+  "data": {
+    "cache": "cache/sft_mxfp8_e2e_aligned",
+    "context_length": 1024,
+    "short_context_length": 512
+  },
+  "lora": {
+    "rank": 4,
+    "alpha": 4.0,
+    "preset": "attn-mlp"
+  },
+  "sft": {
+    "conditioning_dropout": 0.0
+  },
+  "training": {
+    "max_updates": 2,
+    "batch_size": 1,
+    "checkpoint_every": 2,
+    "microbatch_size": 1
+  },
+  "runtime": {
+    "devices": [
+      3
+    ],
+    "output_dir": "outputs/sft_mxfp8_both_aligned",
+    "tensor_parallel_size": 1
+  }
+}

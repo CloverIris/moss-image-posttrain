@@ -1,0 +1,94 @@
+{
+  "scores": [
+    -0.011762695387005806
+  ],
+  "details": [
+    {
+      "reward": -0.011762695387005806,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.011762695387005806,
+      "weighted_artifact_penalty": -0.011762695387005806,
+      "artifact_count": 3,
+      "ignored_misalignment_count": 2,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            517,
+            805,
+            644,
+            973
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "The hand resting on the bed in the lower right displays severe anatomical distortion, where the fingers appear fused together and elongated, lacking distinct joints or natural separation."
+        },
+        {
+          "box_2d": [
+            435,
+            140,
+            557,
+            220
+          ],
+          "label": "artifact",
+          "importance": 42,
+          "description": "The facial features in the upper center are distorted, with asymmetrical eyes and a malformed mouth area that fail to render a coherent or realistic human expression."
+        },
+        {
+          "box_2d": [
+            442,
+            686,
+            530,
+            814
+          ],
+          "label": "artifact",
+          "importance": 52,
+          "description": "The groin area in the lower central region is anatomically incorrect, appearing as a strange, fleshy protrusion rather than a natural anatomical structure with proper depth and shape."
+        },
+        {
+          "box_2d": [
+            11,
+            1,
+            984,
+            995
+          ],
+          "label": "misalignment",
+          "importance": 95,
+          "description": "The character depicted does not match the requested identity of Goldenglow from Arknights, as she has pink hair instead of the signature orange-brown and lacks the character's specific costume details."
+        },
+        {
+          "box_2d": [
+            420,
+            242,
+            530,
+            314
+          ],
+          "label": "misalignment",
+          "importance": 78,
+          "description": "The hand near the chest is held static in a gesture but fails to perform the specific action of 'licking her hand' as requested, showing no interaction between the lips and the fingers."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp01/response.sdg/0744680868fa4d418e5e120365cbd853/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 1021,
+      "id": "prompt000004_roll000001",
+      "index": 1,
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 0
+    }
+  ],
+  "mode": "artifact_only",
+  "load_seconds": 24.577610484091565,
+  "inference_seconds": 11.52223016996868,
+  "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp01/response.sdg/0744680868fa4d418e5e120365cbd853/predictions.jsonl",
+  "model": "$DATA_DISK/models/sdg-detector-grpo"
+}

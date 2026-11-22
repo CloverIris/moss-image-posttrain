@@ -1,0 +1,46 @@
+{
+  "name": "moss-rollout-1024-cudnn-tuned",
+  "model": {
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4
+  },
+  "lora": {
+    "rank": 4,
+    "alpha": 4.0,
+    "preset": "attn"
+  },
+  "sampling": {
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "beta_alpha": 0.6,
+    "beta_beta": 0.6,
+    "height": 1024,
+    "width": 1024,
+    "steps": 50,
+    "prompts_per_rollout": 2,
+    "group_size": 2,
+    "train_timesteps": [
+      0,
+      10,
+      20,
+      30,
+      40
+    ]
+  },
+  "training": {
+    "max_updates": 2,
+    "checkpoint_every": 2,
+    "evaluate_every": 0
+  },
+  "reward": {
+    "kind": "siglip",
+    "decode": true,
+    "batch_size": 1
+  },
+  "runtime": {
+    "devices": [
+      1
+    ],
+    "output_dir": "outputs/rollout_1024_cudnn_tuned"
+  }
+}

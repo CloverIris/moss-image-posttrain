@@ -1,0 +1,6 @@
+{
+  "input": "$CODE_ROOT/moss-art-jax/inputs/pixai_threshold_rl_20261021/prompts.txt",
+  "output": "$CODE_ROOT/moss-art-jax/data/pixai_threshold_rl_20261021.jsonl",
+  "report": "$CODE_ROOT/moss-art-jax/inputs/pixai_threshold_rl_20261021/preprocess_report.json",
+  "metadata_dir": "$CODE_ROOT/moss-art-jax/vendor/pixai_tagger/metadata"
+}

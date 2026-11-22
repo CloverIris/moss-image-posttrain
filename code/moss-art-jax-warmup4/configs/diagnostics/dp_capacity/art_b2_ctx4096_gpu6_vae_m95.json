@@ -1,0 +1,12 @@
+{
+  "device": 3,
+  "mode": "art",
+  "batch": 2,
+  "context": 4096,
+  "activation_storage": "gpu",
+  "checkpoint_interval": 6,
+  "resident_vae": true,
+  "repeats": 2,
+  "memory_fraction": 0.95,
+  "output": "outputs/dp_capacity/art_b2_ctx4096_gpu6_vae_m95"
+}

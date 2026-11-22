@@ -1,0 +1,11 @@
+{
+  "device": 2,
+  "mode": "sft",
+  "batch": 2,
+  "context": 64,
+  "activation_storage": "gpu",
+  "checkpoint_interval": 6,
+  "resident_vae": true,
+  "repeats": 2,
+  "output": "outputs/dp_capacity/sft_b2_ctx64_gpu6_vae"
+}

@@ -1,0 +1,108 @@
+{
+  "name": "silva_anchor_mxfp8",
+  "model": {
+    "path": "$MODEL_ROOT/MOSS-Image-Base",
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "activation_storage": "gpu",
+    "checkpoint_interval": 6,
+    "vae_conv_backend": "cudnn_bounded",
+    "vae_conv_workspace_mib": 256
+  },
+  "preparation": {
+    "device": 4,
+    "async_prefetch": true,
+    "qwen_gpu_layers": 16,
+    "qwen_gpu_embedding": true,
+    "qwen_gpu_vision": true,
+    "max_sequence_length": 512
+  },
+  "data": {
+    "prompts": "$DATA_DISK/phone-uploads/NovelAI/prompts_negative_nsfw_moss_deepseek_20261023.jsonl",
+    "cache": "$CODE_ROOT/moss-art-jax/cache/silva",
+    "short_context_length": 288,
+    "context_length": 512
+  },
+  "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn"
+  },
+  "sampling": {
+    "height": 768,
+    "width": 768,
+    "steps": 48,
+    "sampler": "euler",
+    "scheduler": "moss",
+    "guidance_scale": 3.0,
+    "pair_cached_points": true,
+    "rollout_batch_size": 1,
+    "rollout_mode": "mxfp8",
+    "vae_resident_rollout": true
+  },
+  "optimizer": {
+    "name": "adamw",
+    "learning_rate": 0.0001
+  },
+  "training": {
+    "max_updates": 20,
+    "evaluate_every": 10,
+    "checkpoint_every": 2,
+    "keep_checkpoints": 2,
+    "save_rollout_images": true,
+    "microbatch_size": 1,
+    "prompts_per_update": 8,
+    "rollouts_per_prompt": 16,
+    "training_points_per_trajectory": 4,
+    "updates_per_rollout": 2
+  },
+  "reward": {
+    "kind": "silva",
+    "model_path": "$CODE_ROOT/moss-aesthetic-judge/models/silva-aesthetic",
+    "backbone_path": "$HOME/.cache/huggingface/hub/models--google--siglip2-so400m-patch14-384/snapshots/e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+    "dtype": "float32",
+    "attention_backend": "native",
+    "metric": "calibrated",
+    "batch_size": 4
+  },
+  "logging": {
+    "tensorboard": true,
+    "log_dir": "$MOSS_ROOT/tensorboard/silva_anchor_mxfp8"
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "output_dir": "$MOSS_ROOT/runs/silva_anchor_mxfp8",
+    "min_free_disk_gib": 10.0,
+    "execution_backend": "mesh"
+  },
+  "resolution_mixing": {
+    "enabled": true,
+    "profiles": [
+      {
+        "height": 768,
+        "width": 768,
+        "weight": 2,
+        "rollout_batch_size": 1,
+        "microbatch_size": 1
+      },
+      {
+        "height": 1024,
+        "width": 1024,
+        "weight": 1,
+        "rollout_batch_size": 1,
+        "microbatch_size": 1
+      }
+    ]
+  },
+  "run": {
+    "resume": "",
+    "init_adapter": "",
+    "checkpoint": "",
+    "adapter": ""
+  }
+}

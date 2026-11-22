@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "method": "fixed_pooled_within_prompt_std",
+  "weights": {
+    "kawai": 0.4,
+    "deepghs": 0.4,
+    "hps": 0.2
+  },
+  "parameters": {
+    "kawai": {
+      "mean": 0.21900222668773495,
+      "pooled_within_prompt_std": 0.23991348994495829,
+      "scale": 0.23991348994495829,
+      "std_floor": 0.02
+    },
+    "deepghs": {
+      "mean": 0.734849083897005,
+      "pooled_within_prompt_std": 0.1097337278877173,
+      "scale": 0.1097337278877173,
+      "std_floor": 0.01
+    },
+    "hps": {
+      "mean": 5.080122709652642,
+      "pooled_within_prompt_std": 1.1989967476905392,
+      "scale": 1.1989967476905392,
+      "std_floor": 0.1
+    }
+  },
+  "output_offset": 0.5,
+  "output_gain": 0.0822843590404152,
+  "target_mean_group_mad": 0.04,
+  "reference_fusion_z_group_mad": 0.48611911749052333,
+  "reference_images": 256,
+  "reference_prompts": 32,
+  "expected_group_size": 8,
+  "formula": "reward = offset + gain * sum(weight_m * (score_m - reference_mean_m) / fixed_scale_m)",
+  "notes": [
+    "The component scales are frozen across prompt groups. No per-group variance amplification.",
+    "Output gain calibrates reward amplitude for ART; it does not change fusion ranking.",
+    "No clipping, sigmoid, or percentile saturation is introduced. Scores are not probabilities.",
+    "Leave ART's existing group covariance/MAD logic intact; do not normalize each model again."
+  ],
+  "reference_sha256": "f11e019ba01739da96698c4934f484fcbc77f38f5f221cc7c74d422c1346208c"
+}

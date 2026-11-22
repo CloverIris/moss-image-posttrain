@@ -1,0 +1,357 @@
+{
+  "status": "cpu_verified_ready",
+  "created_at_utc": "2026-10-31T13:43:54.621846+00:00",
+  "source_version": "$DATA_DISK/moss-reward-pipeline/versions/rank_sqrt_rerank_20261030",
+  "deployed_version": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_20261031",
+  "source_untouched_by_this_task": true,
+  "historical_runs_untouched": true,
+  "active_config_fields": {
+    "enabled_models": [
+      "kawai",
+      "deepghs"
+    ],
+    "kawai_enabled": true,
+    "sdg_enabled": false,
+    "artifact_weight": 0,
+    "batch_stage_order": [
+      "deepghs"
+    ]
+  },
+  "fusion_weights_policy": "Exactly active names andsum1; valueschosenbyuser/root, notfixedbycode.",
+  "calibration_schema_unchanged": true,
+  "new_training_mode_required": "mxfp8_calibrated",
+  "changed_from_source": [
+    "checkpoint_eval/run_reward_with_validation.py",
+    "checkpoint_eval/test_checkpoint_eval_service.py",
+    "reward_fusion.py",
+    "run_reward_pipeline.py"
+  ],
+  "added_files": [
+    "test_hps_disabled.py"
+  ],
+  "tests": [
+    {
+      "log": "cpu_root_regression.log",
+      "sha256": "ef053cf61d84c2d6c97489cf6b10524e4121b008cfa0e122f3257af189060f02",
+      "count": 74,
+      "seconds": 0.613,
+      "status": "passed",
+      "skip_lines": []
+    },
+    {
+      "log": "cpu_checkpoint_regression.log",
+      "sha256": "16ce0d43b1c439363b18709a673fcb5c014538cbacd74ea52e0d24b403c9e0ca",
+      "count": 64,
+      "seconds": 5.744,
+      "status": "passed",
+      "skip_lines": []
+    }
+  ],
+  "new_KD_test_cases": 11,
+  "GPU_model_execution": false,
+  "source_files": {
+    "checkpoint_eval/CHECKPOINT_EVAL_PROTOCOL.txt": {
+      "sha256": "c4441e58b26d20a709ab541930c6da14162dca283bcc8080fa9e105e1ae9ecd3",
+      "size_bytes": 7820
+    },
+    "checkpoint_eval/checkpoint_eval_service.py": {
+      "sha256": "98efa505326fc3ec1c14d1b60260782bf052ae5932534a73587af907a8e28be0",
+      "size_bytes": 49436
+    },
+    "checkpoint_eval/eval_infer_worker.py": {
+      "sha256": "4206b89ad767b05836017b63db564aeff64625362d6f991f0e976bc7e85e62a4",
+      "size_bytes": 17997
+    },
+    "checkpoint_eval/export_checkpoint_adapter.py": {
+      "sha256": "d194dcad15dbf02e5fd878280d69885e94ae4ec574fceb80379450692057e558",
+      "size_bytes": 7970
+    },
+    "checkpoint_eval/flush_validation.py": {
+      "sha256": "9add63ded3962677bc824efb20b91e4bc259e909a27e77bb6df5e3910b035263",
+      "size_bytes": 7089
+    },
+    "checkpoint_eval/report_validation.py": {
+      "sha256": "6da1c5c1e5631f9c57c1521fe9bed03488877915c40caf117bcd8a734791f0e3",
+      "size_bytes": 15984
+    },
+    "checkpoint_eval/run_reward_with_validation.py": {
+      "sha256": "8f5b3ccede14757ebb3d31c1d53c838064176c8d46786b05bfe7a243fa49f954",
+      "size_bytes": 38549
+    },
+    "checkpoint_eval/run_training_and_flush.sh": {
+      "sha256": "eb18f7eec54169ac4acf2f654071dbf274be54fca1f9aaf8858d740d8e533537",
+      "size_bytes": 1250
+    },
+    "checkpoint_eval/run_training_and_flush_configurable.sh": {
+      "sha256": "3689fca65db0559cb97d486cedb34531b53d74d5419741fad6f0167dd3995beb",
+      "size_bytes": 453
+    },
+    "checkpoint_eval/test_checkpoint_eval_service.py": {
+      "sha256": "349cc39daaef66efeccda6a332dfb257c11b818ce40f431bf61a9134514c66a6",
+      "size_bytes": 15387
+    },
+    "checkpoint_eval/test_checkpoint_retention.py": {
+      "sha256": "c5f094f29b93d85f7509a2080768922429ae031c4a4ddd4bc18ae0ea5addb795",
+      "size_bytes": 10458
+    },
+    "checkpoint_eval/test_flush_validation.py": {
+      "sha256": "4861a608b2ae70e58df6bf9bf531559dd88e789caf5c1b0e1543c911196d1c7f",
+      "size_bytes": 4274
+    },
+    "checkpoint_eval/test_rank_summary.py": {
+      "sha256": "4b75e0d71b3ca665bcc7e49baecd6bc1698ecf0d0925ed4d4ed014e1132b5b46",
+      "size_bytes": 6122
+    },
+    "checkpoint_eval/test_report_validation.py": {
+      "sha256": "a216b1d2e125e3d4cc81acbec9169ab103168dbc8db77175fa3fc40b50fdbd2a",
+      "size_bytes": 10052
+    },
+    "checkpoint_eval/test_run_reward_with_validation.py": {
+      "sha256": "f193b866e4da7dc313de601f5a6d2984aa265ff64c919da38b16d500186a6901",
+      "size_bytes": 15785
+    },
+    "checkpoint_eval/training_flush_launcher.py": {
+      "sha256": "06c9dd24b85c7f39dbf96ed58ab8c9c75fdd4bd8bdcdaf2680a28a86d22cf78c",
+      "size_bytes": 10326
+    },
+    "curate_tensorboard.py": {
+      "sha256": "574cca5e0ea0235c6882b053e1e1222cfdd2fdd8303e986af44a87f1a03c7ed5",
+      "size_bytes": 11256
+    },
+    "deployment_manifest.json": {
+      "sha256": "a8e71cbd7e7743abb77fadc0894d679982c9407c1acd4344cfa65ff77ac38170",
+      "size_bytes": 3556
+    },
+    "make_reward_contact_sheet.py": {
+      "sha256": "61a8f8f8a638e3e4b5b1e9f8a23725a420cfefc81b30fed74e54dbf04b704f0e",
+      "size_bytes": 5447
+    },
+    "monitor_training.before_archive_selection_20261029.py": {
+      "sha256": "ca18d9adf0f5432aa0b9caacc90a9804fadda9efdf5a2e8036b2568ae7e40744",
+      "size_bytes": 7761
+    },
+    "monitor_training.py": {
+      "sha256": "16603dc9f8690d2c284c92b9e011c67573ee06579ea45a82d310399cfda7febc",
+      "size_bytes": 8102
+    },
+    "reward_fusion.py": {
+      "sha256": "f0fd0b9660205cac15bc97fa4b5462ee15437d9fe8a9655bafe5dab4da408de0",
+      "size_bytes": 10797
+    },
+    "reweight_rewards.py": {
+      "sha256": "66ffdff7575444a624af5ee8832335dddfda80e7ff31dee501107f81eddf1690",
+      "size_bytes": 2281
+    },
+    "run_reward_pipeline.py": {
+      "sha256": "775d91b6ffdc8993425b4af9601a8de443db35e4a69d8400c220aa224f07f384",
+      "size_bytes": 20046
+    },
+    "score_kawai.py": {
+      "sha256": "639774d7d69c65ec29993204607744a5c7d804cae489e32699bf0d74a48040d8",
+      "size_bytes": 12057
+    },
+    "sdg_parallel.py": {
+      "sha256": "f7631cf76641f5cebc2684e5f9256f8e6fd807d9777840a0cc1150becb15e0e4",
+      "size_bytes": 12352
+    },
+    "summarize_l2.py": {
+      "sha256": "0ecd94922532ebd59dd7fcde9db93075d2d16ce85db6dffb42f9cdfac1470e54",
+      "size_bytes": 3606
+    },
+    "test_curate_tensorboard.py": {
+      "sha256": "35b310dc5a562811d14634a83344654f83aa5fde414f1605c35b1244ce618288",
+      "size_bytes": 7399
+    },
+    "test_kawai_disabled.py": {
+      "sha256": "e2011188439fd4fc915b798e1de71226b49ab9e914ee709fbbac979f6b83be17",
+      "size_bytes": 13617
+    },
+    "test_rank_fusion.py": {
+      "sha256": "900c3985d7970f213b4620841e0ef7e6f21f097c0c5c3f0ef91253865449c1b3",
+      "size_bytes": 9458
+    },
+    "test_rank_pipeline.py": {
+      "sha256": "a8cbc181b8c6fd8e481571026ff039c8425277100a3f90a2a3a9544ab8f00227",
+      "size_bytes": 6210
+    },
+    "test_reward_pipeline.py": {
+      "sha256": "9eb1ae1db3f2211a15a9c67610ea4d0af4b256dd1337b10bdd22fd1428fa9e0e",
+      "size_bytes": 2474
+    },
+    "test_score_kawai.py": {
+      "sha256": "d63a07fa99792997c989ed4dad7fb8c367030f4ac2a075c9c60621fe5ee0103a",
+      "size_bytes": 3166
+    },
+    "test_sdg_disabled.py": {
+      "sha256": "a93bf1d5faa8914d9ce48ae1792f3cfa4a69f47e7ec704ca42143a9e2bfc1451",
+      "size_bytes": 4046
+    },
+    "test_sdg_parallel.py": {
+      "sha256": "76b0d6d3fc687e40c748a67f8155fb54fcf7776fd35d9081f1a55a278d764369",
+      "size_bytes": 5900
+    },
+    "write_tb_layout.py": {
+      "sha256": "d10af792f0bd4d529fe6906b4972f2854928f88b75ccb7f2030c1838a4e2df58",
+      "size_bytes": 4252
+    }
+  },
+  "deployed_files": {
+    "checkpoint_eval/CHECKPOINT_EVAL_PROTOCOL.txt": {
+      "sha256": "c4441e58b26d20a709ab541930c6da14162dca283bcc8080fa9e105e1ae9ecd3",
+      "size_bytes": 7820
+    },
+    "checkpoint_eval/checkpoint_eval_service.py": {
+      "sha256": "98efa505326fc3ec1c14d1b60260782bf052ae5932534a73587af907a8e28be0",
+      "size_bytes": 49436
+    },
+    "checkpoint_eval/eval_infer_worker.py": {
+      "sha256": "4206b89ad767b05836017b63db564aeff64625362d6f991f0e976bc7e85e62a4",
+      "size_bytes": 17997
+    },
+    "checkpoint_eval/export_checkpoint_adapter.py": {
+      "sha256": "d194dcad15dbf02e5fd878280d69885e94ae4ec574fceb80379450692057e558",
+      "size_bytes": 7970
+    },
+    "checkpoint_eval/flush_validation.py": {
+      "sha256": "9add63ded3962677bc824efb20b91e4bc259e909a27e77bb6df5e3910b035263",
+      "size_bytes": 7089
+    },
+    "checkpoint_eval/report_validation.py": {
+      "sha256": "6da1c5c1e5631f9c57c1521fe9bed03488877915c40caf117bcd8a734791f0e3",
+      "size_bytes": 15984
+    },
+    "checkpoint_eval/run_reward_with_validation.py": {
+      "sha256": "ef099cb622389c2700b8e080d2c67e29070b0e9382b0061686ff3519e313072e",
+      "size_bytes": 39258
+    },
+    "checkpoint_eval/run_training_and_flush.sh": {
+      "sha256": "eb18f7eec54169ac4acf2f654071dbf274be54fca1f9aaf8858d740d8e533537",
+      "size_bytes": 1250
+    },
+    "checkpoint_eval/run_training_and_flush_configurable.sh": {
+      "sha256": "3689fca65db0559cb97d486cedb34531b53d74d5419741fad6f0167dd3995beb",
+      "size_bytes": 453
+    },
+    "checkpoint_eval/test_checkpoint_eval_service.py": {
+      "sha256": "71bfc6e87255ec2af74a885a9c4eb08eaf0cfcf2b162239f2d2ee3c45655ff6f",
+      "size_bytes": 15544
+    },
+    "checkpoint_eval/test_checkpoint_retention.py": {
+      "sha256": "c5f094f29b93d85f7509a2080768922429ae031c4a4ddd4bc18ae0ea5addb795",
+      "size_bytes": 10458
+    },
+    "checkpoint_eval/test_flush_validation.py": {
+      "sha256": "4861a608b2ae70e58df6bf9bf531559dd88e789caf5c1b0e1543c911196d1c7f",
+      "size_bytes": 4274
+    },
+    "checkpoint_eval/test_rank_summary.py": {
+      "sha256": "4b75e0d71b3ca665bcc7e49baecd6bc1698ecf0d0925ed4d4ed014e1132b5b46",
+      "size_bytes": 6122
+    },
+    "checkpoint_eval/test_report_validation.py": {
+      "sha256": "a216b1d2e125e3d4cc81acbec9169ab103168dbc8db77175fa3fc40b50fdbd2a",
+      "size_bytes": 10052
+    },
+    "checkpoint_eval/test_run_reward_with_validation.py": {
+      "sha256": "f193b866e4da7dc313de601f5a6d2984aa265ff64c919da38b16d500186a6901",
+      "size_bytes": 15785
+    },
+    "checkpoint_eval/training_flush_launcher.py": {
+      "sha256": "06c9dd24b85c7f39dbf96ed58ab8c9c75fdd4bd8bdcdaf2680a28a86d22cf78c",
+      "size_bytes": 10326
+    },
+    "curate_tensorboard.py": {
+      "sha256": "574cca5e0ea0235c6882b053e1e1222cfdd2fdd8303e986af44a87f1a03c7ed5",
+      "size_bytes": 11256
+    },
+    "make_reward_contact_sheet.py": {
+      "sha256": "61a8f8f8a638e3e4b5b1e9f8a23725a420cfefc81b30fed74e54dbf04b704f0e",
+      "size_bytes": 5447
+    },
+    "monitor_training.before_archive_selection_20261029.py": {
+      "sha256": "ca18d9adf0f5432aa0b9caacc90a9804fadda9efdf5a2e8036b2568ae7e40744",
+      "size_bytes": 7761
+    },
+    "monitor_training.py": {
+      "sha256": "16603dc9f8690d2c284c92b9e011c67573ee06579ea45a82d310399cfda7febc",
+      "size_bytes": 8102
+    },
+    "reward_fusion.py": {
+      "sha256": "0d5036fddbb04330dd51df27ffde46fb496ddfe28637e68564fa4a268c9580d8",
+      "size_bytes": 11517
+    },
+    "reweight_rewards.py": {
+      "sha256": "66ffdff7575444a624af5ee8832335dddfda80e7ff31dee501107f81eddf1690",
+      "size_bytes": 2281
+    },
+    "run_reward_pipeline.py": {
+      "sha256": "579c410a715f5ed750a15066bd9df0582f301074b40135957cb8adaf72b0ed35",
+      "size_bytes": 20892
+    },
+    "score_kawai.py": {
+      "sha256": "639774d7d69c65ec29993204607744a5c7d804cae489e32699bf0d74a48040d8",
+      "size_bytes": 12057
+    },
+    "sdg_parallel.py": {
+      "sha256": "f7631cf76641f5cebc2684e5f9256f8e6fd807d9777840a0cc1150becb15e0e4",
+      "size_bytes": 12352
+    },
+    "summarize_l2.py": {
+      "sha256": "0ecd94922532ebd59dd7fcde9db93075d2d16ce85db6dffb42f9cdfac1470e54",
+      "size_bytes": 3606
+    },
+    "test_curate_tensorboard.py": {
+      "sha256": "35b310dc5a562811d14634a83344654f83aa5fde414f1605c35b1244ce618288",
+      "size_bytes": 7399
+    },
+    "test_hps_disabled.py": {
+      "sha256": "4b6a1d7342b9fb4b09d1badd7ffaf4e0f6acd7e73143c42ef06451523c96a68a",
+      "size_bytes": 17322
+    },
+    "test_kawai_disabled.py": {
+      "sha256": "e2011188439fd4fc915b798e1de71226b49ab9e914ee709fbbac979f6b83be17",
+      "size_bytes": 13617
+    },
+    "test_rank_fusion.py": {
+      "sha256": "900c3985d7970f213b4620841e0ef7e6f21f097c0c5c3f0ef91253865449c1b3",
+      "size_bytes": 9458
+    },
+    "test_rank_pipeline.py": {
+      "sha256": "a8cbc181b8c6fd8e481571026ff039c8425277100a3f90a2a3a9544ab8f00227",
+      "size_bytes": 6210
+    },
+    "test_reward_pipeline.py": {
+      "sha256": "9eb1ae1db3f2211a15a9c67610ea4d0af4b256dd1337b10bdd22fd1428fa9e0e",
+      "size_bytes": 2474
+    },
+    "test_score_kawai.py": {
+      "sha256": "d63a07fa99792997c989ed4dad7fb8c367030f4ac2a075c9c60621fe5ee0103a",
+      "size_bytes": 3166
+    },
+    "test_sdg_disabled.py": {
+      "sha256": "a93bf1d5faa8914d9ce48ae1792f3cfa4a69f47e7ec704ca42143a9e2bfc1451",
+      "size_bytes": 4046
+    },
+    "test_sdg_parallel.py": {
+      "sha256": "76b0d6d3fc687e40c748a67f8155fb54fcf7776fd35d9081f1a55a278d764369",
+      "size_bytes": 5900
+    },
+    "write_tb_layout.py": {
+      "sha256": "d10af792f0bd4d529fe6906b4972f2854928f88b75ccb7f2030c1838a4e2df58",
+      "size_bytes": 4252
+    }
+  },
+  "patch": {
+    "path": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_20261031/implementation.patch",
+    "sha256": "77a6a1f997dcff5532ed609cd8cd89d78846a62fc9aeb09028fff3647b656241"
+  },
+  "report": {
+    "path": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_20261031/implementation_report.txt",
+    "sha256": "6fadd1012f43afc77e8583e5cf81bcc2b5c81c53b07e54fc11b3a5c798978b9a"
+  },
+  "notes": [
+    "Full suite counts are test executions; fixture imports may repeat some legacy cases.",
+    "A pre-existing live GPU4 service lock causedone CPU CLItest failure; its test-only lockpath was isolated, and production locking was unchanged.",
+    "Kawai score kernels/modelweights andDeepGHS engine were notmodified."
+  ]
+}

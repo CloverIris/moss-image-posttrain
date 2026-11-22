@@ -1,0 +1,11 @@
+{
+  "model_dir": "$MODEL_ROOT/MOSS-Image-SFT",
+  "latents": "outputs/latents.npy",
+  "output_dir": "outputs/decoded",
+  "device": "gpu:0",
+  "prompt": "",
+  "vae_precision": "fp32",
+  "vae_stages": [],
+  "vae_conv_backend": "xla",
+  "vae_conv_workspace_mib": 256
+}

@@ -1,0 +1,105 @@
+{
+  "name": "moss-art-k4-aligned-1024-smoke",
+  "preparation": {
+    "device": 4,
+    "auto_prepare": true,
+    "async_prefetch": true
+  },
+  "model": {
+    "kind": "moss",
+    "path": "$MODEL_ROOT/MOSS-Image-SFT",
+    "dtype": "bfloat16",
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "activation_storage": "gpu",
+    "checkpoint_interval": 6,
+    "vae_precision": "fp32",
+    "vae_low_precision_stages": [],
+    "vae_conv_backend": "cudnn_bounded",
+    "vae_conv_workspace_mib": 256
+  },
+  "lora": {
+    "rank": 32,
+    "alpha": 64.0,
+    "preset": "attn",
+    "seed": 42
+  },
+  "data": {
+    "prompts": "configs/prompts.jsonl",
+    "cache": "cache/art_k4_aligned_text",
+    "short_context_length": 512,
+    "context_length": 4096,
+    "negative_prompt": ""
+  },
+  "sampling": {
+    "height": 1024,
+    "width": 1024,
+    "steps": 10,
+    "sampler": "euler",
+    "scheduler": "moss",
+    "group_size": 4,
+    "prompts_per_rollout": 4,
+    "guidance_scale": 3.0,
+    "shift": 5.0,
+    "training_shift": 1.0,
+    "skip_layers": [
+      22
+    ],
+    "train_timesteps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "art": {
+    "noise_level": 0.8,
+    "kl_threshold": 1e-05,
+    "eps": 1e-05,
+    "feedback": "scalar"
+  },
+  "optimizer": {
+    "name": "adamw",
+    "learning_rate": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0001,
+    "max_grad_norm": 1.0
+  },
+  "training": {
+    "max_updates": 2,
+    "seed": 42,
+    "checkpoint_every": 2,
+    "keep_checkpoints": 3,
+    "evaluate_every": 0,
+    "max_no_signal_rollouts": 20
+  },
+  "reward": {
+    "kind": "siglip",
+    "device": "cpu",
+    "batch_size": 4,
+    "metric": "cosine",
+    "decode": true
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "platform": "cuda",
+    "memory_fraction": 0.9,
+    "output_dir": "outputs/art_k4_aligned_1024_smoke_cudnn_20261021",
+    "worker_timeout": 3600
+  }
+}

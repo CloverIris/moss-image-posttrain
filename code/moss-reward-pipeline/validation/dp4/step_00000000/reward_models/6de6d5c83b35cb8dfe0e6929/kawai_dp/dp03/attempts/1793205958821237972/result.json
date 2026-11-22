@@ -1,0 +1,123 @@
+{
+  "items": [
+    {
+      "id": "prompt000020_roll000001",
+      "prompt_id": "prompt000020",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000019-r000000-s194.png",
+      "image_sha256": "04a2356b52871f8c856387eb6ddba19e8e00fc09e486119343318239c4dfc5fa",
+      "kawai": -0.8007864356040955,
+      "logits": [
+        -1.9410579204559326,
+        -0.4233016073703766,
+        -0.9937190413475037,
+        0.41563528776168823,
+        2.450477361679077
+      ],
+      "probabilities": [
+        0.010054180398583412,
+        0.0458669476211071,
+        0.02592810057103634,
+        0.10613179951906204,
+        0.8120190501213074
+      ],
+      "class_weights": [
+        1.0,
+        0.8999999761581421,
+        0.5,
+        -0.5,
+        -1.0
+      ],
+      "id2label": {
+        "0": "SS_tier",
+        "1": "S_tier",
+        "2": "A_tier",
+        "3": "B_tier",
+        "4": "C_tier"
+      }
+    }
+  ],
+  "metadata": {
+    "model": "kawaimasa/kawai-aesthetic-scorer-convnextv2",
+    "model_path": "$DATA_DISK/models/kawai-aesthetic-scorer-convnextv2",
+    "preprocessing": {
+      "size": 768,
+      "resize": "aspect_preserving_LANCZOS",
+      "scaled_dimensions": "int(original_dimension * 768 / max(width,height))",
+      "padding": "centered_black_letterbox",
+      "padding_rgb": [
+        0,
+        0,
+        0
+      ],
+      "channels": "RGB",
+      "pixel_scale": "uint8 / 255",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "preprocessing_sha256": "ea11edd9197e6383f91e4eeb2b4724dbae47f39929feb8845fc7d3ca36c1ab8f",
+    "model_sha256": "8330ebd06c5d60b98ea711466f195c52df5ec9b4d585e88a029f86e82bede67a",
+    "model_config_sha256": "fa76167ee6d01537646962769bb7c1cbc99e9266a4ab4b2e480f54cba33c4d3e",
+    "worker_sha256": "639774d7d69c65ec29993204607744a5c7d804cae489e32699bf0d74a48040d8",
+    "input_sha256": "1f129ba6898faaeaa3c84ec8830cf68ba1d141a7ee5e0ec048a1c4868c571511",
+    "settings": {
+      "device": 3,
+      "batch_size": 2,
+      "expected_id2label": [
+        "SS_tier",
+        "S_tier",
+        "A_tier",
+        "B_tier",
+        "C_tier"
+      ],
+      "model_path": "$DATA_DISK/models/kawai-aesthetic-scorer-convnextv2",
+      "dtype": "float32",
+      "input": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/kawai_dp/dp03/attempts/1793205958821237972/input.json",
+      "output": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/kawai_dp/dp03/attempts/1793205958821237972/result.json",
+      "threads": 4,
+      "id2label": {
+        "0": "SS_tier",
+        "1": "S_tier",
+        "2": "A_tier",
+        "3": "B_tier",
+        "4": "C_tier"
+      },
+      "class_weights": [
+        1.0,
+        0.9,
+        0.5,
+        -0.5,
+        -1.0
+      ]
+    },
+    "class_weights": [
+      1.0,
+      0.8999999761581421,
+      0.5,
+      -0.5,
+      -1.0
+    ],
+    "id2label": {
+      "0": "SS_tier",
+      "1": "S_tier",
+      "2": "A_tier",
+      "3": "B_tier",
+      "4": "C_tier"
+    },
+    "raw_rows": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/kawai_dp/dp03/attempts/1793205958821237972/result.rows.jsonl",
+    "provenance_seconds": 0.26271726202685386,
+    "dtype": "torch.float32",
+    "load_seconds": 0.4295144599163905,
+    "inference_seconds": 0.6765620609512553,
+    "batch_size": 2,
+    "timing_scope": "preprocessing, model forward, score extraction, image hashing and row trace",
+    "images": 1
+  }
+}

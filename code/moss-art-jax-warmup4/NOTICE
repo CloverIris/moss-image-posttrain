@@ -1,0 +1,96 @@
+MOSS DiffusionART JAX — 来源与许可记录
+
+本文件记录本工程实际使用的上游实现、算法与接口来源。
+参考项目的许可证不会仅因为被研究或被链接而自动替代本工程独立
+实现部分的许可。模型资产和第三方依赖各自保留原有条款。
+
+1. DiffusionART
+   Source: https://github.com/vanzll/DiffusionART
+   Inspected commit: 58e2052278f935a90fffbef5624d93e458085c07
+   Paper: https://arxiv.org/abs/2610.12572
+   Local reference: /home/niconiconi/DiffusionART
+   ART covariance, frozen-target objective, scheduler-reference drift masking
+   and prompt-balanced update windows were ported/adapted to native JAX.
+   Copyright 2026 DiffusionART contributors.
+   License: Apache License 2.0.
+   Retained files:
+     docs/licenses/DiffusionART-Apache-2.0.txt
+     docs/licenses/DiffusionART-NOTICE.txt
+     docs/licenses/DiffusionART-THIRD_PARTY_NOTICES.md
+   The upstream third-party notices are retained as provenance context; their
+   full original list does not imply all those packages are bundled here.
+
+2. MOSS-Image-SFT and local native-JAX inference port
+   Model: https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT
+   Model revision recorded by the local port:
+     fc5de0d56fc910cbca6f6625a70f5f582b26deb1
+   Local model: /home/niconiconi/models/MOSS-Image-SFT
+   Port source: /home/niconiconi/moss-image/jax-port
+   Vendored files: vendor/moss_jax/*.py
+   Snapshot hashes: vendor/SNAPSHOT.sha256
+   Original port documentation: vendor/JAX_MOSS_README.md
+   The model LICENSE supplied with the local snapshot is retained at:
+     docs/licenses/MOSS-Image-SFT-Apache-2.0.txt
+   This project adds independent LoRA training/control layers around that
+   fixed inference snapshot. Original model weight files are read in place,
+   not copied into this repository or modified by training.
+
+3. KohakuMossTrainer — interface/implementation reference
+   Source: https://github.com/KohakuBlueleaf/KohakuMossTrainer
+   Inspected commit: 4b1b9dc891545f74510cef7313df1f8af66aa35f
+   Local reference: /home/niconiconi/KohakuMossTrainer
+   The user's requested LoRA reference informed conventional additive LoRA
+   scaling and adapter naming/interchange. This project's JAX implementation
+   was written independently; no KohakuMossTrainer source files were copied.
+   Its actual reference license is preserved, without relabeling it Apache:
+     docs/licenses/KohakuMossTrainer-reference-license.txt
+   That document is KohakuMoss License v1.0 (Apache-2.0 terms plus its own
+   Section 10 naming condition and stated exceptions). The copy records the
+   reference project's terms; it is not a blanket license assertion over
+   this independently implemented training project.
+
+4. SigLIP2 and runtime dependencies
+   Reward model: google/siglip2-so400m-patch14-384, local Hugging Face snapshot
+     e8e487298228002f3d8a82e0cd5c8ea9c567f57f
+   SigLIP weights, tokenizer and processor files remain in the user's local
+   cache. They are loaded by separately installed Transformers/PyTorch under
+   inference_mode in an isolated CPU process, and are not redistributed in
+   this repository. JAX, Optax, NumPy, tokenizers, safetensors and other runtime
+   packages remain separately installed dependencies with their own licenses.
+
+
+5. RES multistep and beta scheduling
+   Mathematical/API reference: Comfy-Org/ComfyUI
+   Fixed reference commit: b1a247c9cf9dbfda4b2c0a0c1d50950667eeaa0c
+   https://github.com/Comfy-Org/ComfyUI
+   Reference project license: GPL-3.0.
+   moss_art/sampling.py independently expresses the deterministic RES
+   recurrence and beta quantile grid in JAX/NumPy/SciPy; the ComfyUI runtime
+   is not bundled or imported by production code.
+   Papers: https://arxiv.org/abs/2308.02157 and
+           https://arxiv.org/abs/2407.12173
+   A CPU-only diagnostic executes selected functions from the user's local
+   ComfyUI source files pinned by SHA256 to the stated upstream revision.
+   Those files remain in place, read-only, with their own license.
+
+6. PixAI Tagger v1.0
+   Source: https://huggingface.co/pixai-labs/pixai-tagger-v1.0
+   Upstream declared license: Apache-2.0.
+   Original local metadata, Torch reference source and header-only tensor
+   manifest: vendor/pixai_tagger/. Source SHA256 hashes are retained.
+   Standard license text: vendor/pixai_tagger/LICENSE.
+   Source code retains the original SAM3/Detectron2/RoPE attribution comments.
+   moss_art/pixai_tagger.py independently expresses the released classifier
+   in JAX; production inference does not import the original Torch module.
+   Pretrained weights remain external at the user's models directory and
+   are not bundled in the repository.
+
+7. Spectrum / Chebyshev feature forecasting
+   Source: https://github.com/sorryhyun/ComfyUI-Spectrum-KSampler
+   Inspected commit: 1baeab6f9ee94a75011353c6ef41963888cc8979
+   Copyright (c) 2026 sorryhyun. License: MIT.
+   moss_art/spectrum.py adapts the MOSS linear-form Chebyshev ridge/Taylor
+   predictor and growing-window schedule to native JAX feature buffers.
+   Original license retained at docs/licenses/Spectrum-MIT.txt.
+   Paper: https://arxiv.org/abs/2603.01623
+   Pinned source: inputs/spectrum_reference_20261025

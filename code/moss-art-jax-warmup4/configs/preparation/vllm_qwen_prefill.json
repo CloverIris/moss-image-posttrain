@@ -1,0 +1,30 @@
+{
+  "name": "vllm-qwen-prefill-smoke",
+  "model": {
+    "kind": "moss",
+    "path": "$MODEL_ROOT/MOSS-Image-Base"
+  },
+  "preparation": {
+    "backend": "vllm",
+    "async_prefetch": false,
+    "vllm": {
+      "python": "$CONDA_PREFIX/envs/vllm_env/bin/python",
+      "devices": [
+        1,
+        2
+      ],
+      "tensor_parallel_size": 2,
+      "batch_size": 8,
+      "gpu_memory_utilization": 0.85,
+      "max_num_batched_tokens": 8192,
+      "max_num_seqs": 8,
+      "enforce_eager": false
+    }
+  },
+  "data": {
+    "prompts": "tests/fixtures/vllm_prompts.jsonl",
+    "cache": "$MOSS_ROOT/cache/vllm_qwen_prefill_validated_20261024",
+    "context_length": 512,
+    "short_context_length": 128
+  }
+}

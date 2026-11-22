@@ -1,0 +1,2 @@
+{"id": "prompt000004_roll000001", "result": {"status": "ok", "mu": 0.6564115285873413, "log_sigma": -3.3549227714538574, "sigma": 0.03491206467151642, "capability": 1.0}}
+{"id": "prompt000004_roll000002", "result": {"status": "ok", "mu": 1.1033424139022827, "log_sigma": -3.306964874267578, "sigma": 0.03662717342376709, "capability": 1.0}}

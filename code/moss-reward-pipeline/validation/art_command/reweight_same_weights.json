@@ -1,0 +1,161 @@
+{
+  "input": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/per_image.jsonl",
+  "config": {
+    "input": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/per_image.jsonl",
+    "output": "$DATA_DISK/moss-reward-pipeline/validation/art_command/reweight_same_weights.json",
+    "calibration": "$DATA_DISK/moss-reward-pipeline/calibration.json",
+    "weights": {
+      "kawai": 0.4,
+      "deepghs": 0.4,
+      "hps": 0.2
+    },
+    "artifact_weight": 1.0
+  },
+  "items": [
+    {
+      "id": "prompt000002_roll000001",
+      "global_id": "3000ebd838c9491d1c098ed5:prompt000002_roll000001",
+      "prompt_id": "prompt000002",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000000-s50.png",
+      "raw_scores": {
+        "kawai": 0.5243653059005737,
+        "deepghs": 0.9114308175364876,
+        "hps": 6.354556083679199,
+        "sdg_artifact": -0.11808471381664276
+      },
+      "old_reward": 0.49426460401535577,
+      "reward": 0.49426460401535577,
+      "aesthetic_reward": 0.6123493178319985,
+      "artifact_penalty": -0.11808471381664276,
+      "normalized_scores": {
+        "kawai": 1.272804956832132,
+        "deepghs": 1.609183767274963,
+        "hps": 1.0629164561799866
+      },
+      "contributions": {
+        "kawai": 0.04189277602255813,
+        "deepghs": 0.05296426194738439,
+        "hps": 0.017492279862055954,
+        "sdg_artifact": -0.11808471381664276
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152
+    },
+    {
+      "id": "prompt000002_roll000002",
+      "global_id": "3000ebd838c9491d1c098ed5:prompt000002_roll000002",
+      "prompt_id": "prompt000002",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000001-s51.png",
+      "raw_scores": {
+        "kawai": 0.458829402923584,
+        "deepghs": 0.835574761857968,
+        "hps": 6.075982570648193,
+        "sdg_artifact": -0.05076904594898224
+      },
+      "old_reward": 0.5260134175898741,
+      "reward": 0.5260134175898741,
+      "aesthetic_reward": 0.5767824635388563,
+      "artifact_penalty": -0.05076904594898224,
+      "normalized_scores": {
+        "kawai": 0.9996402298631517,
+        "deepghs": 0.9179099252330915,
+        "hps": 0.8305776165896513
+      },
+      "contributions": {
+        "kawai": 0.0329019022341211,
+        "deepghs": 0.030211851941856147,
+        "hps": 0.013668709362879037,
+        "sdg_artifact": -0.05076904594898224
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152
+    },
+    {
+      "id": "prompt000004_roll000001",
+      "global_id": "3000ebd838c9491d1c098ed5:prompt000004_roll000001",
+      "prompt_id": "prompt000004",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000000-s66.png",
+      "raw_scores": {
+        "kawai": 0.8412679433822632,
+        "deepghs": 0.6957787209351296,
+        "hps": 0.6564115285873413,
+        "sdg_artifact": -0.0887146070599556
+      },
+      "old_reward": 0.42421741579788663,
+      "reward": 0.42421741579788663,
+      "aesthetic_reward": 0.5129320228578422,
+      "artifact_penalty": -0.0887146070599556,
+      "normalized_scores": {
+        "kawai": 2.593708744086422,
+        "deepghs": -0.3560469849511838,
+        "hps": -3.6895105758927875
+      },
+      "contributions": {
+        "kawai": 0.08536866461786861,
+        "deepghs": -0.011718839177992206,
+        "hps": -0.060717802582034235,
+        "sdg_artifact": -0.0887146070599556
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152
+    },
+    {
+      "id": "prompt000004_roll000002",
+      "global_id": "3000ebd838c9491d1c098ed5:prompt000004_roll000002",
+      "prompt_id": "prompt000004",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000001-s67.png",
+      "raw_scores": {
+        "kawai": 0.8737813234329224,
+        "deepghs": 0.8052710225562267,
+        "hps": 1.1033424139022827,
+        "sdg_artifact": -0.003352050669491291
+      },
+      "old_reward": 0.5530161796782332,
+      "reward": 0.5530161796782332,
+      "aesthetic_reward": 0.5563682303477245,
+      "artifact_penalty": -0.003352050669491291,
+      "normalized_scores": {
+        "kawai": 2.7292300107651677,
+        "deepghs": 0.6417529050984169,
+        "hps": -3.3167565328348707
+      },
+      "contributions": {
+        "kawai": 0.08982917684387091,
+        "deepghs": 0.021122490583339055,
+        "hps": -0.05458343707948543,
+        "sdg_artifact": -0.003352050669491291
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152
+    }
+  ],
+  "mean_reward": 0.49937790427033746,
+  "notes": [
+    "Offline fusion only; original records and applied training updates are unchanged.",
+    "Frozen component scales and output gain are retained for comparable weight experiments."
+  ]
+}

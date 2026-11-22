@@ -1,0 +1,24 @@
+{
+  "metadata_dir": "vendor/pixai_tagger/metadata",
+  "weights": "$MODEL_ROOT/pixai-tagger-v1.0/model.safetensors",
+  "dtype": "bfloat16",
+  "attention_backend": "cudnn",
+  "device": 0,
+  "batch_size": 4,
+  "category": "general",
+  "strict_tags": true,
+  "samples": [
+    {
+      "id": "example",
+      "image": "outputs/petal_veil_20_mxfp8_20261021/p000000-r000000-s42.png",
+      "tags": [
+        "2girls",
+        "blonde_hair",
+        "white_hair",
+        "white_veil",
+        "petals"
+      ]
+    }
+  ],
+  "output": "outputs/pixai_tag_reward/result.json"
+}

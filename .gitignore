@@ -1,0 +1,19 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# 环境与缓存
+.venv/
+venv/
+.env
+.DS_Store
+Thumbs.db
+
+# 大文件与产物（不入库）
+*.tar.gz
+*.zip
+checkpoints/
+runs/

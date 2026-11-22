@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moss-vllm-prefill-plugin"
+version = "0.1.0"
+description = "MOSS Qwen3.5 native normalized hidden-state extraction for vLLM"
+requires-python = ">=3.10"
+
+[project.entry-points."vllm.general_plugins"]
+moss_qwen_prefill = "vllm_moss_plugin:register"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vllm_moss_plugin*"]

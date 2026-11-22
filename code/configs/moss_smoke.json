@@ -1,0 +1,42 @@
+{
+  "model": {
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4
+  },
+  "name": "moss-5b-art-smoke",
+  "lora": {
+    "rank": 2,
+    "alpha": 2.0,
+    "preset": "attn"
+  },
+  "sampling": {
+    "sampler": "euler",
+    "scheduler": "moss",
+    "height": 256,
+    "width": 256,
+    "steps": 3,
+    "prompts_per_rollout": 1,
+    "group_size": 2,
+    "train_timesteps": [
+      0
+    ]
+  },
+  "training": {
+    "max_updates": 2,
+    "checkpoint_every": 2,
+    "evaluate_every": 0
+  },
+  "reward": {
+    "kind": "toy_latent",
+    "decode": false
+  },
+  "runtime": {
+    "devices": [
+      1
+    ],
+    "output_dir": "outputs/moss_smoke"
+  },
+  "preparation": {
+    "async_prefetch": true
+  }
+}

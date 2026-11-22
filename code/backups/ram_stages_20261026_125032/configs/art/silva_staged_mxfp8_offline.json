@@ -1,0 +1,227 @@
+{
+  "name": "silva_P8_K16_T4_base_reference_staged",
+  "staging": {
+    "enabled": true,
+    "phase": "auto",
+    "bundle": "",
+    "keep_consumed_cache": false
+  },
+  "run": {
+    "resume": "",
+    "init_adapter": "",
+    "checkpoint": "",
+    "adapter": "",
+    "sample_index": 0,
+    "seed": 42,
+    "decode": false
+  },
+  "preparation": {
+    "backend": "jax",
+    "device": 4,
+    "max_sequence_length": 512,
+    "full_weight_hash": false,
+    "limit": 0,
+    "auto_prepare": true,
+    "async_prefetch": true,
+    "qwen_gpu_layers": 16,
+    "qwen_gpu_embedding": true,
+    "qwen_gpu_vision": true,
+    "vllm": {
+      "python": "$CONDA_PREFIX/envs/vllm_env/bin/python",
+      "devices": [
+        1,
+        2
+      ],
+      "tensor_parallel_size": 2,
+      "pipeline_parallel_size": 1,
+      "data_parallel_size": 1,
+      "topology_aware": false,
+      "storage_dtype": "float32",
+      "batch_size": 8,
+      "gpu_memory_utilization": 0.85,
+      "max_num_batched_tokens": 8192,
+      "max_num_seqs": 8,
+      "enforce_eager": false,
+      "model_path": "",
+      "processor_dir": "$CODE_ROOT/moss-image/reference-lab/processor",
+      "max_reference_pixels": 262144
+    }
+  },
+  "model": {
+    "kind": "moss",
+    "path": "$MODEL_ROOT/MOSS-Image-Base",
+    "mxfp8_weight_mode": "offline",
+    "mxfp8_cache_dir": "$MOSS_ROOT/cache/mxfp8/MOSS-Image-Base-v1",
+    "mxfp8_cache_verify": true,
+    "dtype": "bfloat16",
+    "tiny_seed": 123,
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "activation_storage": "gpu",
+    "checkpoint_interval": 6,
+    "vae_precision": "fp32",
+    "vae_low_precision_stages": [],
+    "vae_conv_backend": "cudnn_bounded",
+    "vae_conv_workspace_mib": 256
+  },
+  "lora": {
+    "rank": 48,
+    "alpha": 48.0,
+    "preset": "attn",
+    "seed": 42
+  },
+  "data": {
+    "prompts": "$DATA_DISK/phone-uploads/NovelAI/prompts_negative_nsfw_moss_deepseek_20261023.jsonl",
+    "cache": "$MOSS_ROOT/runs/silva_P8_K16_T4_sampler_mix_1_1/cache/qwen",
+    "negative_prompt": "",
+    "context_length": 512,
+    "short_context_length": 288
+  },
+  "sampling": {
+    "rollout_mode": "mxfp8_calibrated",
+    "vae_resident_rollout": false,
+    "height": 768,
+    "width": 768,
+    "steps": 48,
+    "group_size": 16,
+    "rollout_batch_size": 1,
+    "prompts_per_rollout": 1,
+    "split_group_across_workers": true,
+    "pair_cached_points": true,
+    "guidance_scale": 3.0,
+    "skip_layers": [
+      22
+    ],
+    "train_timesteps": [
+      0,
+      15,
+      31,
+      47
+    ],
+    "shift": 5.0,
+    "training_shift": 1.0,
+    "sampler": "euler",
+    "scheduler": "moss",
+    "beta_alpha": 0.6,
+    "beta_beta": 0.6,
+    "spectrum": {
+      "enabled": false,
+      "degree": 3,
+      "ridge_lambda": 0.1,
+      "blend_weight": 0.3,
+      "window_size": 2.0,
+      "flex_window": 0.5,
+      "warmup_steps": 6,
+      "tail_actual_steps": 3,
+      "history_size": 100
+    },
+    "rollout_mixing": {
+      "enabled": true,
+      "full_dit_weight": 1.0,
+      "spectrum_weight": 1.0
+    }
+  },
+  "art": {
+    "noise_level": 0.8,
+    "kl_threshold": 1e-05,
+    "eps": 1e-05,
+    "feedback": "scalar",
+    "reference_mse_beta": 0.01
+  },
+  "optimizer": {
+    "name": "adamw",
+    "momentum": 0.95,
+    "nesterov": true,
+    "ns_steps": 5,
+    "rms_match": 0.2,
+    "learning_rate": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0
+  },
+  "training": {
+    "max_updates": 20,
+    "prompts_per_update": 8,
+    "rollouts_per_prompt": 16,
+    "training_points_per_trajectory": 4,
+    "microbatch_size": 1,
+    "rollouts_per_update": 8,
+    "updates_per_rollout": 2,
+    "seed": 42,
+    "max_no_signal_rollouts": 20,
+    "checkpoint_every": 2,
+    "keep_checkpoints": 2,
+    "evaluate_every": 0,
+    "save_rollout_images": true
+  },
+  "resolution_mixing": {
+    "enabled": true,
+    "profiles": [
+      {
+        "height": 768,
+        "width": 768,
+        "weight": 2,
+        "rollout_batch_size": 1,
+        "microbatch_size": 1,
+        "group_size": 16,
+        "rollouts_per_update": 8
+      },
+      {
+        "height": 1024,
+        "width": 1024,
+        "weight": 1,
+        "rollout_batch_size": 1,
+        "microbatch_size": 1,
+        "group_size": 16,
+        "rollouts_per_update": 8
+      }
+    ]
+  },
+  "logging": {
+    "tensorboard": true,
+    "log_dir": "$MOSS_ROOT/tensorboard/silva_P8_K16_T4_base_reference_staged"
+  },
+  "reward": {
+    "kind": "silva",
+    "command": [],
+    "timeout": 900,
+    "model_path": "$CODE_ROOT/moss-aesthetic-judge/models/silva-aesthetic",
+    "python": "$CONDA_PREFIX/envs/torch_env/bin/python",
+    "device": "cpu",
+    "batch_size": 4,
+    "metric": "calibrated",
+    "threads": 4,
+    "decode": true,
+    "cpu_decode": false,
+    "url": "",
+    "http_max_retries": 2,
+    "http_retry_backoff": 0.5,
+    "http_bearer_token_env": "",
+    "http_response_limit_bytes": 1048576,
+    "backbone_path": "$HOME/.cache/huggingface/hub/models--google--siglip2-so400m-patch14-384/snapshots/e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+    "metadata_dir": "vendor/pixai_tagger/metadata",
+    "dtype": "float32",
+    "attention_backend": "native"
+  },
+  "runtime": {
+    "execution_backend": "mesh",
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "platform": "cuda",
+    "allow_busy": false,
+    "busy_memory_mib": 1500,
+    "worker_timeout": 3600,
+    "output_dir": "$MOSS_ROOT/runs/silva_P8_K16_T4_base_reference_staged/training",
+    "cpu_threads": 4,
+    "memory_fraction": 0.9,
+    "min_free_disk_gib": 10.0
+  }
+}

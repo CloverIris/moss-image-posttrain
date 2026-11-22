@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "index": 3,
+      "id": "prompt000020_roll000001",
+      "sample_id": "prompt000020",
+      "prompt_index": 3,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000019-r000000-s194.png",
+      "prompt": "A realistic, photorealistic 2025 artwork of Rozaliya Olenyeva, rendered in an ultra-detailed 8K style with a highly aesthetic finish. The visual style draws on ningen_mame, meion, and nixeu, with a stronger emphasis on nopetroto and a lighter emphasis on qiandaiyiyu. No visible text appears in the image.",
+      "prompt_id": "prompt000020",
+      "image_sha256": "04a2356b52871f8c856387eb6ddba19e8e00fc09e486119343318239c4dfc5fa"
+    }
+  ],
+  "config": {
+    "model_path": "$DATA_DISK/models/sdg-detector-grpo",
+    "device": "cuda:3",
+    "batch_size": 4,
+    "metric": "artifact_penalty",
+    "threads": 4
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "status": "cpu_verified_ready_for_gpu_smoke",
+  "created_at_utc": "2026-10-31T18:00:48.549850+00:00",
+  "source_version": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_20261031",
+  "deployed_version": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101",
+  "historical_source_untouched": true,
+  "parent_training_run_untouched": true,
+  "algorithm_and_reward_parameters_unchanged": true,
+  "changed_from_source": [
+    "run_reward_pipeline.py"
+  ],
+  "added_files": [
+    "test_lazy_pipeline_import.py",
+    "lazy_import_fix.patch"
+  ],
+  "original_failure_reproduced": "ModuleNotFoundError: No module named 'sdg_parallel'",
+  "fix": "Resolve delayed CPU parallel helpers by exact sibling file; independent of wrapper temporary sys.path and foreign cached modules.",
+  "tests": [
+    {
+      "command": [
+        "$CONDA_PREFIX/envs/jax_env/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "cwd": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101",
+      "returncode": 0,
+      "log": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101/cpu_root_regression.log"
+    },
+    {
+      "command": [
+        "$CONDA_PREFIX/envs/jax_env/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "cwd": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101/checkpoint_eval",
+      "returncode": 0,
+      "log": "$DATA_DISK/moss-reward-pipeline/versions/kawai_deepghs_rank_sqrt_lazy_import_fix_20261101/cpu_checkpoint_regression.log"
+    }
+  ],
+  "cpu_dispatch_test": {
+    "images": 208,
+    "groups": "24x8 training + 4x4 evaluation",
+    "workers": 4,
+    "shard_images": [
+      52,
+      52,
+      52,
+      52
+    ],
+    "retry_workers": 0,
+    "gpu_imports": false
+  },
+  "gpu_model_execution": false,
+  "source_files": {
+    "test_lazy_pipeline_import.py": {
+      "sha256": "5ec191661efecace877e3f599eed611baa9d318e335aaa17a22951bf2422f655",
+      "size_bytes": 4289
+    },
+    "test_sdg_parallel.py": {
+      "sha256": "76b0d6d3fc687e40c748a67f8155fb54fcf7776fd35d9081f1a55a278d764369",
+      "size_bytes": 5900
+    },
+    "curate_tensorboard.py": {
+      "sha256": "574cca5e0ea0235c6882b053e1e1222cfdd2fdd8303e986af44a87f1a03c7ed5",
+      "size_bytes": 11256
+    },
+    "make_reward_contact_sheet.py": {
+      "sha256": "61a8f8f8a638e3e4b5b1e9f8a23725a420cfefc81b30fed74e54dbf04b704f0e",
+      "size_bytes": 5447
+    },
+    "test_sdg_disabled.py": {
+      "sha256": "a93bf1d5faa8914d9ce48ae1792f3cfa4a69f47e7ec704ca42143a9e2bfc1451",
+      "size_bytes": 4046
+    },
+    "test_hps_disabled.py": {
+      "sha256": "4b6a1d7342b9fb4b09d1badd7ffaf4e0f6acd7e73143c42ef06451523c96a68a",
+      "size_bytes": 17322
+    },
+    "score_kawai.py": {
+      "sha256": "639774d7d69c65ec29993204607744a5c7d804cae489e32699bf0d74a48040d8",
+      "size_bytes": 12057
+    },
+    "test_score_kawai.py": {
+      "sha256": "d63a07fa99792997c989ed4dad7fb8c367030f4ac2a075c9c60621fe5ee0103a",
+      "size_bytes": 3166
+    },
+    "sdg_parallel.py": {
+      "sha256": "f7631cf76641f5cebc2684e5f9256f8e6fd807d9777840a0cc1150becb15e0e4",
+      "size_bytes": 12352
+    },
+    "write_tb_layout.py": {
+      "sha256": "d10af792f0bd4d529fe6906b4972f2854928f88b75ccb7f2030c1838a4e2df58",
+      "size_bytes": 4252
+    },
+    "test_rank_fusion.py": {
+      "sha256": "900c3985d7970f213b4620841e0ef7e6f21f097c0c5c3f0ef91253865449c1b3",
+      "size_bytes": 9458
+    },
+    "test_reward_pipeline.py": {
+      "sha256": "9eb1ae1db3f2211a15a9c67610ea4d0af4b256dd1337b10bdd22fd1428fa9e0e",
+      "size_bytes": 2474
+    },
+    "summarize_l2.py": {
+      "sha256": "0ecd94922532ebd59dd7fcde9db93075d2d16ce85db6dffb42f9cdfac1470e54",
+      "size_bytes": 3606
+    },
+    "run_reward_pipeline.py": {
+      "sha256": "9985905e34292cac7394af2a7410b431a6c5dc035dd97ac54c220232b0be4d1e",
+      "size_bytes": 21800
+    },
+    "reward_fusion.py": {
+      "sha256": "0d5036fddbb04330dd51df27ffde46fb496ddfe28637e68564fa4a268c9580d8",
+      "size_bytes": 11517
+    },
+    "test_rank_pipeline.py": {
+      "sha256": "a8cbc181b8c6fd8e481571026ff039c8425277100a3f90a2a3a9544ab8f00227",
+      "size_bytes": 6210
+    },
+    "monitor_training.py": {
+      "sha256": "16603dc9f8690d2c284c92b9e011c67573ee06579ea45a82d310399cfda7febc",
+      "size_bytes": 8102
+    },
+    "test_kawai_disabled.py": {
+      "sha256": "e2011188439fd4fc915b798e1de71226b49ab9e914ee709fbbac979f6b83be17",
+      "size_bytes": 13617
+    },
+    "reweight_rewards.py": {
+      "sha256": "66ffdff7575444a624af5ee8832335dddfda80e7ff31dee501107f81eddf1690",
+      "size_bytes": 2281
+    },
+    "test_curate_tensorboard.py": {
+      "sha256": "35b310dc5a562811d14634a83344654f83aa5fde414f1605c35b1244ce618288",
+      "size_bytes": 7399
+    },
+    "monitor_training.before_archive_selection_20261029.py": {
+      "sha256": "ca18d9adf0f5432aa0b9caacc90a9804fadda9efdf5a2e8036b2568ae7e40744",
+      "size_bytes": 7761
+    },
+    "checkpoint_eval/run_reward_with_validation.py": {
+      "sha256": "ef099cb622389c2700b8e080d2c67e29070b0e9382b0061686ff3519e313072e",
+      "size_bytes": 39258
+    },
+    "checkpoint_eval/test_flush_validation.py": {
+      "sha256": "4861a608b2ae70e58df6bf9bf531559dd88e789caf5c1b0e1543c911196d1c7f",
+      "size_bytes": 4274
+    },
+    "checkpoint_eval/checkpoint_eval_service.py": {
+      "sha256": "98efa505326fc3ec1c14d1b60260782bf052ae5932534a73587af907a8e28be0",
+      "size_bytes": 49436
+    },
+    "checkpoint_eval/training_flush_launcher.py": {
+      "sha256": "06c9dd24b85c7f39dbf96ed58ab8c9c75fdd4bd8bdcdaf2680a28a86d22cf78c",
+      "size_bytes": 10326
+    },
+    "checkpoint_eval/report_validation.py": {
+      "sha256": "6da1c5c1e5631f9c57c1521fe9bed03488877915c40caf117bcd8a734791f0e3",
+      "size_bytes": 15984
+    },
+    "checkpoint_eval/test_run_reward_with_validation.py": {
+      "sha256": "f193b866e4da7dc313de601f5a6d2984aa265ff64c919da38b16d500186a6901",
+      "size_bytes": 15785
+    },
+    "checkpoint_eval/export_checkpoint_adapter.py": {
+      "sha256": "d194dcad15dbf02e5fd878280d69885e94ae4ec574fceb80379450692057e558",
+      "size_bytes": 7970
+    },
+    "checkpoint_eval/run_training_and_flush.sh": {
+      "sha256": "eb18f7eec54169ac4acf2f654071dbf274be54fca1f9aaf8858d740d8e533537",
+      "size_bytes": 1250
+    },
+    "checkpoint_eval/test_checkpoint_eval_service.py": {
+      "sha256": "71bfc6e87255ec2af74a885a9c4eb08eaf0cfcf2b162239f2d2ee3c45655ff6f",
+      "size_bytes": 15544
+    },
+    "checkpoint_eval/test_report_validation.py": {
+      "sha256": "a216b1d2e125e3d4cc81acbec9169ab103168dbc8db77175fa3fc40b50fdbd2a",
+      "size_bytes": 10052
+    },
+    "checkpoint_eval/test_rank_summary.py": {
+      "sha256": "4b75e0d71b3ca665bcc7e49baecd6bc1698ecf0d0925ed4d4ed014e1132b5b46",
+      "size_bytes": 6122
+    },
+    "checkpoint_eval/run_training_and_flush_configurable.sh": {
+      "sha256": "3689fca65db0559cb97d486cedb34531b53d74d5419741fad6f0167dd3995beb",
+      "size_bytes": 453
+    },
+    "checkpoint_eval/test_checkpoint_retention.py": {
+      "sha256": "c5f094f29b93d85f7509a2080768922429ae031c4a4ddd4bc18ae0ea5addb795",
+      "size_bytes": 10458
+    },
+    "checkpoint_eval/eval_infer_worker.py": {
+      "sha256": "4206b89ad767b05836017b63db564aeff64625362d6f991f0e976bc7e85e62a4",
+      "size_bytes": 17997
+    },
+    "checkpoint_eval/flush_validation.py": {
+      "sha256": "9add63ded3962677bc824efb20b91e4bc259e909a27e77bb6df5e3910b035263",
+      "size_bytes": 7089
+    }
+  }
+}

@@ -1,0 +1,33 @@
+学习率线性预热支持
+
+新代码副本：$CODE_ROOT/moss-art-jax-warmup4
+当前运行的旧项目：$CODE_ROOT/moss-art-jax
+
+用户已明确选择仅添加支持，当前训练继续。因此不修改旧项目源码、运行配置、优化器状态或正在执行的进程，也不启动新训练。
+
+下一次新训练，在完整JSON配置的optimizer中设置：
+  "learning_rate": 0.0001,
+  "warmup_steps": 4
+
+预热按实际已应用的optimizer更新次数计算：
+第1次更新：0.000025
+第2次更新：0.000050
+第3次更新：0.000075
+第4次更新：0.000100
+第5次及之后：0.000100（没有衰减）
+
+ART的A/B各算一次更新，梯度累积微批次、采样轨迹点、rollout次数不推进学习率。
+完全被mask掉、未应用优化器更新的窗口不推进预热计数，也不向学习率曲线写一个虚假的零值。
+AdamW和Muon的两个参数分支使用相同的预热进度。
+
+warmup_steps默认0，关闭预热时保持原有常量学习率和优化器状态结构。
+开启预热后调度器状态随完整checkpoint保存并恢复，不在每个infer/eval/train阶段重新预热。
+新版本在train/learning_rate记录实际使用的学习率。
+
+旧checkpoint仍受严格源码和配置身份校验保护，不能把旧run的config直接交给新副本跨版本续训。
+新训练需使用新name、runtime.output_dir和logging.log_dir，并按需设置run.resume等字段。
+若需要精简TensorBoard显示学习率，可在新run的curated mapping中加入：
+  "train/learning_rate": "02_train/learning_rate"
+并添加相应图表；旧精简视图的mapping身份保持不动。
+
+这项改动本身不证明之前reward下降由学习率造成；不同prompt批次、seed和分辨率仍会影响均值。

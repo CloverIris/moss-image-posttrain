@@ -1,0 +1,105 @@
+{
+  "fingerprint": "3000ebd838c9491d1c098ed5e3862e74c7d42273c4e3b9488893a8bb6a5feded",
+  "context": {
+    "version": 1,
+    "run_output_dir": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training",
+    "step_dir": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000",
+    "update": 0,
+    "rollout": 0,
+    "replay_bundle": "$DATA_DISK/moss-reward-pipeline/validation/art_command/bundle",
+    "config_fingerprint": "725a74ef64a48e5fb2015545f6c668f5952dad4190b6de9697a0933f52b9ad15",
+    "config_sha256": "c158851462e359a49a005fdb9afd8bb83d2c10fd2963f7ed630493463d0d0ea6",
+    "source_commit": "artifact-integration-validation"
+  },
+  "config": {
+    "controller_python": "/usr/bin/python3",
+    "batch_root": "$DATA_DISK/moss-eval-batch",
+    "batch_config": "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/deepghs_hps.config.json",
+    "kawai_python": "$CONDA_PREFIX/envs/vllm_env/bin/python",
+    "kawai": {
+      "device": 0,
+      "batch_size": 2,
+      "expected_id2label": [
+        "SS_tier",
+        "S_tier",
+        "A_tier",
+        "B_tier",
+        "C_tier"
+      ],
+      "model_path": "$DATA_DISK/models/kawai-aesthetic-scorer-convnextv2",
+      "dtype": "float32"
+    },
+    "sdg_root": "$DATA_DISK/sdg-eval",
+    "sdg_config": "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/sdg_reward.config.json",
+    "sdg_python": "$CONDA_PREFIX/envs/vllm_env/bin/python",
+    "calibration": "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/calibration.json",
+    "artifact_weight": 1.0,
+    "archive_root": "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/reward_archive",
+    "allowed_archive_root": "$DATA_DISK",
+    "stage_timeout": 3600
+  },
+  "calibration": {
+    "version": 1,
+    "method": "fixed_pooled_within_prompt_std",
+    "weights": {
+      "kawai": 0.4,
+      "deepghs": 0.4,
+      "hps": 0.2
+    },
+    "parameters": {
+      "kawai": {
+        "mean": 0.21900222668773495,
+        "pooled_within_prompt_std": 0.23991348994495829,
+        "scale": 0.23991348994495829,
+        "std_floor": 0.02
+      },
+      "deepghs": {
+        "mean": 0.734849083897005,
+        "pooled_within_prompt_std": 0.1097337278877173,
+        "scale": 0.1097337278877173,
+        "std_floor": 0.01
+      },
+      "hps": {
+        "mean": 5.080122709652642,
+        "pooled_within_prompt_std": 1.1989967476905392,
+        "scale": 1.1989967476905392,
+        "std_floor": 0.1
+      }
+    },
+    "output_offset": 0.5,
+    "output_gain": 0.0822843590404152,
+    "target_mean_group_mad": 0.04,
+    "reference_fusion_z_group_mad": 0.48611911749052333,
+    "reference_images": 256,
+    "reference_prompts": 32,
+    "expected_group_size": 8,
+    "formula": "reward = offset + gain * sum(weight_m * (score_m - reference_mean_m) / fixed_scale_m)",
+    "notes": [
+      "The component scales are frozen across prompt groups. No per-group variance amplification.",
+      "Output gain calibrates reward amplitude for ART; it does not change fusion ranking.",
+      "No clipping, sigmoid, or percentile saturation is introduced. Scores are not probabilities.",
+      "Leave ART's existing group covariance/MAD logic intact; do not normalize each model again."
+    ],
+    "reference_sha256": "f11e019ba01739da96698c4934f484fcbc77f38f5f221cc7c74d422c1346208c"
+  },
+  "code_hashes": {
+    "$DATA_DISK/moss-reward-pipeline/run_reward_pipeline.py": "e9a95d6cc86bd087bf0622c3759003e8f49caea75e85281b20cebd2a5dfc522f",
+    "$DATA_DISK/moss-reward-pipeline/reward_fusion.py": "b1695d90ac4fe2ffea111711d7d3a5728bc3ec4804039accdba0ffbe9fdcfab9",
+    "$DATA_DISK/moss-reward-pipeline/score_kawai.py": "639774d7d69c65ec29993204607744a5c7d804cae489e32699bf0d74a48040d8",
+    "$DATA_DISK/moss-eval-batch/run.py": "b1f10a94018955d840f082e0dab05a4cea9c55e8ccdba1ad0ff274042250208f",
+    "$DATA_DISK/moss-eval-batch/worker.py": "205f09ff14b4ff3bec39bab752ede9f07a238b972f59c361f30d072bf29794a6",
+    "$DATA_DISK/sdg-eval/run_sdg_reward.py": "b82cdc874ec74d35a27e4a81441c474d1ee079f51327d2feef417cd9a4b0b3b3",
+    "$DATA_DISK/sdg-eval/sdg_artifact_reward.py": "ae56172a9ca06b1c8a286a2eba75969581562c6bca65295688ccc3750a8516a4",
+    "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/sdg_reward.config.json": "a9a18ecda60f65d30841edee6fa37482f5b85936ca4d0cb5031c61bb4eac6ec2",
+    "$DATA_DISK/hpsv3pp-jax/configs/torch_native_tp.json": "ef457d59cff55a945e0cf45913fcdc8a5ec4c935a3821f92eae4abf16282548a",
+    "$DATA_DISK/hpsv3pp-jax/hpsv3pp_torch/engine.py": "5ddab16c0acb5232f67fb97a150ca5ea416e95b892b0ef6b4bc1f5560b9ee589"
+  },
+  "image_count": 4,
+  "stage_order": [
+    "deepghs",
+    "hps",
+    "kawai",
+    "sdg"
+  ],
+  "tagger_enabled": false
+}

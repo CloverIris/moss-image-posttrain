@@ -1,0 +1,56 @@
+Frozen-base L2 diagnostics
+=========================
+
+Definition is unchanged:
+  total loss = ART policy loss + beta * mean_features((v_current-v_base)^2)
+  beta remains art.reference_mse_beta (current staged configuration: 0.01).
+  v_base is BF16, LoRA disabled, same state/sigma/conditioning/CFG as learner.
+  It is frozen and is distinct from the old-policy rollout/calibration anchor.
+  L2 applies to every genuine valid item, including ART-masked/inactive items.
+  Original global window size is the denominator; padding is excluded.
+
+Existing train/* tags:
+  art_loss, base_reference_mse, base_reference_rms, base_reference_loss,
+  base_reference_beta, base_reference_seconds, policy_active_fraction.
+
+Additional train/* tags:
+  base_reference_loss_fraction: weighted L2 / (ART + weighted L2).
+  base_reference_loss_to_art_ratio: weighted L2 / ART when ART loss > 0.
+  base_reference_loss_ratio_defined: 0 if the preceding ratio is undefined.
+  art_output_grad_norm, base_reference_output_grad_norm:
+      norms of each term's predicted-velocity cotangent for the globally
+      mean-reduced objective. The base norm includes beta.
+  base_reference_output_grad_to_art_ratio:
+      weighted-base output cotangent norm / ART output cotangent norm.
+  base_reference_output_grad_ratio_defined:
+      0 if ART output cotangent norm is zero; no inf/NaN/fake zero ratio.
+  base_reference_output_grad_cosine:
+      cosine of ART and weighted-base velocity cotangents, when both nonzero.
+      Positive = locally same direction; negative = compete in output space.
+  base_reference_output_grad_cosine_defined: whether cosine is meaningful.
+  base_reference_output_grad_opposes_art: 1 if defined cosine < 0.
+  combined_output_grad_norm: norm of the sum of both velocity cotangents.
+  base_reference_output_grad_cancellation_fraction:
+      1 - ||ART + weighted L2|| / (||ART|| + ||weighted L2||), clipped to [0,1]
+      only to remove floating-point excursions in this diagnostic.
+  art_zero_output_grad_fraction, base_reference_zero_output_grad_fraction:
+      per-item zero-cotangent fractions across the genuine original window.
+  base_reference_only_loss, base_reference_only_output_grad:
+      flags for no ART loss/cotangent but nonzero reference contribution.
+
+These are OUTPUT-space cotangents, not LoRA parameter gradient norms. They
+are analytic feature reductions; no extra DiT forward/backward is introduced.
+Parameter-space Jacobians can change the relative gradient norms/directions.
+Loss ratio alone cannot show whether the constraint dominates optimization.
+Look for sustained norm ratio > 1 combined with negative cosine, stalled
+reward/base divergence, and a controlled beta comparison before retuning.
+No beta or optimizer update has been changed automatically.
+
+With a fresh zero LoRA, current and base predictions initially agree, so base
+MSE/cotangent = 0 is expected and does not prove beta is too weak. ART-only
+zero-gradient windows and undefined ratios have explicit flags.
+
+Validation: 49 passed, 11 skipped, 17 subtests on CPU, including analytic
+cotangents checked against JAX autodiff across all 3 loss spaces x 3 anchors,
+masked/padded rows, unchanged base loss on ART-masked rows, and global
+denominator/worker partition invariance. No GPU model inference performed.

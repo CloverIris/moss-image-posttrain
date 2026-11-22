@@ -1,0 +1,31 @@
+Kawai + DeepGHS reward version: CPU-verified deployment
+
+Created only in the new independent version. The source version and historical runs were not edited.
+
+Configuration contract:
+  enabled_models: ["kawai", "deepghs"]
+  kawai_enabled: true
+  sdg_enabled: false
+  artifact_weight: 0.0
+  fusion_weights: exactly the active two names; user-approved weights sum to1.
+  batch_config.stage_order: ["deepghs"]; no hps section is needed.
+  Kawai uses the existing four-card DP worker and unchanged pinned class order.
+
+Implementation:
+- reward_fusion resolves an explicit nonempty known model subset in canonical Kawai/DeepGHS/HPS order; legacy defaults still select all3, or DeepGHS/HPS for kawai_enabled=false.
+- Explicit active-set weights must match exactly, and missing/nonfinite/disabled head scores are rejected. No HPS zero placeholder is created.
+- The pipeline selects only active model stages, raw fields, model details, provenance files, CSV fields and manifests. K/D calls DeepGHS only in the batch engine (archive deepghs.json) plus Kawai DP. HPS is neither started nor needed as a configuration/provenance dependency.
+- Checkpoint wrapper carries the same model manifest through claims, frozen plans, summaries and reports. HPS batch companion and interrupted-resume handling are skipped when inactive; existing HPS safeguards remain for legacy configurations.
+- Rank semantics are unchanged: per-head average-tie percentile rank -> common gamma power -> configured weighted sum -> final average-tie linear rank. Training K8 uses rank reward; fixed K4 reports frozen absolute calibration.
+- Existing report/service production code already handles explicit active models through the updated wrapper helper. No production service change was required.
+- One CPU CLI service test now uses its own temporary gpu_lock_path, avoiding contention with a live GPU4 service. No live task was stopped.
+
+Calibration schema:
+Use an independently saved frozen calibration with weights and parameters for Kawai and DeepGHS; each needs finite mean and positive scale. output_gain must be positive and output_offset finite. The existing schema/version is unchanged. Historical K/D parameter statistics may be retained while selecting new weights/output gain. Do not fit a new calibration every training round.
+
+Validation:
+Root unittest discovery passed74 test executions; checkpoint discovery passed64. The new11 KD-specific tests independently passed, covering exact active weights, missing/nonfinite/extra HPS rejection, hand-computed K4/ties, K8, old D/H and three-model regressions, no-HPS config/provenance/pipeline routes, wrapper publication and active-only report/scalars.
+The tests caught and fixed an initially ungated repair_hps_resume path. Initial failure logs are retained. Model calls were mocked and CUDA visibility was empty; no GPU model inference/training was started.
+
+Training precision policy:
+This reward-only change does not alter DiT/sampling/LoRA code. The new training run must explicitly use mxfp8_calibrated. Plain inference MXFP8 remains valid.

@@ -1,0 +1,16 @@
+{
+  "manifest": "configs/sft/mxfp8_e2e.jsonl",
+  "cache": "cache/sft_mxfp8_e2e_aligned",
+  "model": "$MODEL_ROOT/MOSS-Image-SFT",
+  "processor_dir": "$CODE_ROOT/moss-image/reference-lab/processor",
+  "device": 4,
+  "width": 1024,
+  "height": 1024,
+  "max_reference_pixels": 262144,
+  "max_tokens": 1024,
+  "posterior": "mode",
+  "seed": 42,
+  "conditioning_only": false,
+  "short_tokens": 512,
+  "jax_python": "$CONDA_PREFIX/envs/jax_env/bin/python"
+}

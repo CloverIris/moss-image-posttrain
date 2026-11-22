@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "index": 2,
+      "id": "prompt000019_roll000001",
+      "sample_id": "prompt000019",
+      "prompt_index": 2,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000018-r000000-s186.png",
+      "prompt": "An illustration in the stylistic manner of miv4t, konya karasue, rella, quasarcake, fajyobore, and skyrick9413. The single character, Asuka Langley Soryu, is shown from the side outdoors at twilight, walking or standing with one hand in her pocket and her hair floating; she looks off into the distance to the side. She wears a red Evangelion plugsuit/mecha pilot suit and a red jacket. The composition emphasizes the mecha: Evangelion Unit-01, a super robot with a single horn, rises against a cityscape of buildings and skyscrapers along a river. The skyline sits beneath a cloudy sky, with a bird in the sky. Motion blur runs through the scene. No text appears.",
+      "prompt_id": "prompt000019",
+      "image_sha256": "fd1bf89edfdb3b3c5c915f5a61459becb4a9697cb5695ac03b3424371ba7274d"
+    }
+  ]
+}

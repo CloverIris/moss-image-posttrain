@@ -1,0 +1,8 @@
+{
+  "manifest": "data/qwen_prefill_check.jsonl",
+  "cache": "cache/sft_jax_prefill_final",
+  "device": 4,
+  "short_tokens": 320,
+  "max_tokens": 768,
+  "conditioning_only": false
+}

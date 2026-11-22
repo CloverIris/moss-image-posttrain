@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "index": 0,
+      "id": "prompt000002_roll000001",
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000000-s50.png",
+      "prompt": "A dark magazine-cover illustration of Theresa (Arknights), a solitary girl with black horns, shown from the side with a sad, expressionless face as she looks at a screen. The artwork uses chiaroscuro and volumetric lighting, with stylistic references to ask (askzy), Ningen Mame, nixeu, and cui (jidanhaidaitang). The palette is largely monochrome and greyscale with muted color and partly colored accents, softened by gaussian blur. Grass, broken glass shards, and blood appear in the scene, and the mood evokes a world of darkness and a dark mind.",
+      "prompt_id": "prompt000002",
+      "image_sha256": "f7245e0eba4d090146fd7c8fa93296433b3a93641ad90802e23044d60d423893",
+      "tags": []
+    }
+  ]
+}

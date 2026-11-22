@@ -1,0 +1,10 @@
+{
+  "kind": "sft",
+  "manifest": "data/qwen_prefill_check.jsonl",
+  "model": "$MODEL_ROOT/MOSS-Image-SFT",
+  "max_reference_pixels": 262144,
+  "negative_prompt": "",
+  "short": 0,
+  "full": 768,
+  "output": "reports/prompt_length_check.json"
+}

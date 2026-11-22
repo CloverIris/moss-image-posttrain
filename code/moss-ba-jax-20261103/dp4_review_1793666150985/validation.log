@@ -1,0 +1,1 @@
+PASS: four CPU replicas vs serial batch mean, 24 distinct trajectories, short tail, Adam counts, checkpoint replay, evaluation/export

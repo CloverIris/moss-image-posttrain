@@ -1,0 +1,51 @@
+{
+  "model": {
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "activation_storage": "gpu",
+    "checkpoint_interval": 1,
+    "base_precision": "mxfp8",
+    "mxfp8_dgrad": "bf16"
+  },
+  "data": {
+    "cache": "cache/sft_mxfp8_e2e_aligned",
+    "context_length": 1024,
+    "short_context_length": 512
+  },
+  "lora": {
+    "rank": 4,
+    "alpha": 4.0,
+    "preset": "attn-mlp"
+  },
+  "sft": {
+    "conditioning_dropout": 0.0
+  },
+  "training": {
+    "max_updates": 4,
+    "batch_size": 4,
+    "checkpoint_every": 2,
+    "microbatch_size": 1
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "output_dir": "outputs/sft_muon_mxfp8_e2e",
+    "tensor_parallel_size": 1
+  },
+  "optimizer": {
+    "name": "muon",
+    "learning_rate": 1e-05,
+    "momentum": 0.95,
+    "nesterov": true,
+    "ns_steps": 5,
+    "rms_match": 0.2,
+    "weight_decay": 0.0
+  },
+  "run": {
+    "resume": "outputs/sft_muon_mxfp8_e2e/checkpoints/step_00000002"
+  }
+}

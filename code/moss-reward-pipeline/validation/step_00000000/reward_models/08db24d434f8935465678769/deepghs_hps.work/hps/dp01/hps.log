@@ -1,0 +1,4 @@
+Flash Attention is not installed. Falling to SDPA.Flash Attention is not installed. Falling to SDPA.
+
+{"event": "progress", "stage": "hps", "images": 2, "total": 2, "elapsed_seconds": 0.3298478879733011}
+{"event": "complete", "stage": "hps", "metrics": {"model": "HPSv3++", "backend": "Native PyTorch DTensor TP2", "gpus": [1, 2], "attention": "cudnn", "batch_size": 2, "load_seconds": 15.734226132044569, "warmup_seconds": 1.7418988079298288, "inference_seconds": 0.3299759660148993, "inference_started_at": 1793203639.9387462, "inference_finished_at": 1793203640.2687898, "images": 2, "total_images": 2, "images_per_second": 6.061047488257659, "max_rank_peak_allocated_bytes": 9634629632.0, "process_seconds": 17.826272760983557}}

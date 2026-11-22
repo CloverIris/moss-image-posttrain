@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "moss-art-jax"
+version = "0.1.0"
+description = "Native JAX MOSS Image LoRA reinforcement with DiffusionART"
+requires-python = ">=3.11"
+dependencies = ["jax>=0.10.2", "optax>=0.2.8", "numpy", "scipy", "PyYAML", "safetensors", "Pillow", "ml_dtypes", "tokenizers", "tensorboard"]
+[project.scripts]
+moss-art = "moss_art.cli:main"
+[tool.setuptools.packages.find]
+include = ["moss_art*", "vendor.moss_jax*", "vendor.pixai_tagger*"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.package-data]
+moss_art = ["native/*.cc"]
+
+"vendor.pixai_tagger" = ["metadata/*.json", "LICENSE", "README.md"]

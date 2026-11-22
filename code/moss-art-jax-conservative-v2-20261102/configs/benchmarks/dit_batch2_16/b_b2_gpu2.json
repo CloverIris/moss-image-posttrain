@@ -1,0 +1,29 @@
+{
+  "engine_config": "configs/benchmarks/dit_precision16/engine.json",
+  "device": 2,
+  "batch_size": 2,
+  "precision": "mxfp8",
+  "prompt_id": "girl",
+  "warmup_seed_batches": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ]
+  ],
+  "seed_batches": [
+    [
+      42,
+      43
+    ],
+    [
+      44,
+      45
+    ]
+  ],
+  "monitor_interval_seconds": 0.2,
+  "output_dir": "outputs/dit_batch2_16_20261021/b_b2_gpu2"
+}

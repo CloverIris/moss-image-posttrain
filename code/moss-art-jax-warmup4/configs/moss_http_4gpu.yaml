@@ -1,0 +1,21 @@
+model: {attention_backend: cudnn, dit_autotune_level: 4}
+# Replace the URL with your scorer; localhost is an example, not a running service.
+name: moss-art-http-4gpu
+lora: {rank: 4, alpha: 4.0, preset: attn}
+reward:
+  kind: http
+  url: http://127.0.0.1:8765/reward
+  decode: true
+  batch_size: 1
+  timeout: 120
+  http_max_retries: 2
+  http_retry_backoff: 0.5
+  http_bearer_token_env: ""
+  http_response_limit_bytes: 1048576
+runtime: {devices: [0, 1, 2, 3], output_dir: outputs/moss_http_4gpu}
+
+sampling:
+  steps: 50
+  sampler: res_multistep
+  scheduler: beta
+  train_timesteps: [0, 10, 20, 30, 40]

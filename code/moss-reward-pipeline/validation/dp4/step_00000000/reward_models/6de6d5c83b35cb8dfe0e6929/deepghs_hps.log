@@ -1,0 +1,11 @@
+
+ATTEMPT 1793205940.2904892
+{"event": "started", "stage": "deepghs", "dp_rank": 0, "pid": 2279676, "gpus": [0], "images": 1}
+{"event": "started", "stage": "deepghs", "dp_rank": 1, "pid": 2279677, "gpus": [1], "images": 1}
+{"event": "started", "stage": "deepghs", "dp_rank": 2, "pid": 2279678, "gpus": [2], "images": 1}
+{"event": "started", "stage": "deepghs", "dp_rank": 3, "pid": 2279679, "gpus": [3], "images": 1}
+{"event": "stage_complete", "stage": "deepghs", "stage_wall_seconds": 5.519677117932588, "inference_images_per_second": 49.271570167838945}
+{"event": "started", "stage": "hps", "dp_rank": 0, "pid": 2279763, "gpus": [0, 3], "images": 2}
+{"event": "started", "stage": "hps", "dp_rank": 1, "pid": 2279764, "gpus": [1, 2], "images": 2}
+{"event": "stage_complete", "stage": "hps", "stage_wall_seconds": 12.670088842976838, "inference_images_per_second": 10.93544604534596}
+{"event": "complete", "images": 4, "wall_seconds": 18.363788504968397, "images_per_second": null, "output": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/deepghs_hps.json"}

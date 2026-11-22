@@ -1,0 +1,100 @@
+{
+  "model": {
+    "kind": "moss",
+    "path": "$MODEL_ROOT/MOSS-Image-SFT",
+    "dtype": "bfloat16",
+    "tiny_seed": 123,
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "vae_precision": "fp32",
+    "vae_low_precision_stages": [],
+    "vae_conv_backend": "xla",
+    "vae_conv_workspace_mib": 256,
+    "activation_storage": "gpu",
+    "checkpoint_interval": 1
+  },
+  "lora": {
+    "rank": 4,
+    "alpha": 4.0,
+    "preset": "attn-mlp",
+    "seed": 42
+  },
+  "optimizer": {
+    "learning_rate": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "platform": "cuda",
+    "allow_busy": false,
+    "busy_memory_mib": 1500,
+    "worker_timeout": 3600,
+    "output_dir": "outputs/sft",
+    "cpu_threads": 4,
+    "memory_fraction": 0.9,
+    "tensor_parallel_size": 1
+  },
+  "sampling": {
+    "height": 256,
+    "width": 256,
+    "steps": 50,
+    "group_size": 2,
+    "prompts_per_rollout": 4,
+    "guidance_scale": 3.0,
+    "skip_layers": [
+      22
+    ],
+    "train_timesteps": [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    "shift": 5.0,
+    "training_shift": 1.0,
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "beta_alpha": 0.6,
+    "beta_beta": 0.6
+  },
+  "run": {
+    "resume": "",
+    "init_adapter": "",
+    "checkpoint": "",
+    "adapter": "",
+    "sample_index": 0,
+    "seed": 42,
+    "decode": false
+  },
+  "data": {
+    "cache": "cache/sft",
+    "context_length": 4096,
+    "short_context_length": 0
+  },
+  "training": {
+    "max_updates": 1000,
+    "seed": 42,
+    "batch_size": 4,
+    "microbatch_size": 1,
+    "checkpoint_every": 100
+  },
+  "sft": {
+    "sigma_distribution": "logit_normal",
+    "logit_mean": 0.0,
+    "logit_std": 1.0,
+    "sigma_shift": 1.0,
+    "conditioning_dropout": 0.1
+  }
+}

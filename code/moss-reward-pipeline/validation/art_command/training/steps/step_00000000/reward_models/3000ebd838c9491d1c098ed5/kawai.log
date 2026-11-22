@@ -1,0 +1,7 @@
+
+ATTEMPT 1793204089.8756433
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/380 [00:00<?, ?it/s]Loading weights: 100%|██████████| 380/380 [00:00<00:00, 15228.26it/s]
+{"event": "kawai_progress", "images": 2, "total": 4}
+{"event": "kawai_progress", "images": 4, "total": 4}
+{"event": "kawai_done", "images": 4, "output": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/kawai_attempts/1793204089873937521/result.json", "dtype": "torch.float32", "load_seconds": 0.28280728799290955, "inference_seconds": 0.918787557980977, "batch_size": 2, "timing_scope": "preprocessing, model forward, score extraction, image hashing and row trace", "class_weights": [1.0, 0.8999999761581421, 0.5, -0.5, -1.0]}

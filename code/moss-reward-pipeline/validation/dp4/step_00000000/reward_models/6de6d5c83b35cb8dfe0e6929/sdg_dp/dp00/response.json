@@ -1,0 +1,94 @@
+{
+  "scores": [
+    -0.07881470024585724
+  ],
+  "details": [
+    {
+      "reward": -0.07881470024585724,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.07881470024585724,
+      "weighted_artifact_penalty": -0.07881470024585724,
+      "artifact_count": 5,
+      "ignored_misalignment_count": 0,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            12,
+            41,
+            287,
+            375
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "In the upper-left corner, the large text block is rendered as illegible gibberish, with distorted glyphs and nonsensical character shapes that fail to form coherent words."
+        },
+        {
+          "box_2d": [
+            752,
+            19,
+            990,
+            360
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "The text section in the upper-right corner displays malformed characters and nonsensical lettering, appearing as a jumble of illegible symbols rather than a readable title or list."
+        },
+        {
+          "box_2d": [
+            283,
+            925,
+            713,
+            972
+          ],
+          "label": "artifact",
+          "importance": 45,
+          "description": "The footer text at the bottom center consists of garbled, meaningless characters with inconsistent spacing and distorted shapes, failing to convey any clear information or credit."
+        },
+        {
+          "box_2d": [
+            452,
+            540,
+            550,
+            666
+          ],
+          "label": "artifact",
+          "importance": 40,
+          "description": "The character's hand resting on the lap appears fused and indistinct, with fingers that blend into the clothing and each other, lacking proper anatomical definition and separation."
+        },
+        {
+          "box_2d": [
+            10,
+            619,
+            335,
+            807
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "The screen surface on the image-left exhibits unnatural texture artifacts, where the glass or display appears glitchy and broken with jagged, incoherent lines rather than realistic damage."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp00/response.sdg/96171300a43b4adeb305754b685f388a/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 905,
+      "id": "prompt000002_roll000001",
+      "index": 0,
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 0
+    }
+  ],
+  "mode": "artifact_only",
+  "load_seconds": 24.15551679197233,
+  "inference_seconds": 10.273224215954542,
+  "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp00/response.sdg/96171300a43b4adeb305754b685f388a/predictions.jsonl",
+  "model": "$DATA_DISK/models/sdg-detector-grpo"
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "sft",
+  "manifest": "data/train.jsonl",
+  "model": "$MODEL_ROOT/MOSS-Image-SFT",
+  "max_reference_pixels": 262144,
+  "negative_prompt": "",
+  "short": 0,
+  "full": 4096,
+  "output": "reports/prompt_lengths.json"
+}

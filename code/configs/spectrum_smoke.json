@@ -1,0 +1,24 @@
+{
+  "name": "spectrum_real_mxfp8_smoke",
+  "model": {
+    "path": "$MODEL_ROOT/MOSS-Image-Base",
+    "attention_backend": "cudnn",
+    "activation_storage": "gpu"
+  },
+  "sampling": {
+    "height": 1024,
+    "width": 1024,
+    "steps": 48,
+    "rollout_mode": "mxfp8",
+    "group_size": 4,
+    "prompts_per_rollout": 1,
+    "split_group_across_workers": true,
+    "train_timesteps": [0, 12, 24, 36],
+    "spectrum": {"enabled": true}
+  },
+  "runtime": {
+    "devices": [0, 1, 2, 3],
+    "execution_backend": "mesh",
+    "output_dir": "$MOSS_ROOT/reports/spectrum_chebyshev_20261025"
+  }
+}

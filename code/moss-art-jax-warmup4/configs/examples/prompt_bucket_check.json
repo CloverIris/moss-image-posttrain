@@ -1,0 +1,20 @@
+{
+  "preparation": {
+    "device": 4,
+    "auto_prepare": true
+  },
+  "data": {
+    "prompts": "data/prompt_bucket_check.jsonl",
+    "cache": "cache/text_buckets_final",
+    "context_length": 128,
+    "short_context_length": 64
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ]
+  }
+}

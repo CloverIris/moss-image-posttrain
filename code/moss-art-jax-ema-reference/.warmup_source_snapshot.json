@@ -1,0 +1,38 @@
+{
+  "source_root": "$CODE_ROOT/moss-art-jax",
+  "snapshot_at": "2026-10-29T05:20:25.961417+00:00",
+  "copied": [
+    "moss_art",
+    "vendor",
+    "scripts",
+    "configs",
+    "tests",
+    "docs",
+    "integrations",
+    "AGENTS.md",
+    ".gitignore",
+    "run.py",
+    "NOTICE",
+    "pyproject.toml",
+    "README.md",
+    "prompts.txt",
+    "outputs/native"
+  ],
+  "active_source_hashes": {
+    "optimizers.py": "e846f62c905ca207d34e9c239bdf9e91bf437ef22bdb86a0293dbfac3ae97ed3",
+    "config.py": "b5b8cfeaf752e7365f6707bb3ec8782dd0040d3bbcf5fc34b815886465f87428",
+    "staged.py": "8c78ccdfe3401bdd4d93b08ec9462170fa90eedbd5a453be390ee4e4190faf34",
+    "trainer.py": "9478df22a0480b5ff512363577daa1375c5f83c748d51ee40d4a81375363a64b"
+  },
+  "native_path_rewrites": {
+    "binary": {
+      "before": "$CODE_ROOT/moss-art-jax/outputs/native/moss_cudnn_conv_9a141c986ca3d4a7.so",
+      "after": "$CODE_ROOT/moss-art-jax-warmup4/outputs/native/moss_cudnn_conv_9a141c986ca3d4a7.so"
+    },
+    "source": {
+      "before": "$CODE_ROOT/moss-art-jax/moss_art/native/cudnn_conv_ffi.cc",
+      "after": "$CODE_ROOT/moss-art-jax-warmup4/moss_art/native/cudnn_conv_ffi.cc"
+    }
+  },
+  "old_training_untouched": true
+}

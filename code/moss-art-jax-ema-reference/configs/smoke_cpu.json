@@ -1,0 +1,44 @@
+{
+  "name": "tiny-art-cpu",
+  "model": {
+    "kind": "tiny",
+    "dtype": "float32"
+  },
+  "lora": {
+    "rank": 2,
+    "alpha": 2.0,
+    "preset": "attn"
+  },
+  "sampling": {
+    "sampler": "euler",
+    "scheduler": "moss",
+    "height": 32,
+    "width": 32,
+    "steps": 3,
+    "group_size": 2,
+    "prompts_per_rollout": 4,
+    "guidance_scale": 1.0,
+    "skip_layers": [],
+    "train_timesteps": [
+      0,
+      1
+    ]
+  },
+  "training": {
+    "max_updates": 4,
+    "checkpoint_every": 2,
+    "evaluate_every": 2
+  },
+  "reward": {
+    "kind": "toy_latent",
+    "decode": false
+  },
+  "runtime": {
+    "platform": "cpu",
+    "devices": [
+      0
+    ],
+    "cpu_threads": 2,
+    "output_dir": "outputs/smoke_cpu"
+  }
+}

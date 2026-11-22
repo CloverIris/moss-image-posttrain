@@ -1,0 +1,31 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MOSS ART 四模型奖励训练流程</title><style>
+body{max-width:1000px;margin:36px auto;padding:0 22px;background:#f4f7fa;color:#24354a;font:17px/1.85 system-ui,'Microsoft YaHei',sans-serif}h1{font-size:29px}h2{font-size:23px;margin-top:30px}.card{background:white;padding:20px 25px;margin:20px 0;border:1px solid #d8e1ed;border-radius:12px}.flow{display:flex;flex-wrap:wrap;gap:10px}.flow span{background:#e9f0fb;padding:10px 16px;border-radius:9px}code{font:14px/1.8 Consolas,monospace;word-break:break-all}pre{white-space:pre-wrap;padding:16px;background:#eaf0f7;border-radius:8px}table{width:100%;border-collapse:collapse;font-size:16px}td,th{text-align:left;padding:12px;border-bottom:1px solid #e1e7ef;vertical-align:top}a{color:#245da5}.small{font-size:14px;color:#5e6f83}</style></head><body>
+<h1>MOSS ART：四模型奖励、完整留档与 L2 统计</h1>
+<p>训练名：<strong>reward4_P24_K16_T4_mxfp8_20261029</strong><br>TensorBoard：<a href="http://127.0.0.1:6006/#scalars">http://127.0.0.1:6006/#scalars</a></p>
+<div class="flow"><span>MXFP8 rollout + FP16 VAE</span><span>→ DeepGHS / HPS</span><span>→ Kawai</span><span>→ SDG</span><span>→ 融合 + 留档</span><span>→ BF16 LoRA 训练</span></div>
+<p>各模型按阶段运行，上一阶段进程退出后再加载下一阶段。DeepGHS、Kawai、SDG 均为四卡 DP；HPS 为 DP2×TP2，配对 [0,3] / [1,2]。SDG 每卡分摊 96 张图、6 条 prompt；GPU4 保留。<strong>不加载 tagger，不运行旧 Gemma/Qwen 评估。</strong>原始提示词透传，图片保持原始导出文件。已有 402 份 BF16 Qwen 条件缓存已经完整核验，无需再次预填充。</p>
+<h2>训练参数</h2><div class="card"><table><tr><th>设置</th><th>当前值</th></tr><tr><td>每次收集</td><td>24 条 prompt × 每条 16 张 × 每轨迹 4 个训练点，共 384 张、1536 个轨迹训练点；A/B 每次更新 768 个点</td></tr><tr><td>rollout</td><td>MOSS Base，MXFP8 DiT，48 步，FP16 VAE；768/1024 方图按 2:1 混合；同一个 prompt 的组内分辨率一致</td></tr><tr><td>更新</td><td>既有 ART 的 A/B 两次更新；BF16 learner，LoRA rank=48，alpha=48，attention preset；新 run 从零 LoRA 开始</td></tr><tr><td>base 约束</td><td>reference_mse_beta=0.01，保持不变</td></tr></table></div>
+<h2>当前 reward 如何计算</h2>
+<pre>z_model = (raw_score - frozen_mean) / frozen_scale
+aesthetic = 0.5 + 0.0822843590404152 × (0.4 z_kawai + 0.4 z_deepghs + 0.2 z_hps)
+final_reward = aesthetic + 1.0 × sdg_artifact_penalty</pre>
+<p>三个美学模型沿用已有固定均值与尺度，避免逐组重新放大噪声。Kawai 使用类别概率的加权和，DeepGHS 使用官方 percentile，HPS 使用 mu。它们的其他输出也保留。</p>
+<p>SDG 只对 <code>artifact</code> 扣分：沿用官方空间惩罚图，alpha=0.5，按 importance/100 加权，重叠同类框取最大值，最后取全图均值。<code>misalignment</code> 的框、原因和 importance 留在日志中，但计分系数固定为 0。空结果不扣分；解析失败或截断会停止当前评估阶段，不会补成“零缺陷”。</p>
+<h2>每轮永久保存什么</h2><div class="card"><pre>training/steps/step_XXXXXXXX/
+  images/、prompts.json、samples.json、manifest.json
+  reward_attempts/attempt_NNNN/     每次调用的 request / response / stdout / stderr
+  reward_evaluation.json           实际供 ART 使用的 FP32 scores + 全部 details
+  reward_analysis.json             逐图及组内 mean/std/MAD/centered 等分析
+  reward_models/&lt;fingerprint&gt;/
+    manifest.json、request.json、input.json、calibration.json、code/
+    deepghs_hps.json、deepghs_hps.work/  原始结果、各 DP/TP 日志与计时
+    kawai.json、kawai_dp/dpNN/attempts/        logits、概率、类别权重及模型 hash
+    sdg.json、sdg_dp/dpNN/response.sdg/                 全部框、原因、严重度及完整原始生成文本
+    per_image.jsonl、scores.csv        逐图原始分数、标准化分数、融合贡献与最终 reward
+    summary.json、response.json</pre><p>这些文件都在 NVMe 上，不随 RAM 轨迹缓存清理而删除。每张图片有局部 ID、collection ID、全局 ID、文件路径与 SHA256；模型结果通过明确 ID 关联，不靠跨文件列表顺序猜测。重试保留原始调用记录，配置、脚本或输入变化会生成新的指纹。</p></div>
+<h2>TensorBoard 看哪些指标</h2><p>Custom Scalars 已按 Reward overview、Actual weighted contributions、Base L2 magnitude、Base L2 output-space competition、Diagnostic validity 及 Logical batch 分成六组。这里只写了面板布局，没有填入任何虚构分数；数据随真实阶段完成后出现。</p><table><tr><th>指标</th><th>用途</th></tr><tr><td><code>reward_components/raw_scores/*</code></td><td>每个模型的原始分数均值、标准差、组内 MAD、常数组比例和分布</td></tr><tr><td><code>reward_components/normalized_scores/*</code><br><code>reward_components/contributions/*</code></td><td>固定尺度后的值，以及实际加到最终 reward 的贡献，观察哪个模型主导奖励</td></tr><tr><td><code>reward_sdg/*</code></td><td>artifact 图片比例、观察覆盖率；artifact 个数、扣分与忽略的 misalignment 个数另有分布</td></tr><tr><td><code>train/art_loss</code><br><code>train/base_reference_mse</code><br><code>train/base_reference_loss</code></td><td>ART 主损失、base 原始 MSE、乘 beta 后的实际 L2 项</td></tr><tr><td><code>train/base_reference_loss_to_art_ratio</code><br><code>train/base_reference_loss_fraction</code></td><td>加权 L2 与 ART 损失的相对量级</td></tr><tr><td><code>train/base_reference_output_grad_to_art_ratio</code><br><code>train/base_reference_output_grad_cosine</code><br><code>train/base_reference_output_grad_cancellation_fraction</code></td><td>模型输出端两个目标的梯度大小、方向和抵消程度；没有额外 DiT 反传</td></tr></table>
+<p>reward 组件另外按分辨率记录。<strong>reward 采集、A/B 更新的轴含义不同</strong>，以 collection 的 source update 和 rollout_start 映射对应训练更新；原始 step manifest 中保存 planned_update_steps。</p>
+<h2>如何判断 L2 是否太强</h2><pre>L_total = L_ART + 0.01 × mean((v_current − v_base)²)</pre><p>base 是同一 state、sigma、prompt、CFG 下关闭 LoRA 的 BF16 模型，不是 rollout 的旧策略。L2 对所有有效训练点生效，即使某些 ART 项被 mask。</p><p>重点看加权 L2 的输出梯度是否持续大于 ART，同时 cosine 是否为负、抵消是否明显。它提示两个目标在竞争，但<strong>输出空间梯度比不等于 LoRA 参数梯度比</strong>，不能仅凭一个阈值断定 beta 必须调整。ART 梯度为 0 时比例有 defined 标志；初始零 LoRA 的 L2=0 是正常情况。旧训练没有这些分项，不能用旧曲线确认强弱。</p>
+<h2>以后如何重算权重</h2><pre>/usr/bin/python3 /home/niconiconi/nvme2T/moss-reward-pipeline/reweight_rewards.py --config reweight.json</pre><p>配置指定某个 <code>per_image.jsonl</code>，或包含多个 collection 的训练目录；设置新的 Kawai/DeepGHS/HPS 权重和 artifact_weight。脚本只读取留档分数并生成新的分析文件，不加载模型，不覆盖原始记录。固定尺度和 output gain 保持一致，便于比较；已经发生的训练更新不会被追溯修改。</p>
+<p class="small">服务器代码：<code>/home/niconiconi/nvme2T/moss-reward-pipeline</code><br>本次训练：<code>/home/niconiconi/nvme2T/moss-art-jax/runs/reward4_P24_K16_T4_mxfp8_20261029</code><br>数据文件和原始提示词没有被修改。该流程保留独立模型评分，便于后续重新选择模型与融合权重。</p>
+</body></html>

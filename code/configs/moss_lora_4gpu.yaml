@@ -1,0 +1,15 @@
+model: {attention_backend: cudnn, dit_autotune_level: 4}
+# Real model training: prepare text cache and select a meaningful reward first.
+name: moss-art-lora-4gpu
+lora: {rank: 4, alpha: 4.0, preset: attn}
+reward:
+  kind: siglip
+  command: []
+  decode: true
+runtime: {devices: [0, 1, 2, 3], output_dir: outputs/moss_lora_4gpu}
+
+sampling:
+  steps: 50
+  sampler: res_multistep
+  scheduler: beta
+  train_timesteps: [0, 10, 20, 30, 40]

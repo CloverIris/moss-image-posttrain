@@ -1,0 +1,6 @@
+{
+  "torch": "2.11.0+cu130",
+  "source_sha256": "3431279fdfff234f62664999fc1fe6bb20f1e8756f7435d0e165ebd4456f7fcd",
+  "seed": 1729,
+  "note": "Synthetic small architecture only; no pretrained PixAI weights used or transferred. FP32 and BF16 (parameter-only casting preserves complex rotary buffers)."
+}

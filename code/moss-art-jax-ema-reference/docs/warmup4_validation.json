@@ -1,0 +1,25 @@
+{
+  "cpu_tests_passed": 8,
+  "original_training_source_files_unchanged": true,
+  "original_run_config_unchanged": true,
+  "old_run_stopped": false,
+  "new_run_started": false,
+  "native_binary_identical": true,
+  "warmup_steps_default": 0,
+  "example_steps": 4,
+  "learning_rates": [
+    2.5e-05,
+    5e-05,
+    7.5e-05,
+    0.0001,
+    0.0001
+  ],
+  "optimizer_clock": "applied optimizer updates; A/B count independently; microbatches do not advance",
+  "learning_rate_log": "train/learning_rate",
+  "changed_files": {
+    "optimizers.py": "0c16a158df3b90cec9a0f71155548e28e6d2bebe3bd0795c6c41c5a6bfa00fb3",
+    "config.py": "746133a44e0a0b06cbc1407a49af60de995b00b0f1e157fa5f954471241a8116",
+    "staged.py": "d73619ce6d971c02fde4aaabf45d40f1fdbde4b3e79f5e774ae0ea7230493509",
+    "trainer.py": "4bc4523aa0f20a6541aac558db6773e47f239334571aebe06a3ffabc3354e665"
+  }
+}

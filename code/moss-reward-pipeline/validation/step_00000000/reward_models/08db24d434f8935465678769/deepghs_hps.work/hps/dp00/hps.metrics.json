@@ -1,0 +1,20 @@
+{
+  "model": "HPSv3++",
+  "backend": "Native PyTorch DTensor TP2",
+  "gpus": [
+    0,
+    3
+  ],
+  "attention": "cudnn",
+  "batch_size": 2,
+  "load_seconds": 15.73421542008873,
+  "warmup_seconds": 1.7418679660186172,
+  "inference_seconds": 0.32522150001022965,
+  "inference_started_at": 1793203639.9387395,
+  "inference_finished_at": 1793203640.264033,
+  "images": 2,
+  "total_images": 2,
+  "images_per_second": 6.149654927294447,
+  "max_rank_peak_allocated_bytes": 9631459328.0,
+  "process_seconds": 17.821521288948134
+}

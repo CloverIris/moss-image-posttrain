@@ -1,0 +1,86 @@
+test_allowlist_formats_timestamp_idempotent_restart_and_source_hash (test_curate_tensorboard.CurationTests.test_allowlist_formats_timestamp_idempotent_restart_and_source_hash) ... ok
+test_changed_scalar_fails_without_partial_new_points (test_curate_tensorboard.CurationTests.test_changed_scalar_fails_without_partial_new_points) ... ok
+test_directory_lock_blocks_second_owner (test_curate_tensorboard.CurationTests.test_directory_lock_blocks_second_owner) ... ok
+test_evaluation_timing_is_real_record_and_idempotent (test_curate_tensorboard.CurationTests.test_evaluation_timing_is_real_record_and_idempotent) ... ok
+test_layout_category_closed_setting_is_preserved (test_curate_tensorboard.CurationTests.test_layout_category_closed_setting_is_preserved) ... ok
+test_layout_has_exact_allowlist_tags (test_curate_tensorboard.CurationTests.test_layout_has_exact_allowlist_tags) ... ok
+test_mapping_identity_changes_need_new_directory (test_curate_tensorboard.CurationTests.test_mapping_identity_changes_need_new_directory) ... ok
+test_new_source_file_adds_only_new_point (test_curate_tensorboard.CurationTests.test_new_source_file_adds_only_new_point) ... ok
+test_non_scalar_tensor_and_histogram_are_ignored (test_curate_tensorboard.CurationTests.test_non_scalar_tensor_and_histogram_are_ignored) ... ok
+test_nonfinite_selected_value_fails (test_curate_tensorboard.CurationTests.test_nonfinite_selected_value_fails) ... ok
+test_source_and_destination_must_be_separate (test_curate_tensorboard.CurationTests.test_source_and_destination_must_be_separate) ... ok
+test_sync_never_imports_tensorflow_runtime (test_curate_tensorboard.CurationTests.test_sync_never_imports_tensorflow_runtime) ... ok
+test_missing_kd_score_and_undeclared_hps_are_rejected_by_summary (test_hps_disabled.KDCheckpointTests.test_missing_kd_score_and_undeclared_hps_are_rejected_by_summary) ... ok
+test_report_and_scalars_only_active_kawai_deepghs (test_hps_disabled.KDCheckpointTests.test_report_and_scalars_only_active_kawai_deepghs) ... ok
+test_wrapper_claim_publish_summary_skip_hps_without_hps_config (test_hps_disabled.KDCheckpointTests.test_wrapper_claim_publish_summary_skip_hps_without_hps_config) ... ok
+test_active_scores_and_weight_keys_fail_closed (test_hps_disabled.KDFusionTests.test_active_scores_and_weight_keys_fail_closed) ... ok
+test_explicit_active_set_is_canonical_and_old_defaults_still_work (test_hps_disabled.KDFusionTests.test_explicit_active_set_is_canonical_and_old_defaults_still_work) ... ok
+test_explicit_active_weights_need_no_hps_calibration (test_hps_disabled.KDFusionTests.test_explicit_active_weights_need_no_hps_calibration) ... ok
+test_k4_hand_calculated_sqrt_then_rerank_with_ties (test_hps_disabled.KDFusionTests.test_k4_hand_calculated_sqrt_then_rerank_with_ties) ... ok
+test_k8_monotone_heads_and_old_group_results_are_preserved (test_hps_disabled.KDFusionTests.test_k8_monotone_heads_and_old_group_results_are_preserved) ... ok
+test_subset_uses_only_active_scales_and_renormalizes_frozen_weights (test_hps_disabled.KDFusionTests.test_subset_uses_only_active_scales_and_renormalizes_frozen_weights) ... ok
+test_hps_config_and_provenance_files_are_truly_optional (test_hps_disabled.KDPipelineTests.test_hps_config_and_provenance_files_are_truly_optional) ... ok
+test_k8_training_and_k4_validation_keep_different_reward_semantics (test_hps_disabled.KDPipelineTests.test_k8_training_and_k4_validation_keep_different_reward_semantics) ... ok
+test_deepghs_hps_reconstruct_without_kawai_or_sdg (test_kawai_disabled.OptionalFusionTests.test_deepghs_hps_reconstruct_without_kawai_or_sdg) ... ok
+test_disabled_default_preserves_relative_frozen_weights (test_kawai_disabled.OptionalFusionTests.test_disabled_default_preserves_relative_frozen_weights) ... ok
+test_enabled_sets_and_flag_types_are_strict (test_kawai_disabled.OptionalFusionTests.test_enabled_sets_and_flag_types_are_strict) ... ok
+test_explicit_two_head_weights_need_no_kawai_calibration (test_kawai_disabled.OptionalFusionTests.test_explicit_two_head_weights_need_no_kawai_calibration) ... ok
+test_kawai_and_sdg_switches_are_independent (test_kawai_disabled.OptionalFusionTests.test_kawai_and_sdg_switches_are_independent) ... ok
+test_missing_enabled_scores_never_become_zero (test_kawai_disabled.OptionalFusionTests.test_missing_enabled_scores_never_become_zero) ... ok
+test_disabled_kawai_keeps_optional_sdg_pipeline_working (test_kawai_disabled.OptionalPipelineTests.test_disabled_kawai_keeps_optional_sdg_pipeline_working) ... ok
+test_disabled_pipeline_never_imports_reads_or_starts_optional_stages (test_kawai_disabled.OptionalPipelineTests.test_disabled_pipeline_never_imports_reads_or_starts_optional_stages) ... ok
+test_invalid_new_weight_set_fails_before_scoring (test_kawai_disabled.OptionalPipelineTests.test_invalid_new_weight_set_fails_before_scoring) ... ok
+test_legacy_enabled_kawai_default_is_preserved (test_kawai_disabled.OptionalPipelineTests.test_legacy_enabled_kawai_default_is_preserved) ... ok
+test_all_constant_models_produce_no_art_signal (test_rank_fusion.RankFusionTests.test_all_constant_models_produce_no_art_signal) ... ok
+test_domains_cannot_be_mixed_even_when_prompt_id_matches (test_rank_fusion.RankFusionTests.test_domains_cannot_be_mixed_even_when_prompt_id_matches) ... ok
+test_final_average_ties_and_cancelled_preferences (test_rank_fusion.RankFusionTests.test_final_average_ties_and_cancelled_preferences) ... ok
+test_frozen_absolute_diagnostics_preserved_and_labelled (test_rank_fusion.RankFusionTests.test_frozen_absolute_diagnostics_preserved_and_labelled) ... ok
+test_gamma_changes_order_not_final_rank_spacing (test_rank_fusion.RankFusionTests.test_gamma_changes_order_not_final_rank_spacing) ... ok
+test_group_size_gamma_and_ids_are_strict (test_rank_fusion.RankFusionTests.test_group_size_gamma_and_ids_are_strict) ... ok
+test_hand_calculated_power_before_fusion_then_linear_rank (test_rank_fusion.RankFusionTests.test_hand_calculated_power_before_fusion_then_linear_rank) ... ok
+test_invalid_raw_scores_and_weights_fail_closed (test_rank_fusion.RankFusionTests.test_invalid_raw_scores_and_weights_fail_closed) ... ok
+test_legacy_fuse_default_is_unchanged (test_rank_fusion.RankFusionTests.test_legacy_fuse_default_is_unchanged) ... ok
+test_monotone_score_transform_does_not_change_rank_objective (test_rank_fusion.RankFusionTests.test_monotone_score_transform_does_not_change_rank_objective) ... ok
+test_one_constant_head_does_not_invent_a_preference (test_rank_fusion.RankFusionTests.test_one_constant_head_does_not_invent_a_preference) ... ok
+test_optional_kawai_uses_identical_rank_procedure (test_rank_fusion.RankFusionTests.test_optional_kawai_uses_identical_rank_procedure) ... ok
+test_percentile_ranks_average_exact_ties (test_rank_fusion.RankFusionTests.test_percentile_ranks_average_exact_ties) ... ok
+test_permutation_equivariant_including_ties (test_rank_fusion.RankFusionTests.test_permutation_equivariant_including_ties) ... ok
+test_training_eight_and_validation_four_are_explicit (test_rank_fusion.RankFusionTests.test_training_eight_and_validation_four_are_explicit) ... ok
+test_disabled_kawai_keeps_optional_sdg_pipeline_working (test_kawai_disabled.OptionalPipelineTests.test_disabled_kawai_keeps_optional_sdg_pipeline_working) ... ok
+test_disabled_pipeline_never_imports_reads_or_starts_optional_stages (test_kawai_disabled.OptionalPipelineTests.test_disabled_pipeline_never_imports_reads_or_starts_optional_stages) ... ok
+test_invalid_new_weight_set_fails_before_scoring (test_kawai_disabled.OptionalPipelineTests.test_invalid_new_weight_set_fails_before_scoring) ... ok
+test_legacy_enabled_kawai_default_is_preserved (test_kawai_disabled.OptionalPipelineTests.test_legacy_enabled_kawai_default_is_preserved) ... ok
+test_incomplete_groups_and_invalid_config_fail_before_model_stage (test_rank_pipeline.RankPipelineTests.test_incomplete_groups_and_invalid_config_fail_before_model_stage) ... ok
+test_mixed_groups_rank_train_and_keep_validation_absolute (test_rank_pipeline.RankPipelineTests.test_mixed_groups_rank_train_and_keep_validation_absolute) ... ok
+test_validation_only_flush_keeps_absolute_scores (test_rank_pipeline.RankPipelineTests.test_validation_only_flush_keeps_absolute_scores) ... ok
+test_fusion_contributions_reconstruct_exact_reward (test_reward_pipeline.RewardPipelineTests.test_fusion_contributions_reconstruct_exact_reward) ... ok
+test_invalid_component_is_never_zero_filled (test_reward_pipeline.RewardPipelineTests.test_invalid_component_is_never_zero_filled) ... ok
+test_model_results_are_joined_by_id (test_reward_pipeline.RewardPipelineTests.test_model_results_are_joined_by_id) ... ok
+test_offline_reweight_keeps_raw_and_fixed_scales (test_reward_pipeline.RewardPipelineTests.test_offline_reweight_keeps_raw_and_fixed_scales) ... ok
+test_raw_prompt_preserved_and_image_content_in_identity (test_reward_pipeline.RewardPipelineTests.test_raw_prompt_preserved_and_image_content_in_identity) ... ok
+test_import_does_not_load_torch_or_transformers (test_score_kawai.KawaiValidationTests.test_import_does_not_load_torch_or_transformers) ... ok
+test_items_keep_identity_and_require_image_prompt_id (test_score_kawai.KawaiValidationTests.test_items_keep_identity_and_require_image_prompt_id) ... ok
+test_pinned_class_contract_rejects_reordered_or_missing_labels (test_score_kawai.KawaiValidationTests.test_pinned_class_contract_rejects_reordered_or_missing_labels) ... ok
+test_settings_reject_reserved_gpu_dtype_and_label_mismatch (test_score_kawai.KawaiValidationTests.test_settings_reject_reserved_gpu_dtype_and_label_mismatch) ... ok
+test_disabled_only_uses_three_models_and_keeps_scales (test_sdg_disabled.DisabledTests.test_disabled_only_uses_three_models_and_keeps_scales) ... ok
+test_full_disabled_path_does_not_read_or_launch_sdg (test_sdg_disabled.DisabledTests.test_full_disabled_path_does_not_read_or_launch_sdg) ... ok
+test_no_silent_missing_or_fabricated_components (test_sdg_disabled.DisabledTests.test_no_silent_missing_or_fabricated_components) ... ok
+test_child_failure_does_not_become_zero_score (test_sdg_parallel.SDGParallelTests.test_child_failure_does_not_become_zero_score) ... {"event": "reward_replica_started", "name": "0", "pid": 2648633, "output": "/tmp/tmp86jz0imj/response.json", "log": "/tmp/tmp86jz0imj/worker.log", "started_at": 1793454079.8834722}
+ok
+test_completed_shards_are_reused_and_verified (test_sdg_parallel.SDGParallelTests.test_completed_shards_are_reused_and_verified) ... ok
+test_cpu_fake_jobs_run_and_module_imports_no_ml (test_sdg_parallel.SDGParallelTests.test_cpu_fake_jobs_run_and_module_imports_no_ml) ... {"event": "reward_replica_started", "name": "0", "pid": 2648638, "output": "/tmp/tmpzy5ao6x8/0/response.json", "log": "/tmp/tmpzy5ao6x8/0/worker.log", "started_at": 1793454079.9350133}
+{"event": "reward_replica_started", "name": "1", "pid": 2648639, "output": "/tmp/tmpzy5ao6x8/1/response.json", "log": "/tmp/tmpzy5ao6x8/1/worker.log", "started_at": 1793454079.9354289}
+{"event": "reward_replica_started", "name": "2", "pid": 2648640, "output": "/tmp/tmpzy5ao6x8/2/response.json", "log": "/tmp/tmpzy5ao6x8/2/worker.log", "started_at": 1793454079.9356587}
+{"event": "reward_replica_started", "name": "3", "pid": 2648641, "output": "/tmp/tmpzy5ao6x8/3/response.json", "log": "/tmp/tmpzy5ao6x8/3/worker.log", "started_at": 1793454079.9360685}
+ok
+test_failure_stops_owned_child_but_leaves_other_process (test_sdg_parallel.SDGParallelTests.test_failure_stops_owned_child_but_leaves_other_process) ... {"event": "reward_replica_started", "name": "0", "pid": 2648648, "output": "/tmp/tmpowldwbur/0.json", "log": "/tmp/tmpowldwbur/0.log", "started_at": 1793454080.0020432}
+{"event": "reward_replica_started", "name": "1", "pid": 2648649, "output": "/tmp/tmpowldwbur/1.json", "log": "/tmp/tmpowldwbur/1.log", "started_at": 1793454080.0023584}
+ok
+test_gpu4_is_rejected_before_launch (test_sdg_parallel.SDGParallelTests.test_gpu4_is_rejected_before_launch) ... ok
+test_merge_reorders_using_ids_and_rejects_invalid (test_sdg_parallel.SDGParallelTests.test_merge_reorders_using_ids_and_rejects_invalid) ... ok
+test_p24_k16_groups_are_not_split_or_lost (test_sdg_parallel.SDGParallelTests.test_p24_k16_groups_are_not_split_or_lost) ... ok
+
+----------------------------------------------------------------------
+Ran 74 tests in 0.613s
+
+OK

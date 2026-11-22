@@ -1,0 +1,19 @@
+# Full two-window ART training smoke at 1024; single GPU, two optimizer updates.
+name: moss-train-1024-cudnn-tuned
+model: {attention_backend: cudnn, dit_autotune_level: 4}
+data: {prompts: configs/prompts_1024_probe.jsonl}
+lora: {rank: 4, alpha: 4.0, preset: attn}
+sampling:
+  sampler: res_multistep
+  scheduler: beta
+  beta_alpha: 0.6
+  beta_beta: 0.6
+  height: 1024
+  width: 1024
+  steps: 50
+  prompts_per_rollout: 1
+  group_size: 2
+  train_timesteps: [0, 10, 20, 30, 40]
+training: {max_updates: 2, checkpoint_every: 2, evaluate_every: 0}
+reward: {kind: siglip, decode: true, batch_size: 1}
+runtime: {devices: [2], output_dir: outputs/train_1024_cudnn_tuned}

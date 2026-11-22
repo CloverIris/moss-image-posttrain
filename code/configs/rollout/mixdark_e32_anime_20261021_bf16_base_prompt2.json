@@ -1,0 +1,48 @@
+{
+  "model": {
+    "base_precision": "bf16",
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "path": "$MODEL_ROOT/MOSS-Image-Base",
+    "vae_conv_backend": "cudnn_bounded",
+    "vae_conv_workspace_mib": 256
+  },
+  "data": {
+    "prompts": "$CODE_ROOT/moss-art-jax/data/mixdark_e32_anime_20261021_prompt2.jsonl",
+    "cache": "cache/mixdark_e32_anime_20261021_bf16_base_prompt2",
+    "short_context_length": 512,
+    "context_length": 1024,
+    "negative_prompt": ""
+  },
+  "rollout": {
+    "count": 4,
+    "seed": 42,
+    "prompts_per_batch": 1,
+    "decode": true,
+    "save_latents": false,
+    "cache_intermediates": true
+  },
+  "sampling": {
+    "height": 768,
+    "width": 1792,
+    "steps": 50,
+    "sampler": "euler",
+    "scheduler": "moss",
+    "guidance_scale": 3.0,
+    "shift": 5.0,
+    "training_shift": 1.0
+  },
+  "preparation": {
+    "device": 4,
+    "async_prefetch": true
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "output_dir": "outputs/mixdark_e32_anime_20261021_bf16_base_prompt2"
+  }
+}

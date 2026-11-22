@@ -1,0 +1,126 @@
+{
+  "name": "moss-art-http-4gpu",
+  "run": {
+    "resume": "",
+    "init_adapter": "",
+    "checkpoint": "",
+    "adapter": "",
+    "sample_index": 0,
+    "seed": 42,
+    "decode": false
+  },
+  "preparation": {
+    "device": 4,
+    "max_sequence_length": 4096,
+    "full_weight_hash": false,
+    "limit": 0,
+    "auto_prepare": true,
+    "async_prefetch": true
+  },
+  "model": {
+    "kind": "moss",
+    "path": "$MODEL_ROOT/MOSS-Image-SFT",
+    "dtype": "bfloat16",
+    "tiny_seed": 123,
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4,
+    "vae_precision": "fp32",
+    "vae_low_precision_stages": [],
+    "vae_conv_backend": "xla",
+    "vae_conv_workspace_mib": 256
+  },
+  "lora": {
+    "rank": 4,
+    "alpha": 4.0,
+    "preset": "attn",
+    "seed": 42
+  },
+  "data": {
+    "prompts": "configs/prompts.jsonl",
+    "cache": "cache/text_buckets",
+    "negative_prompt": "",
+    "short_context_length": 0,
+    "context_length": 4096
+  },
+  "sampling": {
+    "height": 256,
+    "width": 256,
+    "steps": 50,
+    "group_size": 2,
+    "prompts_per_rollout": 4,
+    "guidance_scale": 3.0,
+    "skip_layers": [
+      22
+    ],
+    "train_timesteps": [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    "shift": 5.0,
+    "training_shift": 1.0,
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "beta_alpha": 0.6,
+    "beta_beta": 0.6
+  },
+  "art": {
+    "noise_level": 0.8,
+    "kl_threshold": 1e-05,
+    "eps": 1e-05,
+    "feedback": "scalar"
+  },
+  "optimizer": {
+    "learning_rate": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0
+  },
+  "training": {
+    "max_updates": 20,
+    "seed": 42,
+    "max_no_signal_rollouts": 20,
+    "checkpoint_every": 2,
+    "keep_checkpoints": 3,
+    "evaluate_every": 2
+  },
+  "reward": {
+    "kind": "http",
+    "command": [],
+    "timeout": 120,
+    "model_path": "$HOME/.cache/huggingface/hub/models--google--siglip2-so400m-patch14-384/snapshots/e8e487298228002f3d8a82e0cd5c8ea9c567f57f",
+    "python": "$CONDA_PREFIX/envs/torch_env/bin/python",
+    "device": "cpu",
+    "batch_size": 1,
+    "metric": "cosine",
+    "threads": 4,
+    "decode": true,
+    "cpu_decode": false,
+    "url": "http://127.0.0.1:8765/reward",
+    "http_max_retries": 2,
+    "http_retry_backoff": 0.5,
+    "http_bearer_token_env": "",
+    "http_response_limit_bytes": 1048576
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "platform": "cuda",
+    "allow_busy": false,
+    "busy_memory_mib": 1500,
+    "worker_timeout": 3600,
+    "output_dir": "outputs/moss_http_4gpu",
+    "cpu_threads": 4,
+    "memory_fraction": 0.9
+  }
+}

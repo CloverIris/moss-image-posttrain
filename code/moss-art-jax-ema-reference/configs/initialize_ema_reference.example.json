@@ -1,0 +1,8 @@
+{
+  "source_repo": "$CODE_ROOT/moss-art-jax-warmup4",
+  "source_config": "$MOSS_ROOT/runs/rank_sqrt_rerank_top1991_P24_K8_T4_768_U200_20261030_l2b1_from2/config.json",
+  "target_config": "/path/to/new_ema_training_config.json",
+  "source_checkpoint": "/path/to/committed_source_checkpoint",
+  "target_checkpoint": "/path/to/new_ema_checkpoint",
+  "report": "/path/to/new_ema_migration_report.json"
+}

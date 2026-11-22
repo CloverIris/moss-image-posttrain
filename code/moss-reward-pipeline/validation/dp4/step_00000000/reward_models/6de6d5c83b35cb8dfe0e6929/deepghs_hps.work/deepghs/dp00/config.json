@@ -1,0 +1,72 @@
+{
+  "hf_home": "$MOSS_ROOT/../moss-anime-ranker/cache/hf",
+  "ranker_root": "$MOSS_ROOT/../moss-anime-ranker",
+  "reserved_devices": [
+    4
+  ],
+  "busy_memory_mib": 1500,
+  "deepghs": {
+    "replica_devices": [
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ]
+    ],
+    "python": "$CONDA_PREFIX/envs/onnx_env/bin/python",
+    "cpu_threads": 2,
+    "extra_python_paths": [
+      "$MOSS_ROOT/../moss-anime-ranker/envs/deepghs/lib/python3.12/site-packages"
+    ],
+    "cuda_library_paths": [
+      "$MOSS_ROOT/../moss-anime-ranker/envs/tagger/lib/python3.12/site-packages/nvidia/cudnn/lib",
+      "/usr/local/cuda/lib64"
+    ],
+    "model": "swinv2pv3_v0_448_ls0.2_x",
+    "use_tf32": false,
+    "warmup_images": 1,
+    "devices": [
+      0
+    ]
+  },
+  "hps": {
+    "replica_devices": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "python": "$MOSS_ROOT/../moss-anime-ranker/envs/hpsv3/bin/python",
+    "project": "$DATA_DISK/hpsv3pp-jax",
+    "native_config": "$DATA_DISK/hpsv3pp-jax/configs/torch_native_tp.json",
+    "cpu_threads": 2,
+    "batch_size": 2,
+    "warmup_images": 2
+  },
+  "stage_order": [
+    "deepghs",
+    "hps"
+  ],
+  "_batch": {
+    "dp_rank": 0,
+    "participants": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "barrier_dir": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/deepghs_hps.work/deepghs/barriers/1793205940451270405",
+    "barrier_timeout_seconds": 900
+  }
+}

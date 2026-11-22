@@ -1,0 +1,45 @@
+{
+  "model": "deepghs/anime_aesthetic/swinv2pv3_v0_448_ls0.2_x",
+  "backend": "official imgutils + CUDA ONNX Runtime",
+  "ort_version": "1.25.0.dev20260307001",
+  "providers": [
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "gpus": [
+    1
+  ],
+  "cuda_provider_options": {
+    "sdpa_kernel": "0",
+    "use_tf32": "0",
+    "fuse_conv_bias": "0",
+    "prefer_nhwc": "0",
+    "tunable_op_max_tuning_duration_ms": "0",
+    "enable_skip_layer_norm_strict_mode": "0",
+    "tunable_op_tuning_enable": "0",
+    "tunable_op_enable": "0",
+    "use_ep_level_unified_stream": "0",
+    "device_id": "0",
+    "has_user_compute_stream": "0",
+    "gpu_external_empty_cache": "0",
+    "cudnn_conv_algo_search": "EXHAUSTIVE",
+    "cudnn_conv1d_pad_to_nc1d": "0",
+    "gpu_mem_limit": "18446744073709551615",
+    "gpu_external_alloc": "0",
+    "gpu_external_free": "0",
+    "arena_extend_strategy": "kNextPowerOfTwo",
+    "do_copy_in_default_stream": "1",
+    "enable_cuda_graph": "0",
+    "user_compute_stream": "0",
+    "cudnn_conv_use_max_workspace": "1"
+  },
+  "load_seconds": 2.674866109038703,
+  "warmup_seconds": 0.21828561089932919,
+  "inference_seconds": 0.03782436903566122,
+  "inference_started_at": 1793205944.6008456,
+  "inference_finished_at": 1793205944.638671,
+  "images": 1,
+  "total_images": 1,
+  "images_per_second": 26.437982324495334,
+  "process_seconds": 3.976068328949623
+}

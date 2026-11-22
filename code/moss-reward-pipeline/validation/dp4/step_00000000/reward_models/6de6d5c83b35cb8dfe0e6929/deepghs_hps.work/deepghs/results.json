@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "id": "prompt000002_roll000001",
+      "result": {
+        "status": "ok",
+        "label": "best",
+        "percentile": 0.9114308175364876,
+        "score": 4.928182749077678
+      }
+    },
+    {
+      "id": "prompt000004_roll000001",
+      "result": {
+        "status": "ok",
+        "label": "good",
+        "percentile": 0.6957787209351296,
+        "score": 4.085953820496798
+      }
+    },
+    {
+      "id": "prompt000019_roll000001",
+      "result": {
+        "status": "ok",
+        "label": "good",
+        "percentile": 0.7361033771168397,
+        "score": 4.236748859286308
+      }
+    },
+    {
+      "id": "prompt000020_roll000001",
+      "result": {
+        "status": "ok",
+        "label": "normal",
+        "percentile": 0.35146831506030957,
+        "score": 2.5004540905356407
+      }
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+{
+  "scores": [
+    0.5315227419815569,
+    0.5012307222083778,
+    0.3674282892756757,
+    0.30759949398766995
+  ],
+  "details": [
+    {
+      "id": "prompt000002_roll000001",
+      "global_id": "6de6d5c83b35cb8dfe0e6929:prompt000002_roll000001",
+      "collection_id": "6de6d5c83b35cb8dfe0e6929",
+      "index": 0,
+      "prompt_id": "prompt000002",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000000-s50.png",
+      "image_sha256": "f7245e0eba4d090146fd7c8fa93296433b3a93641ad90802e23044d60d423893",
+      "raw_scores": {
+        "kawai": 0.5243659019470215,
+        "deepghs": 0.9114308175364876,
+        "hps": 6.207971096038818,
+        "sdg_artifact": -0.07881470024585724
+      },
+      "reward": 0.5315227419815569,
+      "aesthetic_reward": 0.6103374422274142,
+      "artifact_penalty": -0.07881470024585724,
+      "normalized_scores": {
+        "kawai": 1.272807441254529,
+        "deepghs": 1.609183767274963,
+        "hps": 0.9406600881600339
+      },
+      "contributions": {
+        "kawai": 0.041892857794199934,
+        "deepghs": 0.05296426194738439,
+        "hps": 0.015480322485829768,
+        "sdg_artifact": -0.07881470024585724
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152,
+      "artifact_count": 5,
+      "ignored_misalignment_count": 0,
+      "model_details": {
+        "deepghs": {
+          "status": "ok",
+          "label": "best",
+          "percentile": 0.9114308175364876,
+          "score": 4.928182749077678
+        },
+        "hps": {
+          "status": "ok",
+          "mu": 6.207971096038818,
+          "log_sigma": -1.863560438156128,
+          "sigma": 0.15511935949325562,
+          "capability": 0.98828125
+        },
+        "kawai": {
+          "id": "prompt000002_roll000001",
+          "prompt_id": "prompt000002",
+          "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000000-s50.png",
+          "image_sha256": "f7245e0eba4d090146fd7c8fa93296433b3a93641ad90802e23044d60d423893",
+          "kawai": 0.5243659019470215,
+          "logits": [
+            -4.202739715576172,
+            3.2686374187469482,
+            3.753756284713745,
+            2.1489038467407227,
+            -3.3642327785491943
+          ],
+          "probabilities": [
+            0.00019275890372227877,
+            0.3386822044849396,
+            0.550144612789154,
+            0.11053460836410522,
+            0.0004458343028090894
+          ],
+          "class_weights": [
+            1.0,
+            0.8999999761581421,
+            0.5,
+            -0.5,
+            -1.0
+          ],
+          "id2label": {
+            "0": "SS_tier",
+            "1": "S_tier",
+            "2": "A_tier",
+            "3": "B_tier",
+            "4": "C_tier"
+          }
+        },
+        "sdg": {
+          "reward": -0.07881470024585724,
+          "base_reward": 0.0,
+          "artifact_penalty": -0.07881470024585724,
+          "weighted_artifact_penalty": -0.07881470024585724,
+          "artifact_count": 5,
+          "ignored_misalignment_count": 0,
+          "mode": "artifact_only",
+          "alpha_artifact": 0.5,
+          "alpha_misalignment": 0.0,
+          "latent_size": 64,
+          "penalty_weight": 1.0,
+          "sdg_boxes": [
+            {
+              "box_2d": [
+                12,
+                41,
+                287,
+                375
+              ],
+              "label": "artifact",
+              "importance": 60,
+              "description": "In the upper-left corner, the large text block is rendered as illegible gibberish, with distorted glyphs and nonsensical character shapes that fail to form coherent words."
+            },
+            {
+              "box_2d": [
+                752,
+                19,
+                990,
+                360
+              ],
+              "label": "artifact",
+              "importance": 60,
+              "description": "The text section in the upper-right corner displays malformed characters and nonsensical lettering, appearing as a jumble of illegible symbols rather than a readable title or list."
+            },
+            {
+              "box_2d": [
+                283,
+                925,
+                713,
+                972
+              ],
+              "label": "artifact",
+              "importance": 45,
+              "description": "The footer text at the bottom center consists of garbled, meaningless characters with inconsistent spacing and distorted shapes, failing to convey any clear information or credit."
+            },
+            {
+              "box_2d": [
+                452,
+                540,
+                550,
+                666
+              ],
+              "label": "artifact",
+              "importance": 40,
+              "description": "The character's hand resting on the lap appears fused and indistinct, with fingers that blend into the clothing and each other, lacking proper anatomical definition and separation."
+            },
+            {
+              "box_2d": [
+                10,
+                619,
+                335,
+                807
+              ],
+              "label": "artifact",
+              "importance": 60,
+              "description": "The screen surface on the image-left exhibits unnatural texture artifacts, where the glass or display appears glitchy and broken with jagged, incoherent lines rather than realistic damage."
+            }
+          ],
+          "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp00/response.sdg/96171300a43b4adeb305754b685f388a/predictions.jsonl",
+          "source_index": 0,
+          "processed_size": [
+            512,
+            512
+          ],
+          "output_tokens": 905,
+          "id": "prompt000002_roll000001",
+          "index": 0,
+          "sample_id": "prompt000002",
+          "prompt_index": 0,
+          "rollout_id": 0
+        }
+      },
+      "archive": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929",
+      "config_fingerprint": "6de6d5c83b35cb8dfe0e6929cf5187720dd76bc4783344289d0ff850019a1fb2"
+    },
+    {
+      "id": "prompt000004_roll000001",
+      "global_id": "6de6d5c83b35cb8dfe0e6929:prompt000004_roll000001",
+      "collection_id": "6de6d5c83b35cb8dfe0e6929",
+      "index": 1,
+      "prompt_id": "prompt000004",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000000-s66.png",
+      "image_sha256": "89bb475e4c9ba117d4fe9b0d48f39b431e8c2e125d4db423e7c21c8fb205cca2",
+      "raw_scores": {
+        "kawai": 0.8412679433822632,
+        "deepghs": 0.6957787209351296,
+        "hps": 0.6608845591545105,
+        "sdg_artifact": -0.011762695387005806
+      },
+      "reward": 0.5012307222083778,
+      "aesthetic_reward": 0.5129934175953836,
+      "artifact_penalty": -0.011762695387005806,
+      "normalized_scores": {
+        "kawai": 2.593708744086422,
+        "deepghs": -0.3560469849511838,
+        "hps": -3.6857799314387596
+      },
+      "contributions": {
+        "kawai": 0.08536866461786861,
+        "deepghs": -0.011718839177992206,
+        "hps": -0.06065640784449276,
+        "sdg_artifact": -0.011762695387005806
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152,
+      "artifact_count": 3,
+      "ignored_misalignment_count": 2,
+      "model_details": {
+        "deepghs": {
+          "status": "ok",
+          "label": "good",
+          "percentile": 0.6957787209351296,
+          "score": 4.085953820496798
+        },
+        "hps": {
+          "status": "ok",
+          "mu": 0.6608845591545105,
+          "log_sigma": -3.3573262691497803,
+          "sigma": 0.03482825681567192,
+          "capability": 0.99609375
+        },
+        "kawai": {
+          "id": "prompt000004_roll000001",
+          "prompt_id": "prompt000004",
+          "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000000-s66.png",
+          "image_sha256": "89bb475e4c9ba117d4fe9b0d48f39b431e8c2e125d4db423e7c21c8fb205cca2",
+          "kawai": 0.8412679433822632,
+          "logits": [
+            -2.3371307849884033,
+            4.180633068084717,
+            1.7589030265808105,
+            0.08823180198669434,
+            -1.501007318496704
+          ],
+          "probabilities": [
+            0.0013301798608154058,
+            0.900615394115448,
+            0.07994575053453445,
+            0.01503944955766201,
+            0.0030692636501044035
+          ],
+          "class_weights": [
+            1.0,
+            0.8999999761581421,
+            0.5,
+            -0.5,
+            -1.0
+          ],
+          "id2label": {
+            "0": "SS_tier",
+            "1": "S_tier",
+            "2": "A_tier",
+            "3": "B_tier",
+            "4": "C_tier"
+          }
+        },
+        "sdg": {
+          "reward": -0.011762695387005806,
+          "base_reward": 0.0,
+          "artifact_penalty": -0.011762695387005806,
+          "weighted_artifact_penalty": -0.011762695387005806,
+          "artifact_count": 3,
+          "ignored_misalignment_count": 2,
+          "mode": "artifact_only",
+          "alpha_artifact": 0.5,
+          "alpha_misalignment": 0.0,
+          "latent_size": 64,
+          "penalty_weight": 1.0,
+          "sdg_boxes": [
+            {
+              "box_2d": [
+                517,
+                805,
+                644,
+                973
+              ],
+              "label": "artifact",
+              "importance": 60,
+              "description": "The hand resting on the bed in the lower right displays severe anatomical distortion, where the fingers appear fused together and elongated, lacking distinct joints or natural separation."
+            },
+            {
+              "box_2d": [
+                435,
+                140,
+                557,
+                220
+              ],
+              "label": "artifact",
+              "importance": 42,
+              "description": "The facial features in the upper center are distorted, with asymmetrical eyes and a malformed mouth area that fail to render a coherent or realistic human expression."
+            },
+            {
+              "box_2d": [
+                442,
+                686,
+                530,
+                814
+              ],
+              "label": "artifact",
+              "importance": 52,
+              "description": "The groin area in the lower central region is anatomically incorrect, appearing as a strange, fleshy protrusion rather than a natural anatomical structure with proper depth and shape."
+            },
+            {
+              "box_2d": [
+                11,
+                1,
+                984,
+                995
+              ],
+              "label": "misalignment",
+              "importance": 95,
+              "description": "The character depicted does not match the requested identity of Goldenglow from Arknights, as she has pink hair instead of the signature orange-brown and lacks the character's specific costume details."
+            },
+            {
+              "box_2d": [
+                420,
+                242,
+                530,
+                314
+              ],
+              "label": "misalignment",
+              "importance": 78,
+              "description": "The hand near the chest is held static in a gesture but fails to perform the specific action of 'licking her hand' as requested, showing no interaction between the lips and the fingers."
+            }
+          ],
+          "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp01/response.sdg/0744680868fa4d418e5e120365cbd853/predictions.jsonl",
+          "source_index": 0,
+          "processed_size": [
+            512,
+            512
+          ],
+          "output_tokens": 1021,
+          "id": "prompt000004_roll000001",
+          "index": 1,
+          "sample_id": "prompt000004",
+          "prompt_index": 1,
+          "rollout_id": 0
+        }
+      },
+      "archive": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929",
+      "config_fingerprint": "6de6d5c83b35cb8dfe0e6929cf5187720dd76bc4783344289d0ff850019a1fb2"
+    },
+    {
+      "id": "prompt000019_roll000001",
+      "global_id": "6de6d5c83b35cb8dfe0e6929:prompt000019_roll000001",
+      "collection_id": "6de6d5c83b35cb8dfe0e6929",
+      "index": 2,
+      "prompt_id": "prompt000019",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000018-r000000-s186.png",
+      "image_sha256": "fd1bf89edfdb3b3c5c915f5a61459becb4a9697cb5695ac03b3424371ba7274d",
+      "raw_scores": {
+        "kawai": -0.06502196192741394,
+        "deepghs": 0.7361033771168397,
+        "hps": 3.726900577545166,
+        "sdg_artifact": -0.075408935546875
+      },
+      "reward": 0.3674282892756757,
+      "aesthetic_reward": 0.4428372248225507,
+      "artifact_penalty": -0.075408935546875,
+      "normalized_scores": {
+        "kawai": -1.1838608520109086,
+        "deepghs": 0.011430334537783608,
+        "hps": -1.1286286928751053
+      },
+      "contributions": {
+        "kawai": -0.038965292560302976,
+        "deepghs": 0.0003762151004236179,
+        "hps": -0.01857369771756993,
+        "sdg_artifact": -0.075408935546875
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152,
+      "artifact_count": 2,
+      "ignored_misalignment_count": 1,
+      "model_details": {
+        "deepghs": {
+          "status": "ok",
+          "label": "good",
+          "percentile": 0.7361033771168397,
+          "score": 4.236748859286308
+        },
+        "hps": {
+          "status": "ok",
+          "mu": 3.726900577545166,
+          "log_sigma": -2.656644582748413,
+          "sigma": 0.07018332183361053,
+          "capability": 0.98828125
+        },
+        "kawai": {
+          "id": "prompt000019_roll000001",
+          "prompt_id": "prompt000019",
+          "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000018-r000000-s186.png",
+          "image_sha256": "fd1bf89edfdb3b3c5c915f5a61459becb4a9697cb5695ac03b3424371ba7274d",
+          "kawai": -0.06502196192741394,
+          "logits": [
+            -5.466524124145508,
+            -2.3571321964263916,
+            5.740659236907959,
+            6.001399993896484,
+            -1.3537391424179077
+          ],
+          "probabilities": [
+            5.905216767132515e-06,
+            0.0001323206815868616,
+            0.4349644184112549,
+            0.5645365118980408,
+            0.0003609072882682085
+          ],
+          "class_weights": [
+            1.0,
+            0.8999999761581421,
+            0.5,
+            -0.5,
+            -1.0
+          ],
+          "id2label": {
+            "0": "SS_tier",
+            "1": "S_tier",
+            "2": "A_tier",
+            "3": "B_tier",
+            "4": "C_tier"
+          }
+        },
+        "sdg": {
+          "reward": -0.075408935546875,
+          "base_reward": 0.0,
+          "artifact_penalty": -0.075408935546875,
+          "weighted_artifact_penalty": -0.075408935546875,
+          "artifact_count": 2,
+          "ignored_misalignment_count": 1,
+          "mode": "artifact_only",
+          "alpha_artifact": 0.5,
+          "alpha_misalignment": 0.0,
+          "latent_size": 64,
+          "penalty_weight": 1.0,
+          "sdg_boxes": [
+            {
+              "box_2d": [
+                145,
+                261,
+                395,
+                608
+              ],
+              "label": "artifact",
+              "importance": 50,
+              "description": "The Evangelion Unit-01 in the background exhibits significant structural distortion, with garbled mechanical lines and asymmetrical geometry that fails to form a coherent, solid mecha shape."
+            },
+            {
+              "box_2d": [
+                535,
+                373,
+                840,
+                845
+              ],
+              "label": "artifact",
+              "importance": 75,
+              "description": "The character's upper body and arm display anatomical deformities, where the shoulder connection and torso volume appear unnatural and disjointed from the rest of the figure."
+            },
+            {
+              "box_2d": [
+                75,
+                100,
+                175,
+                170
+              ],
+              "label": "misalignment",
+              "importance": 32,
+              "description": "The upper sky region fails to include the requested 'bird in the sky,' leaving an empty or cloudy space instead of the specified avian silhouette described in the caption."
+            }
+          ],
+          "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp02/response.sdg/d3cdaa7654df4b9b8b90eda159fdc22b/predictions.jsonl",
+          "source_index": 0,
+          "processed_size": [
+            512,
+            512
+          ],
+          "output_tokens": 713,
+          "id": "prompt000019_roll000001",
+          "index": 2,
+          "sample_id": "prompt000019",
+          "prompt_index": 2,
+          "rollout_id": 0
+        }
+      },
+      "archive": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929",
+      "config_fingerprint": "6de6d5c83b35cb8dfe0e6929cf5187720dd76bc4783344289d0ff850019a1fb2"
+    },
+    {
+      "id": "prompt000020_roll000001",
+      "global_id": "6de6d5c83b35cb8dfe0e6929:prompt000020_roll000001",
+      "collection_id": "6de6d5c83b35cb8dfe0e6929",
+      "index": 3,
+      "prompt_id": "prompt000020",
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000019-r000000-s194.png",
+      "image_sha256": "04a2356b52871f8c856387eb6ddba19e8e00fc09e486119343318239c4dfc5fa",
+      "raw_scores": {
+        "kawai": -0.8007864356040955,
+        "deepghs": 0.35146831506030957,
+        "hps": 9.633410453796387,
+        "sdg_artifact": 0.0
+      },
+      "reward": 0.30759949398766995,
+      "aesthetic_reward": 0.30759949398766995,
+      "artifact_penalty": 0.0,
+      "normalized_scores": {
+        "kawai": -4.250651609985723,
+        "deepghs": -3.4937368502506505,
+        "hps": 3.797581397042244
+      },
+      "contributions": {
+        "kawai": -0.13990485729271365,
+        "deepghs": -0.11499195895150154,
+        "hps": 0.06249631023188511,
+        "sdg_artifact": 0.0
+      },
+      "fusion_weights": {
+        "kawai": 0.4,
+        "deepghs": 0.4,
+        "hps": 0.2
+      },
+      "artifact_weight": 1.0,
+      "output_offset": 0.5,
+      "output_gain": 0.0822843590404152,
+      "artifact_count": 0,
+      "ignored_misalignment_count": 0,
+      "model_details": {
+        "deepghs": {
+          "status": "ok",
+          "label": "normal",
+          "percentile": 0.35146831506030957,
+          "score": 2.5004540905356407
+        },
+        "hps": {
+          "status": "ok",
+          "mu": 9.633410453796387,
+          "log_sigma": -0.9391404390335083,
+          "sigma": 0.39096373319625854,
+          "capability": 0.99609375
+        },
+        "kawai": {
+          "id": "prompt000020_roll000001",
+          "prompt_id": "prompt000020",
+          "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000019-r000000-s194.png",
+          "image_sha256": "04a2356b52871f8c856387eb6ddba19e8e00fc09e486119343318239c4dfc5fa",
+          "kawai": -0.8007864356040955,
+          "logits": [
+            -1.9410579204559326,
+            -0.4233016073703766,
+            -0.9937190413475037,
+            0.41563528776168823,
+            2.450477361679077
+          ],
+          "probabilities": [
+            0.010054180398583412,
+            0.0458669476211071,
+            0.02592810057103634,
+            0.10613179951906204,
+            0.8120190501213074
+          ],
+          "class_weights": [
+            1.0,
+            0.8999999761581421,
+            0.5,
+            -0.5,
+            -1.0
+          ],
+          "id2label": {
+            "0": "SS_tier",
+            "1": "S_tier",
+            "2": "A_tier",
+            "3": "B_tier",
+            "4": "C_tier"
+          }
+        },
+        "sdg": {
+          "reward": 0.0,
+          "base_reward": 0.0,
+          "artifact_penalty": 0.0,
+          "weighted_artifact_penalty": 0.0,
+          "artifact_count": 0,
+          "ignored_misalignment_count": 0,
+          "mode": "artifact_only",
+          "alpha_artifact": 0.5,
+          "alpha_misalignment": 0.0,
+          "latent_size": 64,
+          "penalty_weight": 1.0,
+          "sdg_boxes": [],
+          "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp03/response.sdg/9ac99685c756441abd385ee0bf1f9749/predictions.jsonl",
+          "source_index": 0,
+          "processed_size": [
+            512,
+            512
+          ],
+          "output_tokens": 281,
+          "id": "prompt000020_roll000001",
+          "index": 3,
+          "sample_id": "prompt000020",
+          "prompt_index": 3,
+          "rollout_id": 0
+        }
+      },
+      "archive": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929",
+      "config_fingerprint": "6de6d5c83b35cb8dfe0e6929cf5187720dd76bc4783344289d0ff850019a1fb2"
+    }
+  ],
+  "archive": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929",
+  "fingerprint": "6de6d5c83b35cb8dfe0e6929cf5187720dd76bc4783344289d0ff850019a1fb2"
+}

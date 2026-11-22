@@ -1,0 +1,27 @@
+{
+  "controller_python": "/usr/bin/python3",
+  "batch_root": "$DATA_DISK/moss-eval-batch",
+  "batch_config": "$DATA_DISK/moss-reward-pipeline/deepghs_hps.config.json",
+  "kawai_python": "$CONDA_PREFIX/envs/vllm_env/bin/python",
+  "kawai": {
+    "device": 0,
+    "batch_size": 2,
+    "expected_id2label": [
+      "SS_tier",
+      "S_tier",
+      "A_tier",
+      "B_tier",
+      "C_tier"
+    ],
+    "model_path": "$DATA_DISK/models/kawai-aesthetic-scorer-convnextv2",
+    "dtype": "float32"
+  },
+  "sdg_root": "$DATA_DISK/sdg-eval",
+  "sdg_config": "$DATA_DISK/sdg-eval/sdg_reward.config.json",
+  "sdg_python": "$CONDA_PREFIX/envs/vllm_env/bin/python",
+  "calibration": "$DATA_DISK/moss-reward-pipeline/calibration.json",
+  "artifact_weight": 1.0,
+  "archive_root": "$DATA_DISK/moss-reward-pipeline/validation",
+  "allowed_archive_root": "$DATA_DISK",
+  "stage_timeout": 3600
+}

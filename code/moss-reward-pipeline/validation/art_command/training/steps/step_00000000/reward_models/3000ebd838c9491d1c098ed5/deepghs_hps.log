@@ -1,0 +1,9 @@
+
+ATTEMPT 1793204072.3546412
+{"event": "started", "stage": "deepghs", "dp_rank": 0, "pid": 2273768, "gpus": [0], "images": 2}
+{"event": "started", "stage": "deepghs", "dp_rank": 1, "pid": 2273769, "gpus": [1], "images": 2}
+{"event": "stage_complete", "stage": "deepghs", "stage_wall_seconds": 4.5128694109153, "inference_images_per_second": 33.86955433351906}
+{"event": "started", "stage": "hps", "dp_rank": 0, "pid": 2273874, "gpus": [0, 3], "images": 2}
+{"event": "started", "stage": "hps", "dp_rank": 1, "pid": 2273875, "gpus": [1, 2], "images": 2}
+{"event": "stage_complete", "stage": "hps", "stage_wall_seconds": 12.666154330945574, "inference_images_per_second": 10.21233743071441}
+{"event": "complete", "images": 4, "wall_seconds": 17.34550193301402, "images_per_second": null, "output": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/deepghs_hps.json"}

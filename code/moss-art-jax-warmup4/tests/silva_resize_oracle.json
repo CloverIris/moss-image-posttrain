@@ -1,0 +1,61 @@
+{
+  "oracle": "Torch 2.11.0 CPU, torchvision uint8 bilinear antialias=True",
+  "cases": [
+    {
+      "shape": [
+        17,
+        39
+      ],
+      "uint8_sha256": "d7986217b27a04e0d3d5049418cad16ae4e80d5057a122622c7e7d913c7ea645",
+      "pixels_sha256": "4462f73c20a19f162d11f59a18ce0a58227e352fc6732e64176f7f1d86577c49"
+    },
+    {
+      "shape": [
+        384,
+        384
+      ],
+      "uint8_sha256": "6102cd866a18f0dacdd886d08588f19879b080b5f3f0afde04ccaf0a736dfe66",
+      "pixels_sha256": "d245739ef5282614f93eaaad0682d46dd014136d270ae29a63f61fb496c8dfc2"
+    },
+    {
+      "shape": [
+        768,
+        768
+      ],
+      "uint8_sha256": "003c9ac5c0e042fd570ba58a6981baef4e14655dc91a8b35af71c63111756ea7",
+      "pixels_sha256": "15ce9bcc77adc6a8c0a3b9c09c1c2e754927c93ada4d8425b50e53a5437793fa"
+    },
+    {
+      "shape": [
+        1024,
+        1024
+      ],
+      "uint8_sha256": "455e4130a6fb6ab8a84bdac401be34cd27a03e91d7fd27dde31716f88d8fe14d",
+      "pixels_sha256": "fcdd24aacd2f51e8de0a2c253e8c58eb2525959ce85c1856c7d16b07bc374e80"
+    },
+    {
+      "shape": [
+        1,
+        10
+      ],
+      "uint8_sha256": "21c762906d525ced9fb34c5f6cc75735e8c713bd1b3cff05ee42a58fea5ad729",
+      "pixels_sha256": "e82a52f137aa88258feb4cc1b76fab5bf22365b908e9412e93d63aab9385578e"
+    },
+    {
+      "shape": [
+        555,
+        777
+      ],
+      "uint8_sha256": "999641b8b13acad119d2d81a7274dcae900b60fbe9f7277e8cf211a604af63d2",
+      "pixels_sha256": "9f5f19ea8311147a93e4b823de7ccd77eda080f9dcce601cfe7a78062a507e26"
+    },
+    {
+      "shape": [
+        384,
+        205
+      ],
+      "uint8_sha256": "f0c79a84dd052c24315a5a214f9643a7769cea34b421f784a0529ff707a7dbb5",
+      "pixels_sha256": "ea705f7b7ac1a8337959b1bf928e3f89767c831dfbd159538e416be65edafea2"
+    }
+  ]
+}

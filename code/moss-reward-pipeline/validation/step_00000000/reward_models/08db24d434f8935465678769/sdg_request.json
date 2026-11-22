@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "index": 0,
+      "id": "prompt000002_roll000001",
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000000-s50.png",
+      "prompt": "A dark magazine-cover illustration of Theresa (Arknights), a solitary girl with black horns, shown from the side with a sad, expressionless face as she looks at a screen. The artwork uses chiaroscuro and volumetric lighting, with stylistic references to ask (askzy), Ningen Mame, nixeu, and cui (jidanhaidaitang). The palette is largely monochrome and greyscale with muted color and partly colored accents, softened by gaussian blur. Grass, broken glass shards, and blood appear in the scene, and the mood evokes a world of darkness and a dark mind.",
+      "prompt_id": "prompt000002",
+      "image_sha256": "f7245e0eba4d090146fd7c8fa93296433b3a93641ad90802e23044d60d423893"
+    },
+    {
+      "index": 1,
+      "id": "prompt000002_roll000002",
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 1,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000001-s51.png",
+      "prompt": "A dark magazine-cover illustration of Theresa (Arknights), a solitary girl with black horns, shown from the side with a sad, expressionless face as she looks at a screen. The artwork uses chiaroscuro and volumetric lighting, with stylistic references to ask (askzy), Ningen Mame, nixeu, and cui (jidanhaidaitang). The palette is largely monochrome and greyscale with muted color and partly colored accents, softened by gaussian blur. Grass, broken glass shards, and blood appear in the scene, and the mood evokes a world of darkness and a dark mind.",
+      "prompt_id": "prompt000002",
+      "image_sha256": "2fbbea38583a12fd1dcecc2cc986b94347bf8beacf58c263a31482d6f85c97e9"
+    },
+    {
+      "index": 2,
+      "id": "prompt000004_roll000001",
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000000-s66.png",
+      "prompt": "A high-resolution illustration of Goldenglow from Arknights, a solo adult woman in an alternate costume with no headwear, kneeling on a bed in a bedroom. She has a drunk blush and a seductive smile as she looks at the viewer and licks her hand. Her groin and linea alba are visible, her pussy is exposed, and cum is on her breasts, face, and hands. She is surrounded by condoms, with one hand between her legs and facial cum present. Her body is wet, sweaty, and steaming, with volumetric lighting and focus on her pussy. The work uses references to ask (askzy), ningen mame, nixeu, and cui (jidanhaidaitang).",
+      "prompt_id": "prompt000004",
+      "image_sha256": "89bb475e4c9ba117d4fe9b0d48f39b431e8c2e125d4db423e7c21c8fb205cca2"
+    },
+    {
+      "index": 3,
+      "id": "prompt000004_roll000002",
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 1,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000001-s67.png",
+      "prompt": "A high-resolution illustration of Goldenglow from Arknights, a solo adult woman in an alternate costume with no headwear, kneeling on a bed in a bedroom. She has a drunk blush and a seductive smile as she looks at the viewer and licks her hand. Her groin and linea alba are visible, her pussy is exposed, and cum is on her breasts, face, and hands. She is surrounded by condoms, with one hand between her legs and facial cum present. Her body is wet, sweaty, and steaming, with volumetric lighting and focus on her pussy. The work uses references to ask (askzy), ningen mame, nixeu, and cui (jidanhaidaitang).",
+      "prompt_id": "prompt000004",
+      "image_sha256": "d26b4a59c92535aa2c17da1811ecf24bf8061512790f7d3dfab1181d69e0bfe7"
+    }
+  ],
+  "config": {
+    "model_path": "$DATA_DISK/models/sdg-detector-grpo",
+    "device": "cuda:0",
+    "batch_size": 4,
+    "metric": "artifact_penalty",
+    "threads": 4
+  }
+}

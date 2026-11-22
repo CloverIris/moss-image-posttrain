@@ -1,0 +1,8 @@
+{
+  "moss_art/config.py": "9f4a38f350714543471e6756c232d34d241619693be22012a4b6ef2638657d72",
+  "moss_art/model.py": "776d637a5d9b8f9a76334184996c4fb427efc109c1e3761e80b4a81f6fc69257",
+  "moss_art/mesh_runtime.py": "752068d080905f6fa6820f9c4a0cc552a9222a3c1e0bf7b3fadb499a1b3dc4b3",
+  "moss_art/worker.py": "67249092a3c55a84c603d2d9f56c08e721df024edbccbd167f8ba3fa54befa21",
+  "moss_art/trainer.py": "1a3cef98f40e514f0a1f6ae9daf39d3e0cc5f7827a069c169904a8177a700c52",
+  "configs/art/silva_anchor_mxfp8_calibrated_sampler_mix.json": "3eb997e0671af663813e9bac25d4ca5cf3cf682707591b31ff3243adf4fe46ab"
+}

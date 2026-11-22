@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "$DATA_DISK/moss-reward-pipeline/run_reward_pipeline.py",
+    "--config",
+    "$MOSS_ROOT/runs/reward4_P8_K16_T4_mxfp8_20261029/reward_pipeline.config.json",
+    "--request",
+    "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_attempts/attempt_0001/request.json",
+    "--output",
+    "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_attempts/attempt_0001/response.json"
+  ],
+  "context": {
+    "version": 1,
+    "run_output_dir": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training",
+    "step_dir": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000",
+    "update": 0,
+    "rollout": 0,
+    "replay_bundle": "$DATA_DISK/moss-reward-pipeline/validation/art_command/bundle",
+    "config_fingerprint": "725a74ef64a48e5fb2015545f6c668f5952dad4190b6de9697a0933f52b9ad15",
+    "config_sha256": "c158851462e359a49a005fdb9afd8bb83d2c10fd2963f7ed630493463d0d0ea6",
+    "source_commit": "artifact-integration-validation"
+  },
+  "status": "running",
+  "started": 1793204072.3200777
+}

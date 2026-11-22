@@ -1,0 +1,42 @@
+{
+  "model": {
+    "base_precision": "mxfp8",
+    "attention_backend": "cudnn",
+    "dit_autotune_level": 4
+  },
+  "data": {
+    "prompts": "$CODE_ROOT/moss-art-jax/data/makima_round1_20261021.jsonl",
+    "cache": "cache/makima_round1_20261021",
+    "short_context_length": 512,
+    "context_length": 1024,
+    "negative_prompt": ""
+  },
+  "rollout": {
+    "count": 8,
+    "seed": 42,
+    "prompts_per_batch": 1,
+    "decode": true,
+    "save_latents": false
+  },
+  "sampling": {
+    "height": 1248,
+    "width": 832,
+    "steps": 50,
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "guidance_scale": 3.0
+  },
+  "preparation": {
+    "device": 4,
+    "async_prefetch": true
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "output_dir": "outputs/makima_round1_8_mxfp8_20261021"
+  }
+}

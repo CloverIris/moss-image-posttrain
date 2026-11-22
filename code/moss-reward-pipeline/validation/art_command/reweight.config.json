@@ -1,0 +1,11 @@
+{
+  "input": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/per_image.jsonl",
+  "output": "$DATA_DISK/moss-reward-pipeline/validation/art_command/reweight_same_weights.json",
+  "calibration": "$DATA_DISK/moss-reward-pipeline/calibration.json",
+  "weights": {
+    "kawai": 0.4,
+    "deepghs": 0.4,
+    "hps": 0.2
+  },
+  "artifact_weight": 1.0
+}

@@ -1,0 +1,6 @@
+model: {attention_backend: cudnn, dit_autotune_level: 4, activation_storage: gpu, checkpoint_interval: 1}
+data: {cache: cache/sft_1024_smoke, context_length: 4096}
+lora: {rank: 4, alpha: 4.0, preset: attn-mlp}
+sft: {conditioning_dropout: 0.0}
+training: {max_updates: 1, batch_size: 2, checkpoint_every: 1}
+runtime: {devices: [2], output_dir: outputs/sft_1024_smoke}

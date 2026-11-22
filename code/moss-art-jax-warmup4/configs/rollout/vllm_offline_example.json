@@ -1,0 +1,51 @@
+{
+  "model": {
+    "path": "$MODEL_ROOT/MOSS-Image-Base",
+    "base_precision": "bf16"
+  },
+  "preparation": {
+    "backend": "vllm",
+    "async_prefetch": false,
+    "vllm": {
+      "python": "$CONDA_PREFIX/envs/vllm_env/bin/python",
+      "devices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "tensor_parallel_size": 1,
+      "batch_size": 8,
+      "gpu_memory_utilization": 0.8,
+      "max_num_batched_tokens": 8192,
+      "max_num_seqs": 8,
+      "enforce_eager": false,
+      "pipeline_parallel_size": 2,
+      "data_parallel_size": 2,
+      "topology_aware": true,
+      "storage_dtype": "bfloat16"
+    },
+    "auto_prepare": false
+  },
+  "data": {
+    "prompts": "tests/fixtures/vllm_prompts.jsonl",
+    "cache": "$MOSS_ROOT/cache/qwen_dp2_pp2_bf16_smoke_20261024",
+    "context_length": 512,
+    "short_context_length": 128
+  },
+  "rollout": {
+    "count": 4,
+    "prompts_per_batch": 4,
+    "decode": true,
+    "cache_intermediates": false
+  },
+  "runtime": {
+    "devices": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "output_dir": "$MOSS_ROOT/rollouts/vllm_offline_example_20261024"
+  }
+}

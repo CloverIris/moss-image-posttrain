@@ -1,0 +1,11 @@
+{
+  "device": 3,
+  "mode": "art",
+  "batch": 2,
+  "context": 64,
+  "activation_storage": "cpu",
+  "checkpoint_interval": 1,
+  "resident_vae": true,
+  "repeats": 2,
+  "output": "outputs/dp_capacity/art_b2_ctx64_cpu1_vae"
+}

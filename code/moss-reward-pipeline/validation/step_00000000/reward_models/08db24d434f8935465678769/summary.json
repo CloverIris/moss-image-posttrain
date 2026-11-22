@@ -1,0 +1,14 @@
+{
+  "images": 4,
+  "mean": 0.49937790427033746,
+  "std": 0.048119019174967345,
+  "min": 0.42421741579788663,
+  "max": 0.5530161796782332,
+  "artifact_image_fraction": 1.0,
+  "artifact_weight": 1.0,
+  "aesthetic_weights": {
+    "kawai": 0.4,
+    "deepghs": 0.4,
+    "hps": 0.2
+  }
+}

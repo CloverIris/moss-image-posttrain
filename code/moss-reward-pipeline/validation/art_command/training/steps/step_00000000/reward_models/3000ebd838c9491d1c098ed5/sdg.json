@@ -1,0 +1,332 @@
+{
+  "scores": [
+    -0.11808471381664276,
+    -0.05076904594898224,
+    -0.0887146070599556,
+    -0.003352050669491291
+  ],
+  "details": [
+    {
+      "reward": -0.11808471381664276,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.11808471381664276,
+      "weighted_artifact_penalty": -0.11808471381664276,
+      "artifact_count": 5,
+      "ignored_misalignment_count": 0,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            11,
+            42,
+            287,
+            375
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "In the upper-left corner, the large text block is rendered as illegible gibberish, with distorted glyphs and nonsensical character shapes that fail to form coherent words."
+        },
+        {
+          "box_2d": [
+            752,
+            19,
+            990,
+            360
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "The text section in the upper-right corner consists of malformed, alien-like characters and blurred strokes, resulting in a title that is unreadable and lacks semantic meaning."
+        },
+        {
+          "box_2d": [
+            283,
+            926,
+            710,
+            973
+          ],
+          "label": "artifact",
+          "importance": 45,
+          "description": "At the bottom center of the image, the footer text is composed of garbled, meaningless letter-like shapes that do not spell out any recognizable words or credits."
+        },
+        {
+          "box_2d": [
+            452,
+            540,
+            553,
+            667
+          ],
+          "label": "artifact",
+          "importance": 45,
+          "description": "The character's hand, resting centrally against the white fabric, exhibits fused fingers and a melted appearance, lacking distinct anatomical separation or clear joint structure."
+        },
+        {
+          "box_2d": [
+            10,
+            172,
+            355,
+            757
+          ],
+          "label": "artifact",
+          "importance": 75,
+          "description": "The screen surface on the image-left displays unnatural texture artifacts, where the glass or monitor material appears glitchy and jagged without a realistic physical explanation."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/sdg.sdg/7e56bde52b2348feb58ec324ac810931/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 894,
+      "id": "prompt000002_roll000001",
+      "index": 0,
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 0
+    },
+    {
+      "reward": -0.05076904594898224,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.05076904594898224,
+      "weighted_artifact_penalty": -0.05076904594898224,
+      "artifact_count": 3,
+      "ignored_misalignment_count": 0,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            137,
+            10,
+            872,
+            30
+          ],
+          "label": "artifact",
+          "importance": 32,
+          "description": "The text line centered at the very top edge consists of malformed, illegible characters that look like gibberish rather than coherent words or a proper title."
+        },
+        {
+          "box_2d": [
+            1,
+            339,
+            50,
+            366
+          ],
+          "label": "artifact",
+          "importance": 12,
+          "description": "On the screen to the image-left, a graphical icon or text element is rendered as a blurry, indistinct smudge, lacking clear geometry or recognizable form."
+        },
+        {
+          "box_2d": [
+            47,
+            646,
+            470,
+            945
+          ],
+          "label": "artifact",
+          "importance": 78,
+          "description": "The large block of text overlays in the lower-left area contains garbled, nonsensical characters and inconsistent spacing, failing to form legible names or credits."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/sdg.sdg/7e56bde52b2348feb58ec324ac810931/predictions.jsonl",
+      "source_index": 1,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 628,
+      "id": "prompt000002_roll000002",
+      "index": 1,
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 1
+    },
+    {
+      "reward": -0.0887146070599556,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.0887146070599556,
+      "weighted_artifact_penalty": -0.0887146070599556,
+      "artifact_count": 4,
+      "ignored_misalignment_count": 2,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            438,
+            146,
+            555,
+            203
+          ],
+          "label": "artifact",
+          "importance": 45,
+          "description": "The eyes on the character's face are rendered with significant distortion, showing asymmetrical shapes and messy pupil definition that fail to maintain a coherent gaze or clean anime style."
+        },
+        {
+          "box_2d": [
+            438,
+            246,
+            520,
+            306
+          ],
+          "label": "artifact",
+          "importance": 45,
+          "description": "The hand positioned near the chest exhibits anatomical deformities, where the fingers appear fused and lack distinct joints, creating a blob-like shape rather than a structured hand."
+        },
+        {
+          "box_2d": [
+            445,
+            700,
+            540,
+            811
+          ],
+          "label": "artifact",
+          "importance": 45,
+          "description": "The groin area displays a structural anomaly, appearing as an undefined, amorphous mass of flesh and texture rather than a correctly modeled anatomical opening or natural shadow."
+        },
+        {
+          "box_2d": [
+            10,
+            760,
+            984,
+            992
+          ],
+          "label": "artifact",
+          "importance": 75,
+          "description": "The legs and feet at the bottom of the image are anatomically incorrect, showing twisted joints and unnatural curvature that makes the limbs appear rubbery and disconnected from the hips."
+        },
+        {
+          "box_2d": [
+            10,
+            0,
+            986,
+            994
+          ],
+          "label": "misalignment",
+          "importance": 95,
+          "description": "The depicted character fails to match the specific identity of Goldenglow from Arknights, appearing instead as a generic pink-haired anime figure without the correct hair color, uniform, or facial features."
+        },
+        {
+          "box_2d": [
+            327,
+            0,
+            673,
+            300
+          ],
+          "label": "misalignment",
+          "importance": 85,
+          "description": "The character's head region includes unrequested animal ears and specific hair accessories that deviate from the prompt's instruction for 'no headwear' and an alternate costume, adding extraneous elements."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/sdg.sdg/7e56bde52b2348feb58ec324ac810931/predictions.jsonl",
+      "source_index": 2,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 1251,
+      "id": "prompt000004_roll000001",
+      "index": 2,
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 0
+    },
+    {
+      "reward": -0.003352050669491291,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.003352050669491291,
+      "weighted_artifact_penalty": -0.003352050669491291,
+      "artifact_count": 3,
+      "ignored_misalignment_count": 2,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            457,
+            308,
+            570,
+            417
+          ],
+          "label": "artifact",
+          "importance": 50,
+          "description": "The raised hand near the face exhibits severe structural distortion, where the fingers are fused together into an indistinct, melted mass rather than showing clear, separated digits."
+        },
+        {
+          "box_2d": [
+            205,
+            706,
+            257,
+            744
+          ],
+          "label": "artifact",
+          "importance": 20,
+          "description": "On the image-left foot tucked beneath the leg, the toes appear fused and indistinct, lacking proper anatomical separation and looking like a merged, undefined lump."
+        },
+        {
+          "box_2d": [
+            773,
+            739,
+            840,
+            779
+          ],
+          "label": "artifact",
+          "importance": 22,
+          "description": "On the image-right foot extended near the bed edge, the toes are malformed and blended together, failing to show distinct digits or correct anatomical geometry."
+        },
+        {
+          "box_2d": [
+            1,
+            0,
+            995,
+            999
+          ],
+          "label": "misalignment",
+          "importance": 95,
+          "description": "The character depicted does not match the specific identity of Goldenglow from Arknights, as she has pink hair and generic anime features rather than the character's signature dark hair and design."
+        },
+        {
+          "box_2d": [
+            1,
+            567,
+            995,
+            999
+          ],
+          "label": "misalignment",
+          "importance": 94,
+          "description": "The requested condoms are not visible in the scene; the objects scattered around the bed appear to be generic candies or small toys rather than the specific items described."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/sdg.sdg/7e56bde52b2348feb58ec324ac810931/predictions.jsonl",
+      "source_index": 3,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 1015,
+      "id": "prompt000004_roll000002",
+      "index": 3,
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 1
+    }
+  ],
+  "mode": "artifact_only",
+  "load_seconds": 17.006850728066638,
+  "inference_seconds": 15.374966977047734,
+  "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/art_command/training/steps/step_00000000/reward_models/3000ebd838c9491d1c098ed5/sdg.sdg/7e56bde52b2348feb58ec324ac810931/predictions.jsonl",
+  "model": "$DATA_DISK/models/sdg-detector-grpo"
+}

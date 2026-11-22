@@ -1,0 +1,19 @@
+{
+  "name": "qwen-standalone-pp2-smoke",
+  "model": {"kind": "moss", "path": "$MODEL_ROOT/MOSS-Image-Base"},
+  "preparation": {
+    "backend": "vllm", "auto_prepare": false, "async_prefetch": false,
+    "vllm": {
+      "devices": [1, 2], "tensor_parallel_size": 1,
+      "pipeline_parallel_size": 2, "data_parallel_size": 1,
+      "topology_aware": true, "storage_dtype": "bfloat16",
+      "batch_size": 8, "max_num_seqs": 8, "max_num_batched_tokens": 8192,
+      "gpu_memory_utilization": 0.8, "enforce_eager": false
+    }
+  },
+  "data": {
+    "prompts": "tests/fixtures/vllm_prompts.jsonl",
+    "cache": "$MOSS_ROOT/cache/qwen_pp2_bf16_smoke_20261024",
+    "context_length": 512, "short_context_length": 128
+  }
+}

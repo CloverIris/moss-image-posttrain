@@ -1,0 +1,7 @@
+{
+  "model_dir": "$MODEL_ROOT/MOSS-Image-Base",
+  "output_dir": "$MOSS_ROOT/cache/mxfp8/MOSS-Image-Base-v1",
+  "platform": "cuda",
+  "device": 0,
+  "include_transpose": false
+}

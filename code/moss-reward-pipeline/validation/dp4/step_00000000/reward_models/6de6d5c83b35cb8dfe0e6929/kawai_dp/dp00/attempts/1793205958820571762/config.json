@@ -1,0 +1,15 @@
+{
+  "device": 0,
+  "batch_size": 2,
+  "expected_id2label": [
+    "SS_tier",
+    "S_tier",
+    "A_tier",
+    "B_tier",
+    "C_tier"
+  ],
+  "model_path": "$DATA_DISK/models/kawai-aesthetic-scorer-convnextv2",
+  "dtype": "float32",
+  "input": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/kawai_dp/dp00/attempts/1793205958820571762/input.json",
+  "output": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/kawai_dp/dp00/attempts/1793205958820571762/result.json"
+}

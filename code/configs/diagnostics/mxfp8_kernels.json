@@ -1,0 +1,6 @@
+{
+  "device": 3,
+  "reference_project": "$HOME/KohakuMossTrainer",
+  "torch_python": "$CONDA_PREFIX/envs/torch_env/bin/python",
+  "reference_fixture": "outputs/mxfp8_kohaku_reference.npz"
+}

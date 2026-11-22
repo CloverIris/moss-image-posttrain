@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.jax_cache/
+outputs/
+cache/
+*.log
+
+*.egg-info/
+build/
+dist/
+reports/vae_precision_panels/

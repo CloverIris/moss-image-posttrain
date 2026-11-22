@@ -1,0 +1,325 @@
+{
+  "scores": [
+    -0.07881470024585724,
+    -0.011762695387005806,
+    -0.075408935546875,
+    0.0
+  ],
+  "details": [
+    {
+      "reward": -0.07881470024585724,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.07881470024585724,
+      "weighted_artifact_penalty": -0.07881470024585724,
+      "artifact_count": 5,
+      "ignored_misalignment_count": 0,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            12,
+            41,
+            287,
+            375
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "In the upper-left corner, the large text block is rendered as illegible gibberish, with distorted glyphs and nonsensical character shapes that fail to form coherent words."
+        },
+        {
+          "box_2d": [
+            752,
+            19,
+            990,
+            360
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "The text section in the upper-right corner displays malformed characters and nonsensical lettering, appearing as a jumble of illegible symbols rather than a readable title or list."
+        },
+        {
+          "box_2d": [
+            283,
+            925,
+            713,
+            972
+          ],
+          "label": "artifact",
+          "importance": 45,
+          "description": "The footer text at the bottom center consists of garbled, meaningless characters with inconsistent spacing and distorted shapes, failing to convey any clear information or credit."
+        },
+        {
+          "box_2d": [
+            452,
+            540,
+            550,
+            666
+          ],
+          "label": "artifact",
+          "importance": 40,
+          "description": "The character's hand resting on the lap appears fused and indistinct, with fingers that blend into the clothing and each other, lacking proper anatomical definition and separation."
+        },
+        {
+          "box_2d": [
+            10,
+            619,
+            335,
+            807
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "The screen surface on the image-left exhibits unnatural texture artifacts, where the glass or display appears glitchy and broken with jagged, incoherent lines rather than realistic damage."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp00/response.sdg/96171300a43b4adeb305754b685f388a/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 905,
+      "id": "prompt000002_roll000001",
+      "index": 0,
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 0
+    },
+    {
+      "reward": -0.011762695387005806,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.011762695387005806,
+      "weighted_artifact_penalty": -0.011762695387005806,
+      "artifact_count": 3,
+      "ignored_misalignment_count": 2,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            517,
+            805,
+            644,
+            973
+          ],
+          "label": "artifact",
+          "importance": 60,
+          "description": "The hand resting on the bed in the lower right displays severe anatomical distortion, where the fingers appear fused together and elongated, lacking distinct joints or natural separation."
+        },
+        {
+          "box_2d": [
+            435,
+            140,
+            557,
+            220
+          ],
+          "label": "artifact",
+          "importance": 42,
+          "description": "The facial features in the upper center are distorted, with asymmetrical eyes and a malformed mouth area that fail to render a coherent or realistic human expression."
+        },
+        {
+          "box_2d": [
+            442,
+            686,
+            530,
+            814
+          ],
+          "label": "artifact",
+          "importance": 52,
+          "description": "The groin area in the lower central region is anatomically incorrect, appearing as a strange, fleshy protrusion rather than a natural anatomical structure with proper depth and shape."
+        },
+        {
+          "box_2d": [
+            11,
+            1,
+            984,
+            995
+          ],
+          "label": "misalignment",
+          "importance": 95,
+          "description": "The character depicted does not match the requested identity of Goldenglow from Arknights, as she has pink hair instead of the signature orange-brown and lacks the character's specific costume details."
+        },
+        {
+          "box_2d": [
+            420,
+            242,
+            530,
+            314
+          ],
+          "label": "misalignment",
+          "importance": 78,
+          "description": "The hand near the chest is held static in a gesture but fails to perform the specific action of 'licking her hand' as requested, showing no interaction between the lips and the fingers."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp01/response.sdg/0744680868fa4d418e5e120365cbd853/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 1021,
+      "id": "prompt000004_roll000001",
+      "index": 1,
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 0
+    },
+    {
+      "reward": -0.075408935546875,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.075408935546875,
+      "weighted_artifact_penalty": -0.075408935546875,
+      "artifact_count": 2,
+      "ignored_misalignment_count": 1,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            145,
+            261,
+            395,
+            608
+          ],
+          "label": "artifact",
+          "importance": 50,
+          "description": "The Evangelion Unit-01 in the background exhibits significant structural distortion, with garbled mechanical lines and asymmetrical geometry that fails to form a coherent, solid mecha shape."
+        },
+        {
+          "box_2d": [
+            535,
+            373,
+            840,
+            845
+          ],
+          "label": "artifact",
+          "importance": 75,
+          "description": "The character's upper body and arm display anatomical deformities, where the shoulder connection and torso volume appear unnatural and disjointed from the rest of the figure."
+        },
+        {
+          "box_2d": [
+            75,
+            100,
+            175,
+            170
+          ],
+          "label": "misalignment",
+          "importance": 32,
+          "description": "The upper sky region fails to include the requested 'bird in the sky,' leaving an empty or cloudy space instead of the specified avian silhouette described in the caption."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp02/response.sdg/d3cdaa7654df4b9b8b90eda159fdc22b/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 713,
+      "id": "prompt000019_roll000001",
+      "index": 2,
+      "sample_id": "prompt000019",
+      "prompt_index": 2,
+      "rollout_id": 0
+    },
+    {
+      "reward": 0.0,
+      "base_reward": 0.0,
+      "artifact_penalty": 0.0,
+      "weighted_artifact_penalty": 0.0,
+      "artifact_count": 0,
+      "ignored_misalignment_count": 0,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp03/response.sdg/9ac99685c756441abd385ee0bf1f9749/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 281,
+      "id": "prompt000020_roll000001",
+      "index": 3,
+      "sample_id": "prompt000020",
+      "prompt_index": 3,
+      "rollout_id": 0
+    }
+  ],
+  "mode": "artifact_only",
+  "parallel": {
+    "mode": "DP4",
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "shard_images": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "reused_shards": [],
+    "launched_jobs": [
+      {
+        "name": "sdg_dp00",
+        "pid": 2280148,
+        "output": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp00/response.json",
+        "log": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp00/worker.log",
+        "started_at": 1793205964.112763,
+        "exit_code": 0,
+        "finished_at": 1793206006.1882226,
+        "wall_seconds": 42.075742313987575
+      },
+      {
+        "name": "sdg_dp01",
+        "pid": 2280149,
+        "output": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp01/response.json",
+        "log": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp01/worker.log",
+        "started_at": 1793205964.1130517,
+        "exit_code": 0,
+        "finished_at": 1793206007.8640757,
+        "wall_seconds": 43.75159553391859
+      },
+      {
+        "name": "sdg_dp02",
+        "pid": 2280150,
+        "output": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp02/response.json",
+        "log": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp02/worker.log",
+        "started_at": 1793205964.1132152,
+        "exit_code": 0,
+        "finished_at": 1793206004.2932053,
+        "wall_seconds": 40.180724952952005
+      },
+      {
+        "name": "sdg_dp03",
+        "pid": 2280151,
+        "output": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp03/response.json",
+        "log": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp03/worker.log",
+        "started_at": 1793205964.1134555,
+        "exit_code": 0,
+        "finished_at": 1793205999.4644115,
+        "wall_seconds": 35.35193098091986
+      }
+    ],
+    "shard_responses": [
+      "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp00/response.json",
+      "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp01/response.json",
+      "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp02/response.json",
+      "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp03/response.json"
+    ]
+  }
+}

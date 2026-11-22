@@ -1,0 +1,11 @@
+{
+  "device": 0,
+  "mode": "sft",
+  "batch": 1,
+  "context": 4096,
+  "activation_storage": "gpu",
+  "checkpoint_interval": 1,
+  "resident_vae": true,
+  "repeats": 2,
+  "output": "outputs/dp_capacity/sft_b1_ctx4096_gpu1_vae"
+}

@@ -1,0 +1,18 @@
+{
+  "engine_config": "configs/benchmarks/dit_precision16/engine.json",
+  "device": 0,
+  "precision": "bf16",
+  "prompt_id": "girl",
+  "warmup_seeds": [
+    1,
+    2
+  ],
+  "measured_seeds": [
+    42,
+    43,
+    44,
+    45
+  ],
+  "monitor_interval_seconds": 0.2,
+  "output_dir": "outputs/dit_precision16_20261021/a_bf16_gpu0"
+}

@@ -1,0 +1,130 @@
+Checkpoint validation filesystem protocol v1
+Agreed by checkpoint_eval_service.py / eval_infer_worker.py /
+run_reward_with_validation.py. GPU4 generates only; reward models run in the
+existing GPU0-3 batch pipeline. No scoring process is launched by this daemon.
+
+Generation contract
+  Four fixed prompts, four images per prompt, 768x768, 48 native steps.
+  Both the prompt bytes and original source-config bytes are frozen at service
+  creation. Seed plan uses seed + prompt_index*4 + rollout_id modulo 2^32.
+  The first successful complete request freezes actual prompt hashes, prompt
+  indices/IDs, rollout IDs and seeds; every later checkpoint must match it.
+  A checkpoint is eligible only with a valid COMMITTED SHA256 of manifest.json.
+  All regular checkpoint files are hardlinked to service_root/checkpoints before
+  dispatch. Source and service root must be on the same filesystem. Checkpoint
+  IDs are step_<number>_<first16_manifest_SHA>. Every complete checkpoint queues
+  independently, including ones discovered while another inference is running.
+
+CLI
+  python checkpoint_eval_service.py --config /absolute/service.json
+  Controller imports only the Python standard library. No threads or message
+  queue are used. The disk state and outbox are the durable queue.
+
+Required JSON configuration
+  source_checkpoint_dir, service_root, source_config, fixed_prompts: paths
+  fixed_seeds: four fixed uint32 seeds, normally [seed, seed+1, seed+2, seed+3]
+  export_command: argv list; root supplies a CPU checkpoint-to-adapter command
+  infer_command: argv list, normally [python, eval_infer_worker.py, --config, {config}]
+  repo and python: native infer worker's repository/runtime paths
+  device=4, images_per_prompt=4, expected_prompt_count=4, height=768, width=768
+  seed: uint32 first seed, defaults to fixed_seeds[0]
+  poll_interval_seconds: (0,60], default 10
+  max_retries: 0..3, default 1 (two attempts total); each attempt is a new directory
+  require_gpu_idle: default true
+  occupied_gpu_limit_mib: default 1000; admission checks physical GPU4 only
+  stage_timeout_seconds: optional {export:300,infer:14400,summary:300}
+  kill_grace_seconds: default 10
+  min_update/max_update: optional discovery filters
+  once: false by default; true drains all currently discoverable jobs then exits
+  summary_command: optional CPU argv for TensorBoard/reporting after valid ACK
+  summary_max_retries: default 1
+  logging_log_dir: passed through to summary reporter
+  worker_environment/worker_cwd: optional subprocess environment/cwd
+
+Each attempt has task.json and command/log/stage.complete.json audit files.
+Resolved worker config includes the original config plus checkpoint (PINNED),
+source_checkpoint, source_config (original path for relative-path semantics),
+source_config_snapshot, their SHA256s, fixed_prompts (frozen), job_id,
+checkpoint_id, source_step/update, adapter, output_dir, audit_dir, request,
+scores, summary, seed/fixed_seeds, and config (this resolved task JSON).
+audit_dir = service_root/evaluations/<id>/attempt_NNNN
+output_dir = audit_dir/generated; it starts absent/empty for native rollout
+adapter = audit_dir/adapter.safetensors
+request = output_dir/eval_request.json
+Native inference writes output_dir/inference_ready.json. Daemon independently
+validates the request, IDs, group counts and file hashes before publication.
+
+Environment and lifecycle
+  Export/report subprocesses: CUDA_VISIBLE_DEVICES='', JAX_PLATFORMS=cpu.
+  Infer subprocess: CUDA_VISIBLE_DEVICES=4. Native runtime.devices remains [4]
+  because configure_process resolves PHYSICAL indices to UUIDs. JAX sees logical0.
+  Each stage is a fresh process, releasing its context when done. Native child
+  processes must remain in the daemon-owned process group for TERM/KILL cleanup.
+  Infer timeout is enforced by the daemon. It never signals GPUs0-3 or other
+  groups. A service-root lock and a global per-user GPU4 lock exclude duplicates.
+
+Request
+  {version:1, items:[16 rows in stable prompt/rollout order]}
+  Row: {id:unique string, image:absolute path within generated directory,
+        prompt:original string, negative_prompt:string, prompt_index:int,
+        prompt_id:original source ID, rollout_id:int, seed:uint32, ...}
+  repeat is accepted as a rollout_id alias. Per-row IDs may contain checkpoint
+  ID but are not part of the frozen noise/prompt plan.
+
+Ready publication: service_root/outbox/<job_id>.ready.json
+  {
+    version:1, kind:'checkpoint_eval', status:'ready_for_scoring',
+    job_id, checkpoint_id, source_step, checkpoint_manifest_sha256,
+    request_path, request_sha256, result_dir:audit_dir/scoring,
+    ack:service_root/outbox/<job_id>.ack.json,
+    request_plan_sha256, fixed_prompts_sha256, fixed_seeds,
+    height:768,width:768,prompt_count:4,images_per_prompt:4,image_count:16,
+    images:[{path:absolute,sha256}], namespace:'checkpoint_eval:<id>', ...
+  }
+  The same manifest is kept at output_dir/ready.json. Both are immutable.
+  Ready means GPU4 is released. The daemon can immediately generate the next
+  checkpoint and never waits for scoring to release the GPU.
+
+Reward wrapper
+  It claims an unscored ready file with outbox/<job_id>.claim.json, appends its
+  sixteen rows to a normal training reward request, scores everything together,
+  and splits results by namespace/ID. Only the original training images enter ART.
+  Original IDs and prompt/row order are preserved in evaluation results.
+  All raw model results/configs, combined request and split results remain on NVMe.
+  Tagger and SDG are disabled for the current reward3 run. This protocol does not
+  invent zero scores for absent components and does not hardcode any model list.
+
+ACK: service_root/outbox/<job_id>.ack.json (atomically written once)
+  {
+    version:1,status:'complete',job_id,checkpoint_id,source_step,
+    checkpoint_manifest_sha256,request_sha256,
+    evaluation_result:result_dir/result.json,
+    result_path:result_dir/result.json,summary_path:result_dir/summary.json,
+    ... binding/combined_fingerprint/raw provenance ...
+  }
+  result.json contains scores:[16 finite numbers], optional details:[16 rows],
+  optional summary. Inline scores/details/summary are also accepted by daemon.
+  When details include image paths they must match the request order. Invalid
+  ACKs remain ready, retain an ack_error in state, and never trigger regeneration.
+  The wrapper leaves ready/ACK files intact; an ACK excludes duplicate scoring.
+
+Reporting and completion
+  A valid ACK causes immutable audit_dir/summary.json with final reward mean/std,
+  source/checkpoint/request/plan identities and worker summary. Optional
+  summary_command argv placeholders {config},{scores},{checkpoint_id} are
+  supported. All ordinary export/infer placeholders are also supported.
+  Reporter {config}=audit_dir/reporting/attempt_NNNN/task.json. It contains the
+  resolved job plus ack, evaluation_result, scores (evaluation_result path),
+  summary (daemon summary path), logging_log_dir, checkpoint_id/job_id/source_step.
+  Reporter runs CPU-only and must be idempotent by checkpoint_id. Failures retry
+  only reporting, never inference/scoring. done is written only after success.
+  audit_dir/completion.json freezes ACK, summary and external score-file hashes;
+  subsequent starts verify them and all immutable image/request hashes.
+
+Recovery and retention
+  pending/running/ready_for_scoring/done/failed persist atomically in state.json.
+  SIGTERM stops only the owned child group, retaining all files for diagnosis.
+  Stale running tasks recover to pending or reuse successful infer.complete.json
+  and ready files without regenerating. Linux PID birth identity prevents
+  signalling a reused PID. No output images, original scores, failed attempts,
+  checkpoint snapshots or outbox records are deleted by this daemon.

@@ -1,0 +1,10 @@
+{
+  "input": "inputs/prompts.txt",
+  "output": "data/prompts_cleaned.jsonl",
+  "report": "outputs/prompt_cleaning/report.json",
+  "metadata_dir": "vendor/pixai_tagger/metadata",
+  "max_removed_ratio": 0.3,
+  "min_tags": 8,
+  "min_chars": 0,
+  "auto_add_prompt_header": true
+}

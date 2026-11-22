@@ -1,0 +1,36 @@
+{
+  "data": {
+    "prompts": "configs/rollout/prompts_tags.txt",
+    "cache": "cache/rollout_only",
+    "short_context_length": 512,
+    "context_length": 4096
+  },
+  "rollout": {
+    "count": 4,
+    "seed": 42,
+    "prompts_per_batch": 4,
+    "decode": true,
+    "save_latents": false
+  },
+  "sampling": {
+    "height": 1024,
+    "width": 1024,
+    "steps": 50,
+    "sampler": "res_multistep",
+    "scheduler": "beta",
+    "guidance_scale": 3.0
+  },
+  "preparation": {
+    "device": 4,
+    "async_prefetch": true
+  },
+  "runtime": {
+    "devices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "output_dir": "outputs/rollout_only"
+  }
+}

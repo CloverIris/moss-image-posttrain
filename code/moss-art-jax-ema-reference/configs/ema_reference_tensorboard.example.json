@@ -1,0 +1,270 @@
+{
+  "source_log_dir": "$CODE_ROOT/moss-art-jax-ema-reference/outputs/ema_reference_tiny_cpu_example/tensorboard",
+  "log_dir": "$CODE_ROOT/moss-art-jax-ema-reference/outputs/ema_reference_tiny_cpu_example/tensorboard_curated/ema-reference",
+  "mapping": {
+    "reward_components/final_reward/mean": "04_signal/rank_mean_expected_0_5",
+    "reward_components/raw_scores/deepghs/mean": "01_reward/deepghs_percentile",
+    "reward_components/raw_scores/hps/mean": "01_reward/hps_mu",
+    "reward_components/contributions/deepghs/mean": "01_reward/deepghs_frozen_contribution",
+    "reward_components/contributions/hps/mean": "01_reward/hps_frozen_contribution",
+    "train/art_loss": "02_train/art_loss",
+    "train/loss": "02_train/total_loss",
+    "train/grad_norm": "02_train/grad_norm",
+    "train/adapter_delta_norm": "02_train/lora_delta_norm",
+    "train/reference_mse": "03_l2/raw_mse",
+    "train/reference_loss": "03_l2/weighted_loss",
+    "train/reference_loss_to_art_ratio": "03_l2/loss_to_art_ratio",
+    "train/reference_output_grad_to_art_ratio": "03_l2/output_grad_to_art_ratio",
+    "train/reference_output_grad_cosine": "03_l2/output_grad_cosine",
+    "train/reference_output_grad_cosine_defined": "03_l2/cosine_defined",
+    "train/reference_output_grad_ratio_defined": "03_l2/ratio_defined",
+    "train/reference_output_grad_cancellation_fraction": "03_l2/cancellation",
+    "reward_components/final_reward/group_mad_mean": "04_signal/final_group_mad",
+    "reward_components/contributions/deepghs/group_mad_mean": "04_signal/deepghs_group_mad",
+    "reward_components/contributions/hps/group_mad_mean": "04_signal/hps_group_mad",
+    "reward_components/final_reward/constant_group_fraction": "04_signal/constant_group_fraction",
+    "train/masked_fraction": "04_signal/masked_point_fraction",
+    "train/gradient_update_seconds": "05_perf/train_update_seconds",
+    "train/reference_seconds": "05_perf/reference_forward_seconds",
+    "validation/total": "06_validation/total",
+    "validation/aesthetic": "06_validation/aesthetic",
+    "validation/deepghs": "06_validation/deepghs_percentile",
+    "validation/hps": "06_validation/hps_mu",
+    "validation/within_prompt_std": "06_validation/within_prompt_std",
+    "validation/per_prompt_0": "06_validation/per_prompt_0",
+    "validation/per_prompt_1": "06_validation/per_prompt_1",
+    "validation/per_prompt_2": "06_validation/per_prompt_2",
+    "validation/per_prompt_3": "06_validation/per_prompt_3",
+    "train/learning_rate": "02_train/learning_rate",
+    "reward_components/components/frozen_reward/mean": "01_reward/frozen_absolute_total",
+    "reward_components/components/rank_contributions/deepghs/group_mad_mean": "04_signal/deepghs_rank_group_mad",
+    "reward_components/components/rank_contributions/hps/group_mad_mean": "04_signal/hps_rank_group_mad",
+    "reward_components/components/final_rank_has_ties/mean": "04_signal/tied_group_fraction",
+    "train/reference_beta": "03_l2/beta",
+    "train/reference_loss_fraction": "03_l2/loss_share_total",
+    "train/reference_mode_ema": "03_l2/reference_is_ema",
+    "train/reference_ema_decay": "03_l2/ema_decay",
+    "train/reference_ema_updates": "03_l2/ema_updates",
+    "train/reference_ema_updates_used": "03_l2/ema_updates_used"
+  },
+  "categories": [
+    {
+      "title": "01 奖励与模型",
+      "charts": [
+        {
+          "title": "冻结校准绝对总分（质量诊断，非训练序分）",
+          "tags": [
+            "01_reward/frozen_absolute_total"
+          ]
+        },
+        {
+          "title": "DeepGHS 原始 percentile",
+          "tags": [
+            "01_reward/deepghs_percentile"
+          ]
+        },
+        {
+          "title": "HPSv3++ 原始 μ",
+          "tags": [
+            "01_reward/hps_mu"
+          ]
+        },
+        {
+          "title": "冻结校准贡献（不等于序融合贡献）",
+          "tags": [
+            "01_reward/deepghs_frozen_contribution",
+            "01_reward/hps_frozen_contribution"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "02 训练稳定性",
+      "charts": [
+        {
+          "title": "ART 与总 loss",
+          "tags": [
+            "02_train/art_loss",
+            "02_train/total_loss"
+          ]
+        },
+        {
+          "title": "LoRA 参数梯度 norm",
+          "tags": [
+            "02_train/grad_norm"
+          ]
+        },
+        {
+          "title": "LoRA 更新量 norm",
+          "tags": [
+            "02_train/lora_delta_norm"
+          ]
+        },
+        {
+          "title": "Learning rate (first 4 optimizer updates: linear warmup)",
+          "tags": [
+            "02_train/learning_rate"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "03 EMA L2 约束",
+      "closed": true,
+      "charts": [
+        {
+          "title": "与 EMA teacher 输出的原始 MSE",
+          "tags": [
+            "03_l2/raw_mse"
+          ]
+        },
+        {
+          "title": "加权 L2 loss（按当前 β）",
+          "tags": [
+            "03_l2/weighted_loss"
+          ]
+        },
+        {
+          "title": "加权 L2 / ART loss 比例",
+          "tags": [
+            "03_l2/loss_to_art_ratio"
+          ]
+        },
+        {
+          "title": "L2 / ART 输出空间梯度比（非参数梯度比）",
+          "tags": [
+            "03_l2/output_grad_to_art_ratio"
+          ]
+        },
+        {
+          "title": "输出梯度方向 cosine（仅已定义点）",
+          "tags": [
+            "03_l2/output_grad_cosine"
+          ]
+        },
+        {
+          "title": "输出梯度抵消及定义标志（0～1）",
+          "tags": [
+            "03_l2/cancellation",
+            "03_l2/cosine_defined",
+            "03_l2/ratio_defined"
+          ]
+        },
+        {
+          "title": "参考L2系数β",
+          "tags": [
+            "03_l2/beta"
+          ]
+        },
+        {
+          "title": "参考EMA状态",
+          "tags": [
+            "03_l2/reference_is_ema",
+            "03_l2/ema_decay"
+          ]
+        },
+        {
+          "title": "teacher更新次数（本窗口使用／更新后）",
+          "tags": [
+            "03_l2/ema_updates_used",
+            "03_l2/ema_updates"
+          ]
+        },
+        {
+          "title": "加权L2占总loss比例",
+          "tags": [
+            "03_l2/loss_share_total"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "04 奖励区分度与有效性",
+      "closed": true,
+      "charts": [
+        {
+          "title": "训练序分均值（应为0.5，仅检查实现）",
+          "tags": [
+            "04_signal/rank_mean_expected_0_5"
+          ]
+        },
+        {
+          "title": "序融合前分项组内 MAD",
+          "tags": [
+            "04_signal/deepghs_rank_group_mad",
+            "04_signal/hps_rank_group_mad"
+          ]
+        },
+        {
+          "title": "最终序分组内 MAD",
+          "tags": [
+            "04_signal/final_group_mad"
+          ]
+        },
+        {
+          "title": "并列组、常数组及掩码比例",
+          "tags": [
+            "04_signal/tied_group_fraction",
+            "04_signal/constant_group_fraction",
+            "04_signal/masked_point_fraction"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "05 耗时",
+      "closed": true,
+      "charts": [
+        {
+          "title": "每次梯度更新与 EMA teacher 前向耗时（秒）",
+          "tags": [
+            "05_perf/train_update_seconds",
+            "05_perf/reference_forward_seconds"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "06 固定验证（横轴＝checkpoint update）",
+      "closed": false,
+      "charts": [
+        {
+          "title": "固定4x4：冻结校准绝对总分",
+          "tags": [
+            "06_validation/total",
+            "06_validation/aesthetic"
+          ]
+        },
+        {
+          "title": "固定验证：DeepGHS percentile",
+          "tags": [
+            "06_validation/deepghs_percentile"
+          ]
+        },
+        {
+          "title": "固定验证：HPSv3++ 原始偏好分 μ",
+          "tags": [
+            "06_validation/hps_mu"
+          ]
+        },
+        {
+          "title": "固定验证：逐 prompt 平均 reward（同图同 seed）",
+          "tags": [
+            "06_validation/per_prompt_0",
+            "06_validation/per_prompt_1",
+            "06_validation/per_prompt_2",
+            "06_validation/per_prompt_3"
+          ]
+        },
+        {
+          "title": "固定验证：组内标准差（每 prompt 仅 4 张）",
+          "tags": [
+            "06_validation/within_prompt_std"
+          ]
+        }
+      ]
+    }
+  ],
+  "interval_seconds": 15,
+  "once": false
+}

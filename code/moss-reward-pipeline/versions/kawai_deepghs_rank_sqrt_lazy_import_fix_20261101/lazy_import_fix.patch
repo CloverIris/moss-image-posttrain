@@ -1,0 +1,54 @@
+--- before/run_reward_pipeline.py
++++ after/run_reward_pipeline.py
+@@ -4,6 +4,7 @@
+ import copy
+ import csv
+ import hashlib
++import importlib.util
+ import json
+ import os
+ from pathlib import Path
+@@ -16,10 +17,31 @@
+ from reward_fusion import aesthetic_models, fuse, fuse_group, index_items, resolve_weights
+ 
+ 
++def _parallel_helpers():
++    """Resolve lazy CPU launcher helpers from this exact deployment version.
++
++    The validation wrapper imports this pipeline with a temporary sys.path.
++    Later scoring must not depend on that path or a different deployment's
++    globally cached sdg_parallel module. Disabled stages still load no helper.
++    """
++    path = Path(__file__).resolve().with_name("sdg_parallel.py")
++    name = "_moss_reward_parallel_" + hashlib.sha256(str(path).encode()).hexdigest()[:20]
++    module = sys.modules.get(name)
++    if module is None:
++        spec = importlib.util.spec_from_file_location(name, path)
++        module = importlib.util.module_from_spec(spec)
++        sys.modules[name] = module
++        try:
++            spec.loader.exec_module(module)
++        except BaseException:
++            sys.modules.pop(name, None)
++            raise
++    return module
++
++
+ def run_sdg_parallel(*args, **kwargs):
+     # Disabled stages must not import their worker implementation.
+-    from sdg_parallel import run_sdg_parallel as implementation
+-    return implementation(*args, **kwargs)
++    return _parallel_helpers().run_sdg_parallel(*args, **kwargs)
+ 
+ 
+ def digest(value):
+@@ -177,7 +199,8 @@
+ 
+ 
+ def run_kawai_parallel(items, cfg, archive):
+-    from sdg_parallel import balanced_shards, run_jobs
++    helpers = _parallel_helpers()
++    balanced_shards, run_jobs = helpers.balanced_shards, helpers.run_jobs
+     devices=cfg.get('kawai_devices',[0,1,2,3])
+     if len(devices)!=4 or set(devices)!={0,1,2,3}:
+         raise ValueError('Kawai DP4 requires physical GPUs 0..3; GPU4 is reserved')

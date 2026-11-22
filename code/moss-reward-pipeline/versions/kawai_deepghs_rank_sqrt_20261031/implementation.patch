@@ -1,0 +1,402 @@
+--- source/checkpoint_eval/run_reward_with_validation.py
++++ deployed/checkpoint_eval/run_reward_with_validation.py
+@@ -3,7 +3,7 @@
+ 
+ The original reward pipeline remains the only scoring/fusion implementation.
+ This wrapper claims ready files without waiting, records an immutable combined
+-request, verifies HPS batch companions, and returns only training scores to ART.
++request, verifies batch companions when HPS is active, and returns only training scores to ART.
+ All checkpoint images and raw results from enabled models remain in the NVMe archive.
+ """
+ from __future__ import annotations
+@@ -38,8 +38,9 @@
+     for owner in owners:
+         if "enabled_models" in owner:
+             names=owner["enabled_models"]
+-            if not isinstance(names,list) or len(set(names))!=len(names) or set(names) not in (
+-                    set(AESTHETIC_MODELS), {"deepghs","hps"}):
++            if (not isinstance(names,list) or not names or
++                    any(type(name) is not str or name not in AESTHETIC_MODELS for name in names) or
++                    len(set(names))!=len(names)):
+                 raise ValueError("Invalid enabled aesthetic model manifest")
+             declarations.append(tuple(name for name in AESTHETIC_MODELS if name in names))
+         if "kawai_enabled" in owner:
+@@ -187,6 +188,15 @@
+                 combined_batches=combined,
+                 batch_companions_preserved=True,
+                 policy="existing split_groups; stable prompt groups; descending group size")
++
++
++def model_batch_plan(train_items, eval_items, batch_cfg, splitter=split_groups, models=None):
++    """Only HPS is batch-conditioned; disabled heads have no model-file dependency."""
++    if models is None or "hps" in models:
++        return hps_plan(train_items, eval_items, batch_cfg, splitter)
++    if {row["id"] for row in train_items} & {row["id"] for row in eval_items}:
++        raise ValueError("Training and checkpoint eval IDs overlap")
++    return dict(enabled=False, reason="hps_disabled")
+ 
+ 
+ def group_id(row):
+@@ -270,7 +280,7 @@
+     return inside(settings.get("outbox", root / "outbox"), root, "Outbox")
+ 
+ 
+-def choose_jobs(settings, binding, train_items, batch_cfg, splitter):
++def choose_jobs(settings, binding, train_items, batch_cfg, splitter, models=None):
+     outbox = outbox_path(settings)
+     outbox.mkdir(parents=True, exist_ok=True)
+     picked, rejected = [], []
+@@ -306,7 +316,7 @@
+                     raise ValueError("A claimed ready record was modified")
+             try:
+                 all_eval = [row for job in picked for row in job["items"]] + ready["items"]
+-                hps_plan(train_items, all_eval, batch_cfg, splitter)
++                model_batch_plan(train_items, all_eval, batch_cfg, splitter, models)
+             except ValueError as exc:
+                 rejected.append(dict(job_id=ready["job_id"], reason=str(exc)))
+                 continue
+@@ -593,6 +603,7 @@
+ def run(cfg, request, output, *, pipeline=None, splitter=None, validation_only=False):
+     cfg = copy.deepcopy(cfg)
+     settings = cfg.pop("checkpoint_validation", {})
++    models = enabled_aesthetic_models(cfg)
+     pipeline_root = Path(settings.get("pipeline_root", Path(__file__).resolve().parents[1]))
+     pipeline = pipeline or load_module(pipeline_root / "run_reward_pipeline.py", "_checkpoint_reward_pipeline")
+     if not settings.get("enabled", True) or not settings.get("service_root"):
+@@ -601,8 +612,11 @@
+         return pipeline.run(cfg, request, output)
+     batch_cfg = read_json(cfg["batch_config"])
+     if splitter is None:
+-        batch_module = load_module(Path(cfg["batch_root"]) / "run.py", "_checkpoint_existing_batch")
+-        splitter = batch_module.split_groups
++        if "hps" in models:
++            batch_module = load_module(Path(cfg["batch_root"]) / "run.py", "_checkpoint_existing_batch")
++            splitter = batch_module.split_groups
++        else:
++            splitter = split_groups
+     if validation_only:
+         if request.get("version") != 1 or request.get("items") != []:
+             raise ValueError("Validation-only mode requires version=1 and an empty training item list")
+@@ -628,7 +642,7 @@
+             if digest(combined) != plan["combined_request_digest"]:
+                 raise ValueError("Combined request was modified after claiming")
+         else:
+-            jobs, rejected = choose_jobs(settings, binding, train_items, batch_cfg, splitter)
++            jobs, rejected = choose_jobs(settings, binding, train_items, batch_cfg, splitter, models)
+             if validation_only and not jobs:
+                 return dict(status="no_ready_validation", scores=[], details=[],
+                             rejected_ready=rejected, state_dir=str(state_dir))
+@@ -638,7 +652,7 @@
+             combined.setdefault("context", {})["checkpoint_validation"] = dict(
+                 binding=binding, jobs=[job["job_id"] for job in jobs],
+                 training_images=len(train_items), checkpoint_images=len(eval_items))
+-            batch_plan = hps_plan(train_items, eval_items, batch_cfg, splitter)
++            batch_plan = model_batch_plan(train_items, eval_items, batch_cfg, splitter, models)
+             fingerprint, archive = pipeline_identity(pipeline, cfg, combined)
+             plan = dict(version=SCHEMA_VERSION, binding=binding,
+                         mode="validation_only" if validation_only else "training_with_validation",
+@@ -647,8 +661,8 @@
+                         combined_request_digest=digest(combined),
+                         pipeline_fingerprint=fingerprint, pipeline_archive=str(archive),
+                         settings=copy.deepcopy(settings), sdg_enabled=cfg.get("sdg_enabled", True),
+-                        kawai_enabled=cfg.get("kawai_enabled",True),
+-                        enabled_models=list(AESTHETIC_MODELS) if cfg.get("kawai_enabled",True) else ["deepghs","hps"],
++                        kawai_enabled="kawai" in models,
++                        enabled_models=list(models),
+                         created_at=time.time())
+             save(state_dir / "training_request.json", request)
+             save(state_dir / "combined_request.json", combined)
+@@ -660,7 +674,7 @@
+         fingerprint, archive = pipeline_identity(pipeline, cfg, combined)
+         if fingerprint != plan["pipeline_fingerprint"]:
+             raise ValueError("Reward code/config changed during retry; preserve this collection and inspect it")
+-        current_plan = hps_plan(train_items, combined["items"][len(train_items):], batch_cfg, splitter)
++        current_plan = model_batch_plan(train_items, combined["items"][len(train_items):], batch_cfg, splitter, models)
+         if current_plan != plan["hps_batch_plan"]:
+             raise ValueError("Existing HPS shard/batch plan changed")
+         combined_output = state_dir / "combined_response.json"
+@@ -670,7 +684,7 @@
+             else:
+                 # Acquiring this lock also rejects interference from another active scorer.
+                 with file_lock(archive / ".lock"):
+-                    repairs = repair_hps_resume(archive, current_plan)
++                    repairs = repair_hps_resume(archive, current_plan) if "hps" in models else []
+                 if repairs:
+                     save(state_dir / ("hps_resume_repair." + str(time.time_ns()) + ".json"), repairs)
+                 response = pipeline.run(cfg, combined, combined_output)
+--- source/checkpoint_eval/test_checkpoint_eval_service.py
++++ deployed/checkpoint_eval/test_checkpoint_eval_service.py
+@@ -233,6 +233,8 @@
+                 with service.DirectoryLock(path): pass
+ 
+     def test_cli_once_only_config(self):
++        # A CPU fake service must not contend with a live GPU4 evaluation daemon.
++        self.config['gpu_lock_path'] = str(self.base/'cpu-test-gpu4.lock')
+         self.checkpoint(); config=self.base/'service.json'; service.atomic_json(config,self.config)
+         result=subprocess.run([sys.executable,str(Path(service.__file__)),'--config',str(config)],capture_output=True,text=True)
+         self.assertEqual(result.returncode,0,result.stderr)
+--- source/reward_fusion.py
++++ deployed/reward_fusion.py
+@@ -21,26 +21,32 @@
+     return output
+ 
+ 
+-def aesthetic_models(kawai_enabled=True):
+-    """The active aesthetic heads; SDG remains an independent defect term."""
++def aesthetic_models(kawai_enabled=True, enabled_models=None):
++    """Resolve explicit active heads, with unchanged legacy Kawai-switch defaults.
++
++    An explicit model list is authoritative. Callers with both a manifest and
++    legacy flags validate their consistency at the config/metadata boundary.
++    """
+     if type(kawai_enabled) is not bool:
+         raise ValueError('kawai_enabled must be boolean')
+-    return MODELS if kawai_enabled else ('deepghs', 'hps')
+-
+-
+-def resolve_weights(calibration, *, weights=None, kawai_enabled=True):
+-    """Keep frozen scales while optionally renormalizing enabled head weights.
+-
+-    Explicit weights must contain precisely the active aesthetic model names.
+-    When Kawai is disabled without an override, preserve the frozen D:H ratio.
+-    No Kawai calibration parameter or weight value is needed in that mode.
+-    """
+-    models = aesthetic_models(kawai_enabled)
++    if enabled_models is None:
++        return MODELS if kawai_enabled else ('deepghs', 'hps')
++    if (not isinstance(enabled_models, (list, tuple)) or not enabled_models or
++            any(type(name) is not str or name not in MODELS for name in enabled_models) or
++            len(set(enabled_models)) != len(enabled_models)):
++        raise ValueError('enabled_models must contain unique known aesthetic model names')
++    return tuple(name for name in MODELS if name in enabled_models)
++
++
++def resolve_weights(calibration, *, weights=None, kawai_enabled=True, enabled_models=None):
++    """Keep frozen scales; explicit weights must exactly match the active heads."""
++    models = aesthetic_models(kawai_enabled, enabled_models)
+     if weights is None:
+         source = calibration['weights']
+         if not isinstance(source, Mapping):
+             raise ValueError('Calibration weights must be a mapping')
+-        if kawai_enabled:
++        if enabled_models is None and kawai_enabled:
++            # Preserve legacy full-model validation, including sum-to-one.
+             weights = source
+         else:
+             try:
+@@ -62,9 +68,10 @@
+ 
+ 
+ def fuse(raw_scores, calibration, artifact_weight=1., *, weights=None,
+-         sdg_enabled=True, kawai_enabled=True):
+-    models = aesthetic_models(kawai_enabled)
+-    weights = resolve_weights(calibration, weights=weights, kawai_enabled=kawai_enabled)
++         sdg_enabled=True, kawai_enabled=True, enabled_models=None):
++    models = aesthetic_models(kawai_enabled, enabled_models)
++    weights = resolve_weights(calibration, weights=weights, kawai_enabled=kawai_enabled,
++                              enabled_models=enabled_models)
+     if not finite(artifact_weight) or artifact_weight < 0:
+         raise ValueError('artifact_weight must be finite and nonnegative')
+     if type(sdg_enabled) is not bool:
+@@ -76,8 +83,8 @@
+         raise ValueError('All enabled raw reward components must be finite')
+     if not sdg_enabled and 'sdg_artifact' in raw_scores:
+         raise ValueError('Disabled SDG must not report an artifact score')
+-    if not kawai_enabled and 'kawai' in raw_scores:
+-        raise ValueError('Disabled Kawai must not report an aesthetic score')
++    if (set(raw_scores) & set(MODELS)) - set(models):
++        raise ValueError('Disabled aesthetic heads must not report scores')
+     gain, offset = calibration['output_gain'], calibration['output_offset']
+     if not finite(gain) or gain <= 0 or not finite(offset):
+         raise ValueError('Invalid frozen output gain/offset')
+@@ -98,7 +105,7 @@
+                 normalized_scores=normalized, contributions=contributions,
+                 fusion_weights=dict(weights), artifact_weight=artifact_weight,
+                 output_offset=offset, output_gain=gain,
+-                enabled_models=list(models), kawai_enabled=kawai_enabled)
++                enabled_models=list(models), kawai_enabled="kawai" in models)
+     if sdg_enabled:
+         result['artifact_penalty'] = raw_scores['sdg_artifact']
+     else:
+@@ -131,7 +138,7 @@
+ 
+ 
+ def fuse_group(rows, calibration, *, gamma=.5, weights=None,
+-               kawai_enabled=True, expected_group_size=8):
++               kawai_enabled=True, expected_group_size=8, enabled_models=None):
+     """Rank each model, apply a common power, fuse, then rank the fusion.
+ 
+     This API intentionally consumes exactly ONE complete prompt group. The
+@@ -157,9 +164,9 @@
+     rows = list(rows)
+     if len(rows) != expected_group_size:
+         raise ValueError('Rank fusion requires exactly one complete prompt group')
+-    models = aesthetic_models(kawai_enabled)
++    models = aesthetic_models(kawai_enabled, enabled_models)
+     weights = resolve_weights(calibration, weights=weights,
+-                              kawai_enabled=kawai_enabled)
++                              kawai_enabled=kawai_enabled, enabled_models=enabled_models)
+     ids, prompt_ids, domains = set(), set(), set()
+     output = []
+     for row in rows:
+@@ -186,7 +193,7 @@
+         if not isinstance(raw, Mapping) or set(raw) != set(models):
+             raise ValueError('Rank fusion requires exactly the enabled raw aesthetic scores; SDG is unsupported')
+         frozen = fuse(raw, calibration, 0., weights=weights,
+-                      sdg_enabled=False, kawai_enabled=kawai_enabled)
++                      sdg_enabled=False, kawai_enabled=kawai_enabled, enabled_models=enabled_models)
+         item = dict(row)
+         item['raw_scores'] = dict(raw)
+         item.update(frozen)
+--- source/run_reward_pipeline.py
++++ deployed/run_reward_pipeline.py
+@@ -54,6 +54,15 @@
+                           image=str(image), prompt=row['prompt'],
+                           image_sha256=hashlib.sha256(image.read_bytes()).hexdigest()))
+     return items
++
++
++def active_models(cfg):
++    """One active-model contract drives scoring, fusion, provenance and reports."""
++    models = aesthetic_models(cfg.get('kawai_enabled', True), cfg.get('enabled_models'))
++    if ('enabled_models' in cfg and 'kawai_enabled' in cfg and
++            cfg['kawai_enabled'] != ('kawai' in models)):
++        raise ValueError('kawai_enabled contradicts enabled_models')
++    return models
+ 
+ 
+ def rank_groups(items, cfg):
+@@ -103,8 +112,8 @@
+     for domain, indices in groups:
+         rows = [dict(details[i], evaluation_domain=domain) for i in indices]
+         ranked = fuse_group(rows, calibration, gamma=cfg.get('rank_power_gamma', .5),
+-                            weights=weights, kawai_enabled=cfg.get('kawai_enabled', True),
+-                            expected_group_size=len(indices))
++                            weights=weights, kawai_enabled='kawai' in active_models(cfg),
++                            enabled_models=list(active_models(cfg)), expected_group_size=len(indices))
+         tied = len({r['rank_reward'] for r in ranked}) < len(ranked)
+         for index, row in zip(indices, ranked):
+             if domain == 'checkpoint_eval':
+@@ -146,9 +155,10 @@
+ def provenance(cfg):
+     files = [Path(__file__),Path(__file__).with_name('reward_fusion.py'),
+              Path(cfg['batch_root'])/'run.py',Path(cfg['batch_root'])/'worker.py']
+-    if cfg.get('kawai_enabled', True) or cfg.get('sdg_enabled', True):
++    models = active_models(cfg)
++    if 'kawai' in models or cfg.get('sdg_enabled', True):
+         files.append(Path(__file__).with_name('sdg_parallel.py'))
+-    if cfg.get('kawai_enabled', True):
++    if 'kawai' in models:
+         files.append(Path(__file__).with_name('score_kawai.py'))
+     if cfg.get('sdg_enabled', True):
+         files.extend([Path(cfg['sdg_root'])/'run_sdg_reward.py',
+@@ -160,8 +170,9 @@
+                   sdg_repo/'boxflow_grpo/src/flow_factory/rewards/dense_grpo_rewards.py',
+                   sdg_repo/'boxflow_grpo/src/flow_factory/utils/pixel_reward_map.py'])
+     batch=json.loads(Path(cfg['batch_config']).read_text())
+-    files.extend([Path(batch['hps']['native_config']),
+-                  Path(batch['hps']['project'])/'hpsv3pp_torch/engine.py'])
++    if 'hps' in models:
++        files.extend([Path(batch['hps']['native_config']),
++                      Path(batch['hps']['project'])/'hpsv3pp_torch/engine.py'])
+     return {str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+ 
+ 
+@@ -199,8 +210,9 @@
+ 
+ 
+ def run(cfg, request, output):
+-    kawai_enabled = cfg.get('kawai_enabled', True)
+-    enabled_models = list(aesthetic_models(kawai_enabled))
++    enabled_models = list(active_models(cfg))
++    kawai_enabled = 'kawai' in enabled_models
++    batch_stages = [name for name in ('deepghs', 'hps') if name in enabled_models]
+     sdg_enabled = cfg.get('sdg_enabled', True)
+     if type(sdg_enabled) is not bool:
+         raise ValueError('sdg_enabled must be boolean')
+@@ -210,7 +222,7 @@
+     rank_groups(items, cfg)
+     calibration = json.loads(Path(cfg['calibration']).read_text())
+     fusion_weights = resolve_weights(calibration, weights=cfg.get('fusion_weights'),
+-                                     kawai_enabled=kawai_enabled)
++                                     kawai_enabled=kawai_enabled, enabled_models=enabled_models)
+     batch_cfg=json.loads(Path(cfg['batch_config']).read_text())
+     sdg_cfg=json.loads(Path(cfg['sdg_config']).read_text()) if sdg_enabled else None
+     identity = dict(items=items, config=cfg, calibration=calibration,
+@@ -230,7 +242,7 @@
+             raise ValueError('Existing reward archive identity mismatch')
+         save(manifest,dict(fingerprint=fingerprint,context=context,config=cfg,calibration=calibration,
+                            code_hashes=identity['code'],image_count=len(items),
+-                           stage_order=['deepghs','hps']+(['kawai'] if kawai_enabled else [])+(['sdg'] if sdg_enabled else []),
++                           stage_order=batch_stages+(['kawai'] if kawai_enabled else [])+(['sdg'] if sdg_enabled else []),
+                            tagger_enabled=False,sdg_enabled=sdg_enabled,
+                            kawai_enabled=kawai_enabled,enabled_models=enabled_models,
+                            fusion_weights=fusion_weights))
+@@ -247,17 +259,20 @@
+         if (archive/'response.json').exists():
+             response=json.loads((archive/'response.json').read_text())
+             save(output,response);return response
+-        # The reused controller only contains the two requested model stages.
+-        if batch_cfg['stage_order'] != ['deepghs','hps'] or 'tagger' in batch_cfg:
+-            raise ValueError('Batch configuration must contain DeepGHS/HPS and no tagger')
+-        batch_out=archive/'deepghs_hps.json'
+-        if not batch_out.exists() or json.loads(batch_out.read_text()).get('status')!='complete':
+-            run_program([cfg['controller_python'],str(Path(cfg['batch_root'])/'run.py'),
+-                         '--config',str(archive/'batch.config.json'),'--input',str(archive/'input.json'),
+-                         '--output',str(batch_out),'--stages','deepghs','hps','--resume'],
+-                         archive/'deepghs_hps.log',cfg['stage_timeout'])
+-        batch=json.loads(batch_out.read_text())
+-        aligned=index_items(batch['items'],[r['id'] for r in items],'deepghs_hps')
++        # Only selected heads may construct workers or read model-specific files.
++        if batch_cfg['stage_order'] != batch_stages or 'tagger' in batch_cfg:
++            raise ValueError('Batch stage_order must exactly match active DeepGHS/HPS heads; no tagger')
++        aligned = {}
++        if batch_stages:
++            batch_name = '_'.join(batch_stages)
++            batch_out=archive/(batch_name+'.json')
++            if not batch_out.exists() or json.loads(batch_out.read_text()).get('status')!='complete':
++                run_program([cfg['controller_python'],str(Path(cfg['batch_root'])/'run.py'),
++                             '--config',str(archive/'batch.config.json'),'--input',str(archive/'input.json'),
++                             '--output',str(batch_out),'--stages',*batch_stages,'--resume'],
++                             archive/(batch_name+'.log'),cfg['stage_timeout'])
++            batch=json.loads(batch_out.read_text())
++            aligned=index_items(batch['items'],[r['id'] for r in items],batch_name)
+         k={}
+         if kawai_enabled:
+             kawai_out=archive/'kawai.json'
+@@ -278,24 +293,27 @@
+             s=index_items(sdg['details'],[r['id'] for r in items],'sdg')
+         details=[]
+         for row in items:
+-            key=row['id'];d,h=aligned[key]['deepghs'],aligned[key]['hps']
+-            if d.get('status')!='ok' or h.get('status')!='ok':
+-                raise ValueError('Invalid component score')
+-            raw=dict(deepghs=d['percentile'],hps=h['mu'])
++            key=row['id']
++            raw, model_details = {}, {}
++            for name in batch_stages:
++                component = aligned[key][name]
++                if component.get('status') != 'ok':
++                    raise ValueError('Invalid component score: '+name)
++                raw[name] = component['percentile' if name == 'deepghs' else 'mu']
++                model_details[name] = component
+             if kawai_enabled:
+                 raw['kawai']=k[key]['kawai']
++                model_details['kawai']=k[key]
+             if sdg_enabled:
+                 raw['sdg_artifact']=s[key]['artifact_penalty']
+             fused=fuse(raw,calibration,cfg['artifact_weight'],weights=fusion_weights,
+-                       sdg_enabled=sdg_enabled,kawai_enabled=kawai_enabled)
++                       sdg_enabled=sdg_enabled,kawai_enabled=kawai_enabled,enabled_models=enabled_models)
+             detail=dict(id=key,global_id=fingerprint[:24]+':'+key,collection_id=fingerprint[:24],
+                         index=row.get('index'),prompt_id=row['prompt_id'],
+                         image=row['image'],image_sha256=hashlib.sha256(Path(row['image']).read_bytes()).hexdigest(),
+                         raw_scores=raw,**fused,
+-                        model_details=dict(deepghs=d,hps=h),
++                        model_details=model_details,
+                         archive=str(archive),config_fingerprint=fingerprint)
+-            if kawai_enabled:
+-                detail['model_details']['kawai']=k[key]
+             if sdg_enabled:
+                 detail.update(artifact_count=s[key]['artifact_count'],
+                               ignored_misalignment_count=s[key]['ignored_misalignment_count'])

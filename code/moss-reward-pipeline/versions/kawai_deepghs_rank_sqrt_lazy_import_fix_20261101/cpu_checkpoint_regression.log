@@ -1,0 +1,72 @@
+{"event": "validation_report_complete", "reporting": {"version": 1, "status": "complete", "checkpoint_id": "checkpoint14", "source_step": 14, "report": "/tmp/tmpj5tlg7k4/validation_report.json", "report_digest": "36056b99e9e0758f7384be86e4a7ace203a88be297fbe250ab32896618a3ae1a", "report_sha256": "48b8bd75712150c37b9be951d6cea78db3fa9c4af333ad861607cbd91e7248fe", "event": "/tmp/tmpj5tlg7k4/tb/events.out.tfevents.000000000014.checkpoint_validation.checkpoint14", "event_sha256": "e887edb94e75a2dd55b6733a2b61dead114e0a13d3a8f05ed4043b5de19a2f06", "completed_at": 1793469647.6979728}}
+{"event": "validation_report_complete", "reporting": {"version": 1, "status": "complete", "checkpoint_id": "checkpoint14", "source_step": 14, "report": "/tmp/tmp6kcdwhf9/validation_report.json", "report_digest": "e35c272e0d26e332bc8a9ed9512692f4eef1334fa89c704fe8a816b6f5296214", "report_sha256": "c5d6ba6a3feff923570879910902c377e8e1292a05ec472372599fd10d58a6dd", "event": "/tmp/tmp6kcdwhf9/tb/events.out.tfevents.000000000014.checkpoint_validation.checkpoint14", "event_sha256": "30706359c3cbae3d807fab322919b314a1e5c6d9416b49ace5a3a00915a61b28", "completed_at": 1793469647.7127974}}
+{"event": "validation_report_complete", "reporting": {"version": 1, "status": "complete", "checkpoint_id": "checkpoint14", "source_step": 14, "report": "/tmp/tmpwjdbho5y/validation_report.json", "report_digest": "b09856c2f26b114069e4624e310d7a386da5342bf7d341776222b66f65f462cf", "report_sha256": "a639e7f5e568b3b1f15661c43a2566b224a9db28ac88c34acef1d92fa7ab78a8", "event": "/tmp/tmpwjdbho5y/tb/events.out.tfevents.000000000014.checkpoint_validation.checkpoint14", "event_sha256": "30706359c3cbae3d807fab322919b314a1e5c6d9416b49ace5a3a00915a61b28", "completed_at": 1793469647.7310336}}
+test_all_checkpoints_generate_without_waiting_for_scores (test_checkpoint_eval_service.ServiceTest.test_all_checkpoints_generate_without_waiting_for_scores) ... ok
+test_bad_ack_does_not_regenerate_or_mark_done (test_checkpoint_eval_service.ServiceTest.test_bad_ack_does_not_regenerate_or_mark_done) ... ok
+test_cli_once_only_config (test_checkpoint_eval_service.ServiceTest.test_cli_once_only_config) ... ok
+test_discover_during_inference_pins_next_checkpoint (test_checkpoint_eval_service.ServiceTest.test_discover_during_inference_pins_next_checkpoint) ... ok
+test_discovery_requires_commit_and_pins_weights (test_checkpoint_eval_service.ServiceTest.test_discovery_requires_commit_and_pins_weights) ... ok
+test_done_artifacts_verified_on_restart (test_checkpoint_eval_service.ServiceTest.test_done_artifacts_verified_on_restart) ... ok
+test_exclusive_file_lock (test_checkpoint_eval_service.ServiceTest.test_exclusive_file_lock) ... ok
+test_external_result_ack_and_raw_score_integrity (test_checkpoint_eval_service.ServiceTest.test_external_result_ack_and_raw_score_integrity) ... ok
+test_failed_retry_is_bounded (test_checkpoint_eval_service.ServiceTest.test_failed_retry_is_bounded) ... ok
+test_fixed_plan_mismatch_fails_new_generation (test_checkpoint_eval_service.ServiceTest.test_fixed_plan_mismatch_fails_new_generation) ... ok
+test_generation_ack_restart_exactly_once (test_checkpoint_eval_service.ServiceTest.test_generation_ack_restart_exactly_once) ... ok
+test_gpu_busy_leaves_pending_without_exporting (test_checkpoint_eval_service.ServiceTest.test_gpu_busy_leaves_pending_without_exporting) ... ok
+test_inputs_are_frozen_across_restart (test_checkpoint_eval_service.ServiceTest.test_inputs_are_frozen_across_restart) ... ok
+test_no_accelerator_framework_imported (test_checkpoint_eval_service.ServiceTest.test_no_accelerator_framework_imported) ... ok
+test_ready_image_tamper_rejected_on_restart (test_checkpoint_eval_service.ServiceTest.test_ready_image_tamper_rejected_on_restart) ... ok
+test_real_wrapper_interoperability_192_plus_16 (test_checkpoint_eval_service.ServiceTest.test_real_wrapper_interoperability_192_plus_16) ... ok
+test_reporter_retries_only_reporting_not_generation (test_checkpoint_eval_service.ServiceTest.test_reporter_retries_only_reporting_not_generation) ... ok
+test_retry_keeps_failed_images_and_never_overwrites (test_checkpoint_eval_service.ServiceTest.test_retry_keeps_failed_images_and_never_overwrites) ... ok
+test_stale_running_resumes_published_ready (test_checkpoint_eval_service.ServiceTest.test_stale_running_resumes_published_ready) ... ok
+test_stale_running_with_complete_infer_does_not_regenerate (test_checkpoint_eval_service.ServiceTest.test_stale_running_with_complete_infer_does_not_regenerate) ... ok
+test_timeout_stops_owned_child_and_keeps_failed_attempt (test_checkpoint_eval_service.ServiceTest.test_timeout_stops_owned_child_and_keeps_failed_attempt) ... ok
+test_best3_latest2_and_40_update_milestones_are_kept (test_checkpoint_retention.RetentionTests.test_best3_latest2_and_40_update_milestones_are_kept) ... ok
+test_crash_after_unlink_before_proof_finishes_without_regeneration (test_checkpoint_retention.RetentionTests.test_crash_after_unlink_before_proof_finishes_without_regeneration) ... ok
+test_default_off_keeps_all_exported_and_checkpoint_bytes (test_checkpoint_retention.RetentionTests.test_default_off_keeps_all_exported_and_checkpoint_bytes) ... ok
+test_done_payload_unlinks_only_own_pin_and_discover_does_not_repin (test_checkpoint_retention.RetentionTests.test_done_payload_unlinks_only_own_pin_and_discover_does_not_repin) ... ok
+test_foreign_old_run_adapter_directory_is_never_unlinked (test_checkpoint_retention.RetentionTests.test_foreign_old_run_adapter_directory_is_never_unlinked) ... ok
+test_foreign_source_directory_is_never_unlinked (test_checkpoint_retention.RetentionTests.test_foreign_source_directory_is_never_unlinked) ... ok
+test_missing_payload_without_proof_rejected_on_recovery (test_checkpoint_retention.RetentionTests.test_missing_payload_without_proof_rejected_on_recovery) ... ok
+test_missing_report_or_corrupt_adapter_preserves_payload (test_checkpoint_retention.RetentionTests.test_missing_report_or_corrupt_adapter_preserves_payload) ... ok
+test_ready_or_failed_tasks_are_never_retained_away (test_checkpoint_retention.RetentionTests.test_ready_or_failed_tasks_are_never_retained_away) ... ok
+test_release_proof_tamper_rejected (test_checkpoint_retention.RetentionTests.test_release_proof_tamper_rejected) ... ok
+test_failed_scoring_keeps_manifest_and_retries_same_job (test_flush_validation.FlushTests.test_failed_scoring_keeps_manifest_and_retries_same_job) ... ok
+test_final_ready_scores_eval_only_and_restart_is_idempotent (test_flush_validation.FlushTests.test_final_ready_scores_eval_only_and_restart_is_idempotent) ... ok
+test_unavailable_expected_checkpoint_times_out_without_gpu_calls (test_flush_validation.FlushTests.test_unavailable_expected_checkpoint_times_out_without_gpu_calls) ... ok
+test_waits_for_expected_ready_and_commits_each_one (test_flush_validation.FlushTests.test_waits_for_expected_ready_and_commits_each_one) ... ok
+test_actual_checkpoint_report_and_scalars_use_absolute_not_rank (test_rank_summary.RankSummaryTests.test_actual_checkpoint_report_and_scalars_use_absolute_not_rank) ... ok
+test_declared_semantics_must_match_values_and_domain (test_rank_summary.RankSummaryTests.test_declared_semantics_must_match_values_and_domain) ... ok
+test_legacy_and_empty_summaries_do_not_acquire_rank_fields (test_rank_summary.RankSummaryTests.test_legacy_and_empty_summaries_do_not_acquire_rank_fields) ... ok
+test_missing_nonfinite_or_out_of_bounds_scores_are_rejected (test_rank_summary.RankSummaryTests.test_missing_nonfinite_or_out_of_bounds_scores_are_rejected) ... ok
+test_mixed_domains_or_fusion_rows_are_rejected (test_rank_summary.RankSummaryTests.test_mixed_domains_or_fusion_rows_are_rejected) ... ok
+test_training_rank_and_absolute_diagnostics_are_distinct (test_rank_summary.RankSummaryTests.test_training_rank_and_absolute_diagnostics_are_distinct) ... ok
+test_validation_retains_absolute_quality_mean (test_rank_summary.RankSummaryTests.test_validation_retains_absolute_quality_mean) ... ok
+test_actual_components_groups_and_no_sdg (test_report_validation.ReportTests.test_actual_components_groups_and_no_sdg) ... ok
+test_daemon_four_base_seed_plan_expands_strictly (test_report_validation.ReportTests.test_daemon_four_base_seed_plan_expands_strictly) ... ok
+test_nonfinite_missing_component_or_order_fails (test_report_validation.ReportTests.test_nonfinite_missing_component_or_order_fails) ... ok
+test_real_event_has_source_step_and_one_set_of_tags (test_report_validation.ReportTests.test_real_event_has_source_step_and_one_set_of_tags) ... ok
+test_report_and_event_retry_are_idempotent (test_report_validation.ReportTests.test_report_and_event_retry_are_idempotent) ... ok
+test_retry_after_event_before_marker_has_one_event (test_report_validation.ReportTests.test_retry_after_event_before_marker_has_one_event) ... ok
+test_two_model_manifest_does_not_hide_missing_active_score (test_report_validation.ReportTests.test_two_model_manifest_does_not_hide_missing_active_score) ... ok
+test_two_models_have_no_kawai_placeholder_or_scalar (test_report_validation.ReportTests.test_two_models_have_no_kawai_placeholder_or_scalar) ... ok
+test_append_once_return_only_train_and_ack (test_run_reward_with_validation.WrapperTests.test_append_once_return_only_train_and_ack) ... ok
+test_checksum_changed_claim_is_rejected (test_run_reward_with_validation.WrapperTests.test_checksum_changed_claim_is_rejected) ... ok
+test_disabled_model_placeholder_or_undeclared_missing_model_rejected (test_run_reward_with_validation.WrapperTests.test_disabled_model_placeholder_or_undeclared_missing_model_rejected) ... ok
+test_existing_ack_is_never_scored_in_next_step (test_run_reward_with_validation.WrapperTests.test_existing_ack_is_never_scored_in_next_step) ... ok
+test_failure_keeps_ready_claim_and_fixed_manifest (test_run_reward_with_validation.WrapperTests.test_failure_keeps_ready_claim_and_fixed_manifest) ... ok
+test_hps_pairing_protected_for_current_192_plus_16 (test_run_reward_with_validation.WrapperTests.test_hps_pairing_protected_for_current_192_plus_16) ... ok
+test_hps_unsafe_batch_composition_is_deferred (test_run_reward_with_validation.WrapperTests.test_hps_unsafe_batch_composition_is_deferred) ... ok
+test_id_prefixes_prevent_same_prompt_id_from_merging (test_run_reward_with_validation.WrapperTests.test_id_prefixes_prevent_same_prompt_id_from_merging) ... ok
+test_incomplete_ready_is_deferred_without_blocking_train (test_run_reward_with_validation.WrapperTests.test_incomplete_ready_is_deferred_without_blocking_train) ... ok
+test_no_ready_does_not_wait_or_modify_train_scores (test_run_reward_with_validation.WrapperTests.test_no_ready_does_not_wait_or_modify_train_scores) ... ok
+test_only_deepghs_hps_summary_and_ack_preserve_enabled_manifest (test_run_reward_with_validation.WrapperTests.test_only_deepghs_hps_summary_and_ack_preserve_enabled_manifest) ... ok
+test_resume_repairs_orphan_without_deleting_raw_evidence (test_run_reward_with_validation.WrapperTests.test_resume_repairs_orphan_without_deleting_raw_evidence) ... ok
+test_sdg_disabled_has_no_synthetic_component_or_config_read (test_run_reward_with_validation.WrapperTests.test_sdg_disabled_has_no_synthetic_component_or_config_read) ... ok
+test_source_request_mutation_on_retry_does_not_recombine (test_run_reward_with_validation.WrapperTests.test_source_request_mutation_on_retry_does_not_recombine) ... ok
+
+----------------------------------------------------------------------
+Ran 64 tests in 5.758s
+
+OK

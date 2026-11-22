@@ -1,0 +1,72 @@
+{
+  "scores": [
+    -0.075408935546875
+  ],
+  "details": [
+    {
+      "reward": -0.075408935546875,
+      "base_reward": 0.0,
+      "artifact_penalty": -0.075408935546875,
+      "weighted_artifact_penalty": -0.075408935546875,
+      "artifact_count": 2,
+      "ignored_misalignment_count": 1,
+      "mode": "artifact_only",
+      "alpha_artifact": 0.5,
+      "alpha_misalignment": 0.0,
+      "latent_size": 64,
+      "penalty_weight": 1.0,
+      "sdg_boxes": [
+        {
+          "box_2d": [
+            145,
+            261,
+            395,
+            608
+          ],
+          "label": "artifact",
+          "importance": 50,
+          "description": "The Evangelion Unit-01 in the background exhibits significant structural distortion, with garbled mechanical lines and asymmetrical geometry that fails to form a coherent, solid mecha shape."
+        },
+        {
+          "box_2d": [
+            535,
+            373,
+            840,
+            845
+          ],
+          "label": "artifact",
+          "importance": 75,
+          "description": "The character's upper body and arm display anatomical deformities, where the shoulder connection and torso volume appear unnatural and disjointed from the rest of the figure."
+        },
+        {
+          "box_2d": [
+            75,
+            100,
+            175,
+            170
+          ],
+          "label": "misalignment",
+          "importance": 32,
+          "description": "The upper sky region fails to include the requested 'bird in the sky,' leaving an empty or cloudy space instead of the specified avian silhouette described in the caption."
+        }
+      ],
+      "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp02/response.sdg/d3cdaa7654df4b9b8b90eda159fdc22b/predictions.jsonl",
+      "source_index": 0,
+      "processed_size": [
+        512,
+        512
+      ],
+      "output_tokens": 713,
+      "id": "prompt000019_roll000001",
+      "index": 2,
+      "sample_id": "prompt000019",
+      "prompt_index": 2,
+      "rollout_id": 0
+    }
+  ],
+  "mode": "artifact_only",
+  "load_seconds": 24.531103158951737,
+  "inference_seconds": 8.065155536052771,
+  "raw_predictions": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000/reward_models/6de6d5c83b35cb8dfe0e6929/sdg_dp/dp02/response.sdg/d3cdaa7654df4b9b8b90eda159fdc22b/predictions.jsonl",
+  "model": "$DATA_DISK/models/sdg-detector-grpo"
+}

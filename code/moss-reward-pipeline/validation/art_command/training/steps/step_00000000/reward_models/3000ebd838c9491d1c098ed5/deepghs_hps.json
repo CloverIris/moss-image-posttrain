@@ -1,0 +1,368 @@
+{
+  "schema_version": 2,
+  "status": "complete",
+  "image_count": 4,
+  "config": {
+    "hf_home": "$MOSS_ROOT/../moss-anime-ranker/cache/hf",
+    "ranker_root": "$MOSS_ROOT/../moss-anime-ranker",
+    "reserved_devices": [
+      4
+    ],
+    "busy_memory_mib": 1500,
+    "deepghs": {
+      "replica_devices": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "python": "$CONDA_PREFIX/envs/onnx_env/bin/python",
+      "cpu_threads": 2,
+      "extra_python_paths": [
+        "$MOSS_ROOT/../moss-anime-ranker/envs/deepghs/lib/python3.12/site-packages"
+      ],
+      "cuda_library_paths": [
+        "$MOSS_ROOT/../moss-anime-ranker/envs/tagger/lib/python3.12/site-packages/nvidia/cudnn/lib",
+        "/usr/local/cuda/lib64"
+      ],
+      "model": "swinv2pv3_v0_448_ls0.2_x",
+      "use_tf32": false,
+      "warmup_images": 1
+    },
+    "hps": {
+      "replica_devices": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "python": "$MOSS_ROOT/../moss-anime-ranker/envs/hpsv3/bin/python",
+      "project": "$DATA_DISK/hpsv3pp-jax",
+      "native_config": "$DATA_DISK/hpsv3pp-jax/configs/torch_native_tp.json",
+      "cpu_threads": 2,
+      "batch_size": 2,
+      "warmup_images": 2
+    },
+    "stage_order": [
+      "deepghs",
+      "hps"
+    ]
+  },
+  "metrics": {
+    "deepghs": {
+      "stage": "deepghs",
+      "dp_replicas": 2,
+      "tp_size": 1,
+      "pp_size": 1,
+      "images": 4,
+      "newly_scored_images": 4,
+      "stage_wall_seconds": 4.5128694109153,
+      "stage_images_per_second": 0.8863540323868401,
+      "inference_span_seconds": 0.11810016632080078,
+      "inference_images_per_second": 33.86955433351906,
+      "generated_tokens": 0,
+      "errors": 0,
+      "replicas": [
+        {
+          "dp_rank": 0,
+          "gpus": [
+            0
+          ],
+          "metrics": {
+            "model": "deepghs/anime_aesthetic/swinv2pv3_v0_448_ls0.2_x",
+            "backend": "official imgutils + CUDA ONNX Runtime",
+            "ort_version": "1.25.0.dev20260307001",
+            "providers": [
+              "CUDAExecutionProvider",
+              "CPUExecutionProvider"
+            ],
+            "gpus": [
+              0
+            ],
+            "cuda_provider_options": {
+              "sdpa_kernel": "0",
+              "use_tf32": "0",
+              "fuse_conv_bias": "0",
+              "prefer_nhwc": "0",
+              "tunable_op_max_tuning_duration_ms": "0",
+              "enable_skip_layer_norm_strict_mode": "0",
+              "tunable_op_tuning_enable": "0",
+              "tunable_op_enable": "0",
+              "use_ep_level_unified_stream": "0",
+              "device_id": "0",
+              "has_user_compute_stream": "0",
+              "gpu_external_empty_cache": "0",
+              "cudnn_conv_algo_search": "EXHAUSTIVE",
+              "cudnn_conv1d_pad_to_nc1d": "0",
+              "gpu_mem_limit": "18446744073709551615",
+              "gpu_external_alloc": "0",
+              "gpu_external_free": "0",
+              "arena_extend_strategy": "kNextPowerOfTwo",
+              "do_copy_in_default_stream": "1",
+              "enable_cuda_graph": "0",
+              "user_compute_stream": "0",
+              "cudnn_conv_use_max_workspace": "1"
+            },
+            "load_seconds": 1.5306397080421448,
+            "warmup_seconds": 0.24746271292679012,
+            "inference_seconds": 0.07284285093192011,
+            "inference_started_at": 1793204075.75637,
+            "inference_finished_at": 1793204075.829214,
+            "images": 2,
+            "total_images": 2,
+            "images_per_second": 27.456366334003405,
+            "process_seconds": 3.2122749720001593
+          }
+        },
+        {
+          "dp_rank": 1,
+          "gpus": [
+            1
+          ],
+          "metrics": {
+            "model": "deepghs/anime_aesthetic/swinv2pv3_v0_448_ls0.2_x",
+            "backend": "official imgutils + CUDA ONNX Runtime",
+            "ort_version": "1.25.0.dev20260307001",
+            "providers": [
+              "CUDAExecutionProvider",
+              "CPUExecutionProvider"
+            ],
+            "gpus": [
+              1
+            ],
+            "cuda_provider_options": {
+              "sdpa_kernel": "0",
+              "use_tf32": "0",
+              "fuse_conv_bias": "0",
+              "prefer_nhwc": "0",
+              "tunable_op_max_tuning_duration_ms": "0",
+              "enable_skip_layer_norm_strict_mode": "0",
+              "tunable_op_tuning_enable": "0",
+              "tunable_op_enable": "0",
+              "use_ep_level_unified_stream": "0",
+              "device_id": "0",
+              "has_user_compute_stream": "0",
+              "gpu_external_empty_cache": "0",
+              "cudnn_conv_algo_search": "EXHAUSTIVE",
+              "cudnn_conv1d_pad_to_nc1d": "0",
+              "gpu_mem_limit": "18446744073709551615",
+              "gpu_external_alloc": "0",
+              "gpu_external_free": "0",
+              "arena_extend_strategy": "kNextPowerOfTwo",
+              "do_copy_in_default_stream": "1",
+              "enable_cuda_graph": "0",
+              "user_compute_stream": "0",
+              "cudnn_conv_use_max_workspace": "1"
+            },
+            "load_seconds": 1.5402291800128296,
+            "warmup_seconds": 0.24280713906046003,
+            "inference_seconds": 0.07573516992852092,
+            "inference_started_at": 1793204075.711114,
+            "inference_finished_at": 1793204075.7868497,
+            "images": 2,
+            "total_images": 2,
+            "images_per_second": 26.40781029325749,
+            "process_seconds": 3.169911251985468
+          }
+        }
+      ]
+    },
+    "hps": {
+      "stage": "hps",
+      "dp_replicas": 2,
+      "tp_size": 2,
+      "pp_size": 1,
+      "images": 4,
+      "newly_scored_images": 4,
+      "stage_wall_seconds": 12.666154330945574,
+      "stage_images_per_second": 0.3158022471135788,
+      "inference_span_seconds": 0.39168310165405273,
+      "inference_images_per_second": 10.21233743071441,
+      "generated_tokens": 0,
+      "errors": 0,
+      "replicas": [
+        {
+          "dp_rank": 0,
+          "gpus": [
+            0,
+            3
+          ],
+          "metrics": {
+            "model": "HPSv3++",
+            "backend": "Native PyTorch DTensor TP2",
+            "gpus": [
+              0,
+              3
+            ],
+            "attention": "cudnn",
+            "batch_size": 2,
+            "load_seconds": 6.91111880808603,
+            "warmup_seconds": 1.4019990980159491,
+            "inference_seconds": 0.3556870319880545,
+            "inference_started_at": 1793204087.1827703,
+            "inference_finished_at": 1793204087.5385013,
+            "images": 2,
+            "total_images": 2,
+            "images_per_second": 5.62292077060366,
+            "max_rank_peak_allocated_bytes": 9631459328.0,
+            "process_seconds": 8.829435707069933
+          }
+        },
+        {
+          "dp_rank": 1,
+          "gpus": [
+            1,
+            2
+          ],
+          "metrics": {
+            "model": "HPSv3++",
+            "backend": "Native PyTorch DTensor TP2",
+            "gpus": [
+              1,
+              2
+            ],
+            "attention": "cudnn",
+            "batch_size": 2,
+            "load_seconds": 6.915253177983686,
+            "warmup_seconds": 1.3643631919985637,
+            "inference_seconds": 0.3517588139511645,
+            "inference_started_at": 1793204087.1468182,
+            "inference_finished_at": 1793204087.4986594,
+            "images": 2,
+            "total_images": 2,
+            "images_per_second": 5.685713962742849,
+            "max_rank_peak_allocated_bytes": 9634629632.0,
+            "process_seconds": 8.638665886945091
+          }
+        }
+      ]
+    }
+  },
+  "orchestration": {
+    "mode": "sequential_batch_stages",
+    "stage_order": [
+      "deepghs",
+      "hps"
+    ],
+    "reserved_devices": [
+      4
+    ],
+    "wall_seconds": 17.34550193301402,
+    "images_per_second": null,
+    "resumed": true
+  },
+  "items": [
+    {
+      "index": 0,
+      "id": "prompt000002_roll000001",
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000000-s50.png",
+      "prompt": "A dark magazine-cover illustration of Theresa (Arknights), a solitary girl with black horns, shown from the side with a sad, expressionless face as she looks at a screen. The artwork uses chiaroscuro and volumetric lighting, with stylistic references to ask (askzy), Ningen Mame, nixeu, and cui (jidanhaidaitang). The palette is largely monochrome and greyscale with muted color and partly colored accents, softened by gaussian blur. Grass, broken glass shards, and blood appear in the scene, and the mood evokes a world of darkness and a dark mind.",
+      "prompt_id": "prompt000002",
+      "image_sha256": "f7245e0eba4d090146fd7c8fa93296433b3a93641ad90802e23044d60d423893",
+      "tags": [],
+      "deepghs": {
+        "status": "ok",
+        "label": "best",
+        "percentile": 0.9114308175364876,
+        "score": 4.928182749077678
+      },
+      "hps": {
+        "status": "ok",
+        "mu": 6.354556083679199,
+        "log_sigma": -1.8683817386627197,
+        "sigma": 0.15437327325344086,
+        "capability": 0.94921875
+      }
+    },
+    {
+      "index": 1,
+      "id": "prompt000002_roll000002",
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 1,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000001-s51.png",
+      "prompt": "A dark magazine-cover illustration of Theresa (Arknights), a solitary girl with black horns, shown from the side with a sad, expressionless face as she looks at a screen. The artwork uses chiaroscuro and volumetric lighting, with stylistic references to ask (askzy), Ningen Mame, nixeu, and cui (jidanhaidaitang). The palette is largely monochrome and greyscale with muted color and partly colored accents, softened by gaussian blur. Grass, broken glass shards, and blood appear in the scene, and the mood evokes a world of darkness and a dark mind.",
+      "prompt_id": "prompt000002",
+      "image_sha256": "2fbbea38583a12fd1dcecc2cc986b94347bf8beacf58c263a31482d6f85c97e9",
+      "tags": [],
+      "deepghs": {
+        "status": "ok",
+        "label": "great",
+        "percentile": 0.835574761857968,
+        "score": 4.611439943313599
+      },
+      "hps": {
+        "status": "ok",
+        "mu": 6.075982570648193,
+        "log_sigma": -1.9677940607070923,
+        "sigma": 0.13976483047008514,
+        "capability": 0.94921875
+      }
+    },
+    {
+      "index": 2,
+      "id": "prompt000004_roll000001",
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000000-s66.png",
+      "prompt": "A high-resolution illustration of Goldenglow from Arknights, a solo adult woman in an alternate costume with no headwear, kneeling on a bed in a bedroom. She has a drunk blush and a seductive smile as she looks at the viewer and licks her hand. Her groin and linea alba are visible, her pussy is exposed, and cum is on her breasts, face, and hands. She is surrounded by condoms, with one hand between her legs and facial cum present. Her body is wet, sweaty, and steaming, with volumetric lighting and focus on her pussy. The work uses references to ask (askzy), ningen mame, nixeu, and cui (jidanhaidaitang).",
+      "prompt_id": "prompt000004",
+      "image_sha256": "89bb475e4c9ba117d4fe9b0d48f39b431e8c2e125d4db423e7c21c8fb205cca2",
+      "tags": [],
+      "deepghs": {
+        "status": "ok",
+        "label": "good",
+        "percentile": 0.6957787209351296,
+        "score": 4.085954036563635
+      },
+      "hps": {
+        "status": "ok",
+        "mu": 0.6564115285873413,
+        "log_sigma": -3.3549227714538574,
+        "sigma": 0.03491206467151642,
+        "capability": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "id": "prompt000004_roll000002",
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 1,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000001-s67.png",
+      "prompt": "A high-resolution illustration of Goldenglow from Arknights, a solo adult woman in an alternate costume with no headwear, kneeling on a bed in a bedroom. She has a drunk blush and a seductive smile as she looks at the viewer and licks her hand. Her groin and linea alba are visible, her pussy is exposed, and cum is on her breasts, face, and hands. She is surrounded by condoms, with one hand between her legs and facial cum present. Her body is wet, sweaty, and steaming, with volumetric lighting and focus on her pussy. The work uses references to ask (askzy), ningen mame, nixeu, and cui (jidanhaidaitang).",
+      "prompt_id": "prompt000004",
+      "image_sha256": "d26b4a59c92535aa2c17da1811ecf24bf8061512790f7d3dfab1181d69e0bfe7",
+      "tags": [],
+      "deepghs": {
+        "status": "ok",
+        "label": "great",
+        "percentile": 0.8052710225562267,
+        "score": 4.493814688175917
+      },
+      "hps": {
+        "status": "ok",
+        "mu": 1.1033424139022827,
+        "log_sigma": -3.306964874267578,
+        "sigma": 0.03662717342376709,
+        "capability": 1.0
+      }
+    }
+  ]
+}

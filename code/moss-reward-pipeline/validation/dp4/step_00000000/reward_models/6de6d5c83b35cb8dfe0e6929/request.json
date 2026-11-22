@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "index": 0,
+      "id": "prompt000002_roll000001",
+      "sample_id": "prompt000002",
+      "prompt_index": 0,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000001-r000000-s50.png",
+      "prompt": "A dark magazine-cover illustration of Theresa (Arknights), a solitary girl with black horns, shown from the side with a sad, expressionless face as she looks at a screen. The artwork uses chiaroscuro and volumetric lighting, with stylistic references to ask (askzy), Ningen Mame, nixeu, and cui (jidanhaidaitang). The palette is largely monochrome and greyscale with muted color and partly colored accents, softened by gaussian blur. Grass, broken glass shards, and blood appear in the scene, and the mood evokes a world of darkness and a dark mind."
+    },
+    {
+      "index": 1,
+      "id": "prompt000004_roll000001",
+      "sample_id": "prompt000004",
+      "prompt_index": 1,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000003-r000000-s66.png",
+      "prompt": "A high-resolution illustration of Goldenglow from Arknights, a solo adult woman in an alternate costume with no headwear, kneeling on a bed in a bedroom. She has a drunk blush and a seductive smile as she looks at the viewer and licks her hand. Her groin and linea alba are visible, her pussy is exposed, and cum is on her breasts, face, and hands. She is surrounded by condoms, with one hand between her legs and facial cum present. Her body is wet, sweaty, and steaming, with volumetric lighting and focus on her pussy. The work uses references to ask (askzy), ningen mame, nixeu, and cui (jidanhaidaitang)."
+    },
+    {
+      "index": 2,
+      "id": "prompt000019_roll000001",
+      "sample_id": "prompt000019",
+      "prompt_index": 2,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000018-r000000-s186.png",
+      "prompt": "An illustration in the stylistic manner of miv4t, konya karasue, rella, quasarcake, fajyobore, and skyrick9413. The single character, Asuka Langley Soryu, is shown from the side outdoors at twilight, walking or standing with one hand in her pocket and her hair floating; she looks off into the distance to the side. She wears a red Evangelion plugsuit/mecha pilot suit and a red jacket. The composition emphasizes the mecha: Evangelion Unit-01, a super robot with a single horn, rises against a cityscape of buildings and skyscrapers along a river. The skyline sits beneath a cloudy sky, with a bird in the sky. Motion blur runs through the scene. No text appears."
+    },
+    {
+      "index": 3,
+      "id": "prompt000020_roll000001",
+      "sample_id": "prompt000020",
+      "prompt_index": 3,
+      "rollout_id": 0,
+      "image": "$MOSS_ROOT/rollouts/novelai_mapping_mxfp8_1024_48_20261024_2255/output_k8/p000019-r000000-s194.png",
+      "prompt": "A realistic, photorealistic 2025 artwork of Rozaliya Olenyeva, rendered in an ultra-detailed 8K style with a highly aesthetic finish. The visual style draws on ningen_mame, meion, and nixeu, with a stronger emphasis on nopetroto and a lighter emphasis on qiandaiyiyu. No visible text appears in the image."
+    }
+  ],
+  "config": {},
+  "context": {
+    "step_dir": "$DATA_DISK/moss-reward-pipeline/validation/dp4/step_00000000",
+    "update": 0,
+    "rollout": 0
+  }
+}
